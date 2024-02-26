@@ -49,6 +49,7 @@ class _SplashState extends State<Splash> {
                 height: 220,
                 width: 220,
               ),
+              SizedBox(height: 305,),
               Text(
                 'Chat'.toUpperCase(),
                 style: const TextStyle(
