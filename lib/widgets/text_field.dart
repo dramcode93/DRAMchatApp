@@ -7,28 +7,46 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      validator: (data) {
-        if (data!.isEmpty) {
-          return 'required';
-        }
-      },
-      onChanged: onChanged,
-      decoration: InputDecoration(
-        fillColor: Colors.amber,
-        hintText: hintText,
-        hintStyle: TextStyle(
-          color: Color(0xff322653),
+    return SizedBox(
+      width: 332,
+      child: TextFormField(
+        validator: (data) {
+          if (data!.isEmpty) {
+            return 'required';
+          }
+          return null;
+        },
+        onChanged: onChanged,
+        decoration: InputDecoration(
+          // fillColor: Colors.amber,
+          hintText: hintText,
+          hintStyle: const TextStyle(
+            // color: Color(0xff322653),
+            color: Color.fromARGB(255, 97, 80, 145),
+            // color: Colors.white,
+            // color: Colors.grey,
+          ),
+          focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Color.fromARGB(255, 97, 80, 145),
+              // color: Colors.white,
+            ),
+          ),
+          enabledBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(
+              // color: Color(0xff322653),
+              color: Color.fromARGB(255, 97, 80, 145),
+              // color: Colors.white,
+            ),
+          ),
+          border: const UnderlineInputBorder(
+            borderSide: BorderSide(
+              // color: Color(0xff322653),
+              color: Color.fromARGB(255, 97, 80, 145),
+              // color: Colors.white,
+            ),
+          ),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.blue),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
-        ),
-        // border: OutlineInputBorder(
-        //   borderSide: BorderSide(color: Colors.white),
-        // ),
       ),
     );
   }

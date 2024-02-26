@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
-
+  static String id = 'SplashPage';
   @override
   State<Splash> createState() => _SplashState();
 }
@@ -49,13 +49,18 @@ class _SplashState extends State<Splash> {
                 height: 220,
                 width: 220,
               ),
-              SizedBox(height: 305,),
-              Text(
-                'Chat'.toUpperCase(),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
+              // const SizedBox(
+              //   height: 205,
+              // ),
+              Padding(
+                padding: const EdgeInsets.only(top: 247),
+                child: Text(
+                  'Chat'.toUpperCase(),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],

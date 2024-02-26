@@ -22,7 +22,7 @@ class Home extends StatelessWidget {
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
               child: Image.asset(
@@ -32,7 +32,7 @@ class Home extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 250,
+              height: 300,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -48,10 +48,10 @@ class Home extends StatelessWidget {
                       );
                     }),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 CustomBtn(
-                    btnText: '  Login',
+                    btnText: '  LogIn ',
                     btnColor: Colors.white,
                     txtColor: const Color(0xff322653),
                     onTap: () {

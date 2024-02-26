@@ -14,10 +14,7 @@ class CustomBtn extends StatelessWidget {
   Color txtColor;
   @override
   Widget build(BuildContext context) {
-    return Container(width: 150,
-      height: 40,
-      child:
-      ElevatedButton(
+    return ElevatedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
         backgroundColor: btnColor,
@@ -29,7 +26,6 @@ class CustomBtn extends StatelessWidget {
           style: TextStyle(color: txtColor, fontSize: 17),
         ),
       ),
-    ),
     );
   }
 }
