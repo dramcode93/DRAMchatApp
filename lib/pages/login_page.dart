@@ -47,6 +47,7 @@ class LoginPage extends StatelessWidget {
                   height: 20,
                 ),
                 CustomTextField(
+                  obscureText: true,
                   hintText: 'Password',
                   onChanged: (String) {},
                 ),

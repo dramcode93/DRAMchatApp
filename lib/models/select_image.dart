@@ -5,7 +5,6 @@ pickImage(ImageSource source) async {
   XFile? file = await imagePicker.pickImage(source: source);
   if (file != null) {
     return await file.readAsBytes();
-
     // print('No Image Selected');
   }
-}
+}                      

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class UnderLineBtn extends StatelessWidget {
-  UnderLineBtn({super.key, required this.btnText, required this.onTap});
-  String btnText;
-  VoidCallback? onTap;
+  const UnderLineBtn({super.key, required this.btnText, required this.onTap});
+  final String btnText;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return Container(

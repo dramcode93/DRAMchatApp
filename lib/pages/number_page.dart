@@ -1,6 +1,7 @@
 import 'package:dram/pages/code_page.dart';
 import 'package:dram/widgets/custom_button.dart';
 import 'package:dram/widgets/formated_number.dart';
+import 'package:dram/widgets/navigate.dart';
 import 'package:flutter/material.dart';
 
 class NumberPage extends StatefulWidget {
@@ -244,10 +245,17 @@ class _NumberPageState extends State<NumberPage> {
                           Widget confirmButton = TextButton(
                             child: const Text("Confirm"),
                             onPressed: () {
-                              Navigator.pushNamed(
+                              // Navigator.pushNamed(
+                              //   context,
+                              //   CodePage.id,
+                              //   arguments: formattedNumber,
+                              // );
+                              Navigator.push(
                                 context,
-                                CodePage.id,
-                                arguments: formattedNumber,
+                                CustomPageRoute(
+                                  page: CodePage(),
+                                  arguments: formattedNumber,
+                                ),
                               );
                             },
                           );

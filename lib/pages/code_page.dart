@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:dram/pages/profile_page.dart';
 import 'package:dram/widgets/custom_button.dart';
+import 'package:dram/widgets/custom_modal_code.dart';
 import 'package:dram/widgets/custom_underline_button.dart';
+import 'package:dram/widgets/navigate.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -120,37 +122,23 @@ class _CodePageState extends State<CodePage> {
                 UnderLineBtn(
                   btnText: 'Request a new code',
                   onTap: () {
+                    // showModalBottomSheet(
+                    //   context: context,
+                    //   builder: (BuildContext context) {
+                    //     return CustomPageRoute(page: CustomModalCode());
+                    //   },
+                    // );
                     showModalBottomSheet(
                       context: context,
                       builder: (BuildContext context) {
-                        return SizedBox(
-                          height: 200,
-                          child: Center(
-                            child: Column(
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.only(top: 20),
-                                  child: Text(
-                                    'Request a new code',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      // fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 40),
-                                  child: CustomBtn(
-                                      btnText: 'Send the message again',
-                                      txtColor: Colors.white,
-                                      btnColor: const Color(0xff322653),
-                                      onTap: () {}),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
+                        return CustomModalCode();
                       },
+                      transitionAnimationController: AnimationController(
+                        vsync: Navigator.of(context),
+                        duration: const Duration(
+                          milliseconds: 500,
+                        ),
+                      ),
                     );
                   },
                 ),
@@ -177,9 +165,15 @@ class _CodePageState extends State<CodePage> {
                 CustomBtn(
                   btnText: 'Next',
                   onTap: () {
-                    Navigator.pushNamed(
+                    // Navigator.pushNamed(
+                    //   context,
+                    //   Profile.id,
+                    // );
+                    Navigator.push(
                       context,
-                      Profile.id,
+                      CustomPageRoute(
+                        page: Profile(),
+                      ),
                     );
                   },
                   btnColor: const Color(0xff322653),
