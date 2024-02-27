@@ -53,7 +53,7 @@ class _SplashState extends State<Splash> {
               //   height: 205,
               // ),
               Padding(
-                padding: const EdgeInsets.only(top: 247),
+                padding: const EdgeInsets.only(top: 242),
                 child: Text(
                   'Chat'.toUpperCase(),
                   style: const TextStyle(

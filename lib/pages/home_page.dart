@@ -1,6 +1,7 @@
 import 'package:dram/pages/login_page.dart';
 import 'package:dram/pages/number_page.dart';
 import 'package:dram/widgets/custom_button.dart';
+import 'package:dram/widgets/navigate.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -39,12 +40,18 @@ class Home extends StatelessWidget {
               children: [
                 CustomBtn(
                     btnText: 'SignUp',
-                    btnColor: Colors.white,
+                    btnColor: Color.fromARGB(255, 252, 248, 248),
                     txtColor: const Color(0xff322653),
                     onTap: () {
-                      Navigator.pushNamed(
+                      // Navigator.pushNamed(
+                      //   context,
+                      //   NumberPage.id,
+                      // );
+                      Navigator.push(
                         context,
-                        NumberPage.id,
+                        CustomPageRoute(
+                          page: NumberPage(),
+                        ),
                       );
                     }),
                 const SizedBox(
@@ -52,12 +59,19 @@ class Home extends StatelessWidget {
                 ),
                 CustomBtn(
                     btnText: '  LogIn ',
-                    btnColor: Colors.white,
+                    btnColor: Color.fromARGB(255, 252, 248, 248),
                     txtColor: const Color(0xff322653),
                     onTap: () {
-                      Navigator.pushNamed(
+                      // Navigator.pushNamed(
+                      //   context,
+                      //   LoginPage.id,
+                      // );
+
+                      Navigator.push(
                         context,
-                        LoginPage.id,
+                        CustomPageRoute(
+                          page: LoginPage(),
+                        ),
                       );
                     }),
               ],

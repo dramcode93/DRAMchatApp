@@ -1,8 +1,12 @@
+import 'dart:io';
 import 'package:dram/models/select_image.dart';
 import 'package:dram/widgets/custom_button.dart';
+import 'package:dram/widgets/custom_modal_code.dart';
+import 'package:dram/widgets/custom_modal_profile.dart';
 // import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 // import 'package:flutter/foundation.dart' as foundation;
 
@@ -15,29 +19,78 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  final _controller = TextEditingController();
-  final _scrollController = ScrollController();
+  // final _controller = TextEditingController();
+  // final _scrollController = ScrollController();
   bool _emojiShowing = false;
   Uint8List? image;
-  void selectImage() async {
-    Uint8List? ing = await pickImage(ImageSource.gallery);
-    setState(() {
-      image = ing;
-    });
+
+  XFile? _pickedImage;
+  // CroppedFile? _croppedImage;
+
+  cropImage() async {
+    var result = await ImageCropper().cropImage(
+      sourcePath: _pickedImage!.path,
+      aspectRatioPresets: [
+        CropAspectRatioPreset.original,
+        CropAspectRatioPreset.ratio16x9,
+        CropAspectRatioPreset.ratio5x4,
+        CropAspectRatioPreset.ratio4x3,
+        CropAspectRatioPreset.ratio3x2,
+        CropAspectRatioPreset.square,
+      ],
+      cropStyle: CropStyle.rectangle,
+      aspectRatio: const CropAspectRatio(ratioX: 3, ratioY: 3),
+      uiSettings: [
+        AndroidUiSettings(
+          lockAspectRatio: false,
+          toolbarTitle: '',
+          statusBarColor: Colors.black,
+          // toolbarColor: Color(0xff322653),
+          toolbarColor: Colors.black,
+          toolbarWidgetColor: Colors.white,
+          activeControlsWidgetColor: Color.fromARGB(255, 97, 80, 145),
+          showCropGrid: true,
+          hideBottomControls: true,
+        ),
+      ],
+    );
+    _pickedImage = XFile(result!.path);
+
+    setState(() {});
   }
 
-  void selectCamira() async {
-    Uint8List? ing = await pickImage(ImageSource.camera);
-    setState(() {
-      image = ing;
-    });
+  void selectImage() async {
+    // Uint8List? ing = await pickImage(ImageSource.gallery);
+    // setState(() {
+    //   image = ing;
+    // });
+    var result = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (result != null) {
+      _pickedImage = result;
+      cropImage();
+      // setState(() {});
+    }
+  }
+
+  void selectCamera() async {
+    // Uint8List? ing = await pickImage(ImageSource.camera);
+    // setState(() {
+    //   image = ing;
+    // });
+    var result = await ImagePicker().pickImage(source: ImageSource.camera);
+    if (result != null) {
+      _pickedImage = result;
+      cropImage();
+      // setState(() {});
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     void removeImg() {
       setState(() {
-        image = null;
+        // image = null;
+        _pickedImage = null;
       });
     }
 
@@ -80,22 +133,26 @@ class _ProfileState extends State<Profile> {
                 // ),
                 Stack(
                   children: [
-                    image != null
+                    // image != null
+                    _pickedImage != null
                         ? CircleAvatar(
-                            radius: 50,
-                            backgroundImage: MemoryImage(image!),
+                            radius: 65,
+                            // backgroundImage: MemoryImage(image!),
+                            backgroundImage: FileImage(
+                              File(_pickedImage!.path),
+                            ),
                           )
                         : const CircleAvatar(
-                            radius: 50,
+                            radius: 65,
                             backgroundImage:
                                 AssetImage("assets/images/profile.png"),
                           ),
                     Positioned(
                       bottom: 0,
-                      right: 65,
+                      right: 85,
                       child: Container(
-                        width: 35,
-                        height: 35,
+                        width: 40,
+                        height: 40,
                         decoration: BoxDecoration(
                             color: const Color(0xff322653),
                             borderRadius: BorderRadius.circular(25)),
@@ -108,96 +165,21 @@ class _ProfileState extends State<Profile> {
                               showModalBottomSheet(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  return SizedBox(
-                                    height: 200,
-                                    child: Center(
-                                      child: Column(
-                                        children: [
-                                          const Icon(
-                                            Icons.remove,
-                                            color: Colors.grey,
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                top: 50, left: 20),
-                                            child: Column(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    const Icon(
-                                                        Icons.camera_alt),
-                                                    const SizedBox(
-                                                      width: 15,
-                                                    ),
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        selectCamira();
-                                                      },
-                                                      child: const Text(
-                                                        'Camera',
-                                                        style: TextStyle(
-                                                            fontSize: 16),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                const SizedBox(
-                                                  height: 20,
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    const Icon(
-                                                        Icons.photo_library),
-                                                    const SizedBox(
-                                                      width: 15,
-                                                    ),
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        selectImage();
-                                                      },
-                                                      child: const Text(
-                                                        'Gallary',
-                                                        style: TextStyle(
-                                                            fontSize: 16),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                const SizedBox(
-                                                  height: 20,
-                                                ),
-                                                if (image != null)
-                                                  Row(
-                                                    children: [
-                                                      const Icon(
-                                                        Icons.delete,
-                                                        color: Colors.red,
-                                                      ),
-                                                      const SizedBox(
-                                                        width: 15,
-                                                      ),
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          removeImg();
-                                                        },
-                                                        child: const Text(
-                                                          'Delete image',
-                                                          style: TextStyle(
-                                                            fontSize: 16,
-                                                            color: Colors.red,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                  return CustomModalProfile(
+                                    removeImg: removeImg,
+                                    selectCamera: selectCamera,
+                                    selectImage: selectImage,
+                                    // image: image,
+                                    image: _pickedImage,
                                   );
                                 },
+                                transitionAnimationController:
+                                    AnimationController(
+                                  vsync: Navigator.of(context),
+                                  duration: const Duration(
+                                    milliseconds: 500,
+                                  ),
+                                ),
                               );
                             },
                             icon: const Icon(
