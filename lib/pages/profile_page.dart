@@ -106,6 +106,7 @@ class _ProfileState extends State<Profile> {
       //   ),
       // ),
       body: ListView(
+        physics: const BouncingScrollPhysics(),
         children: [
           Center(
             child: Column(
