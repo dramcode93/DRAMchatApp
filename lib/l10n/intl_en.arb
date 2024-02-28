@@ -5,13 +5,18 @@
     "Camera":"Camera",
     "Gallary":"Gallary",
     "DeleteImage":"Delete image",
+
+
     "PasswordTitle":"Create Your Password",
     "PasswordHint":"Password",
     "ConfirmPasswordHint":"Confirm Password",
     "SubmitPassword":"Submit",
+
+
     "numberTitle":"Enter your phone number",
     "numberDescription":"Make sure this number receives SMS and calls you will receive an activation code through it",
     "countryHint":"Country",
+    "Egypt":"Egypt",
     "codeHint":"Code",
     "requiredHint":"Required!",
     "phoneHint":"Phone number",
@@ -20,15 +25,18 @@
     "confirm":"Confirm",
     "alertTitle":"You have entered the phone number:\n\n",
     "alertDescription":"Is this number correct\nor do you want to modify the number?",
+
+    
     "Login":"  Login  ",
     "SignUp":"SignUp",
     "forgotPassword":"forgot password ?",
+
+    
     "codeTitle":"Activate your Account",
     "codeAsk":"Enter the code sent to your number:\n",
     "editNumber":"Edit number",
     "requestNew":"Request a new code",
     "requestTime":"You can request a new code within",
     "sendAgain":"Send the message again",
-    "callMe":"               Call me               ",
-    "Egypt":"Egypt"
+    "callMe":"               Call me               "
 }

@@ -180,6 +180,16 @@ class S {
     );
   }
 
+  /// `Egypt`
+  String get Egypt {
+    return Intl.message(
+      'Egypt',
+      name: 'Egypt',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Code`
   String get codeHint {
     return Intl.message(
@@ -355,16 +365,6 @@ class S {
     return Intl.message(
       '               Call me               ',
       name: 'callMe',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Egypt`
-  String get Egypt {
-    return Intl.message(
-      'Egypt',
-      name: 'Egypt',
       desc: '',
       args: [],
     );

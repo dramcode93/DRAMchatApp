@@ -28,12 +28,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "DeleteImage": MessageLookupByLibrary.simpleMessage("حذف الصورة"),
         "Egypt": MessageLookupByLibrary.simpleMessage("مصر"),
         "Gallary": MessageLookupByLibrary.simpleMessage("المعرض"),
-        "Login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "Login": MessageLookupByLibrary.simpleMessage(" الدخول "),
         "PasswordHint": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "PasswordTitle":
             MessageLookupByLibrary.simpleMessage("أنشئ كلمة المرور الخاصة بك"),
         "ProfileFinish": MessageLookupByLibrary.simpleMessage("إنهاء"),
-        "SignUp": MessageLookupByLibrary.simpleMessage("    التسجيل     "),
+        "SignUp": MessageLookupByLibrary.simpleMessage("التسجيل"),
         "SubmitPassword": MessageLookupByLibrary.simpleMessage("إرسال"),
         "alertDescription": MessageLookupByLibrary.simpleMessage(
             "هل هذا الرقم صحيح أم أنك تريد تعديل الرقم؟"),
