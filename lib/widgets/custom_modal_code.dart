@@ -1,4 +1,4 @@
-
+import 'package:dram/generated/l10n.dart';
 import 'package:dram/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -14,32 +14,38 @@ class CustomModalCode extends StatelessWidget {
       child: Center(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text(
-                'Request a new code',
-                style: TextStyle(
-                  fontSize: 20,
-                  // fontWeight: FontWeight.bold,
-                ),
+            const Icon(
+              Icons.remove,
+              size: 32,
+              color: Colors.grey,
+            ),
+            Text(
+              // 'Request a new code',
+              S.of(context).requestNew,
+              style: const TextStyle(
+                fontSize: 20,
+                // fontWeight: FontWeight.bold,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 40),
+              padding: const EdgeInsets.only(top: 15),
               child: Column(
                 children: [
                   CustomBtn(
-                    btnText: 'Send the message again',
+                    // btnText: 'Send the message again',
+                    btnText: S.of(context).sendAgain,
                     txtColor: Colors.white,
                     btnColor: const Color(0xff322653),
                     onTap: () {},
                   ),
+                  const SizedBox(
+                    height: 5,
+                  ),
                   CustomBtn(
-                    btnText:
-                        '               Call me               ',
+                    // btnText: '               Call me               ',
+                    btnText: S.of(context).callMe,
                     txtColor: const Color(0xff322653),
-                    btnColor:
-                        Color.fromARGB(255, 249, 244, 244),
+                    btnColor: const Color.fromARGB(255, 249, 244, 244),
                     onTap: () {},
                   ),
                 ],

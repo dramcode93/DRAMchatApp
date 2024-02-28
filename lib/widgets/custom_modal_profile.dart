@@ -1,3 +1,4 @@
+import 'package:dram/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -23,10 +24,11 @@ class CustomModalProfile extends StatelessWidget {
           children: [
             const Icon(
               Icons.remove,
+              size: 32,
               color: Colors.grey,
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 50, left: 20),
+              padding: const EdgeInsets.only(top: 40, left: 20,right: 20),
               child: Column(
                 children: [
                   Row(
@@ -39,9 +41,10 @@ class CustomModalProfile extends StatelessWidget {
                         onTap: () {
                           selectCamera!();
                         },
-                        child: const Text(
-                          'Camera',
-                          style: TextStyle(fontSize: 16),
+                        child: Text(
+                          // 'Camera',
+                           S.of(context).Camera,
+                          style: const TextStyle(fontSize: 18),
                         ),
                       ),
                     ],
@@ -59,9 +62,10 @@ class CustomModalProfile extends StatelessWidget {
                         onTap: () {
                           selectImage!();
                         },
-                        child: const Text(
-                          'Gallary',
-                          style: TextStyle(fontSize: 16),
+                        child:  Text(
+                          // 'Gallary',
+                          S.of(context).Gallary,
+                          style: const TextStyle(fontSize: 18),
                         ),
                       ),
                     ],
@@ -83,10 +87,11 @@ class CustomModalProfile extends StatelessWidget {
                           onTap: () {
                             removeImg!();
                           },
-                          child: const Text(
-                            'Delete image',
-                            style: TextStyle(
-                              fontSize: 16,
+                          child:  Text(
+                            // 'Delete image',
+                            S.of(context).DeleteImage,
+                            style: const TextStyle(
+                              fontSize: 18,
                               color: Colors.red,
                             ),
                           ),
