@@ -1,5 +1,6 @@
 import 'dart:async';
-import 'package:dram/pages/profile_page.dart';
+import 'package:dram/generated/l10n.dart';
+import 'package:dram/pages/password_page.dart';
 import 'package:dram/widgets/custom_button.dart';
 import 'package:dram/widgets/custom_modal_code.dart';
 import 'package:dram/widgets/custom_underline_button.dart';
@@ -46,6 +47,7 @@ class _CodePageState extends State<CodePage> {
     var phoneNumber = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       body: ListView(
+         physics: const BouncingScrollPhysics(),
         children: [
           Center(
             child: Column(
@@ -56,9 +58,10 @@ class _CodePageState extends State<CodePage> {
                 //  const Spacer(
                 //   flex: 1,
                 // ),
-                const Text(
-                  'Activate your Account',
-                  style: TextStyle(
+                 Text(
+                  // 'Activate your Account',
+                  S.of(context).codeTitle,
+                  style: const TextStyle(
                     fontSize: 30,
                     // fontWeight: FontWeight.bold,
                   ),
@@ -67,10 +70,11 @@ class _CodePageState extends State<CodePage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 32, bottom: 10),
                   child: Text(
-                    'Enter the code sent to your number:\n$phoneNumber',
+                    // 'Enter the code sent to your number:\n$phoneNumber',
+                    '${S.of(context).codeAsk}$phoneNumber',
                     style: const TextStyle(
                       color: Colors.black,
-                      fontSize: 16,
+                      fontSize: 18,
                       // fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
@@ -78,7 +82,8 @@ class _CodePageState extends State<CodePage> {
                 ),
 
                 UnderLineBtn(
-                  btnText: 'Edit number',
+                  // btnText: 'Edit number',
+                  btnText: S.of(context).editNumber,
                   onTap: () {
                     // Navigator.pushNamed(
                     //   context,
@@ -120,7 +125,8 @@ class _CodePageState extends State<CodePage> {
                   ),
                 ),
                 UnderLineBtn(
-                  btnText: 'Request a new code',
+                  // btnText: 'Request a new code',
+                  btnText:  S.of(context).requestNew,
                   onTap: () {
                     // showModalBottomSheet(
                     //   context: context,
@@ -131,7 +137,7 @@ class _CodePageState extends State<CodePage> {
                     showModalBottomSheet(
                       context: context,
                       builder: (BuildContext context) {
-                        return CustomModalCode();
+                        return const CustomModalCode();
                       },
                       transitionAnimationController: AnimationController(
                         vsync: Navigator.of(context),
@@ -147,10 +153,11 @@ class _CodePageState extends State<CodePage> {
                     top: 15,
                   ),
                   child: Text(
-                    'You can request a new code within $formattedTime',
+                    // 'You can request a new code within $formattedTime',
+                    '${S.of(context).requestTime} $formattedTime',
                     style: const TextStyle(
                       color: Colors.black,
-                      fontSize: 16,
+                      fontSize: 18,
                       // fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
@@ -163,7 +170,8 @@ class _CodePageState extends State<CodePage> {
                   height: 260,
                 ),
                 CustomBtn(
-                  btnText: 'Next',
+                  // btnText: 'Next',
+                  btnText: S.of(context).next,
                   onTap: () {
                     // Navigator.pushNamed(
                     //   context,
@@ -172,7 +180,7 @@ class _CodePageState extends State<CodePage> {
                     Navigator.push(
                       context,
                       CustomPageRoute(
-                        page: Profile(),
+                        page: const PasswordPage(),
                       ),
                     );
                   },

@@ -1,3 +1,4 @@
+import 'package:dram/generated/l10n.dart';
 import 'package:dram/pages/login_page.dart';
 import 'package:dram/pages/number_page.dart';
 import 'package:dram/widgets/custom_button.dart';
@@ -39,8 +40,9 @@ class Home extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomBtn(
-                    btnText: 'SignUp',
-                    btnColor: Color.fromARGB(255, 252, 248, 248),
+                    // btnText: 'SignUp',
+                    btnText: S.of(context).SignUp,
+                    btnColor: const Color.fromARGB(255, 252, 248, 248),
                     txtColor: const Color(0xff322653),
                     onTap: () {
                       // Navigator.pushNamed(
@@ -50,7 +52,7 @@ class Home extends StatelessWidget {
                       Navigator.push(
                         context,
                         CustomPageRoute(
-                          page: NumberPage(),
+                          page: const NumberPage(),
                         ),
                       );
                     }),
@@ -58,8 +60,9 @@ class Home extends StatelessWidget {
                   height: 10,
                 ),
                 CustomBtn(
-                    btnText: '  LogIn ',
-                    btnColor: Color.fromARGB(255, 252, 248, 248),
+                    // btnText: '  LogIn ',
+                    btnText: S.of(context).Login,
+                    btnColor: const Color.fromARGB(255, 252, 248, 248),
                     txtColor: const Color(0xff322653),
                     onTap: () {
                       // Navigator.pushNamed(
@@ -70,7 +73,7 @@ class Home extends StatelessWidget {
                       Navigator.push(
                         context,
                         CustomPageRoute(
-                          page: LoginPage(),
+                          page: const LoginPage(),
                         ),
                       );
                     }),

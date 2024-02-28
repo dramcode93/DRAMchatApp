@@ -1,7 +1,6 @@
 import 'dart:io';
-import 'package:dram/models/select_image.dart';
+import 'package:dram/generated/l10n.dart';
 import 'package:dram/widgets/custom_button.dart';
-import 'package:dram/widgets/custom_modal_code.dart';
 import 'package:dram/widgets/custom_modal_profile.dart';
 // import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/foundation.dart';
@@ -48,7 +47,7 @@ class _ProfileState extends State<Profile> {
           // toolbarColor: Color(0xff322653),
           toolbarColor: Colors.black,
           toolbarWidgetColor: Colors.white,
-          activeControlsWidgetColor: Color.fromARGB(255, 97, 80, 145),
+          activeControlsWidgetColor: const Color.fromARGB(255, 97, 80, 145),
           showCropGrid: true,
           hideBottomControls: true,
         ),
@@ -117,9 +116,10 @@ class _ProfileState extends State<Profile> {
                 const SizedBox(
                   height: 70,
                 ),
-                const Text(
-                  'Create Your Profile',
-                  style: TextStyle(
+                Text(
+                  // 'Create Your Profile',
+                  S.of(context).profileTitle,
+                  style: const TextStyle(
                     fontSize: 30,
                     // fontWeight: FontWeight.bold,
                   ),
@@ -154,8 +154,9 @@ class _ProfileState extends State<Profile> {
                         width: 40,
                         height: 40,
                         decoration: BoxDecoration(
-                            color: const Color(0xff322653),
-                            borderRadius: BorderRadius.circular(25)),
+                          color: const Color(0xff322653),
+                          borderRadius: BorderRadius.circular(25),
+                        ),
                         //height: 3,
                         child: Center(
                           child: IconButton(
@@ -204,9 +205,11 @@ class _ProfileState extends State<Profile> {
                     width: 332,
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: 'Name',
+                        // hintText: 'Name',
+                        hintText: S.of(context).profileHint,
                         hintStyle: const TextStyle(
                           color: Colors.grey,
+                          fontSize: 18,
                         ),
                         focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey),
@@ -261,10 +264,11 @@ class _ProfileState extends State<Profile> {
                 //   flex: 4,
                 // ),
                 const SizedBox(
-                  height: 250,
+                  height: 190,
                 ),
                 CustomBtn(
-                  btnText: 'Finish',
+                  // btnText: 'Finish',
+                  btnText: S.of(context).ProfileFinish,
                   btnColor: const Color(0xff322653),
                   txtColor: Colors.white,
                   onTap: () {},

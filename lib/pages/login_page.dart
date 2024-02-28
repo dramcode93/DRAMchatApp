@@ -1,3 +1,4 @@
+import 'package:dram/generated/l10n.dart';
 import 'package:dram/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
+        physics: const BouncingScrollPhysics(),
         children: [
           const SizedBox(
             height: 20,
@@ -40,7 +42,8 @@ class LoginPage extends StatelessWidget {
                 //   height: 280,
                 // ),
                 CustomTextField(
-                  hintText: 'Phone Number',
+                  // hintText: 'Phone Number',
+                  hintText: S.of(context).phoneHint,
                   onChanged: (String) {},
                 ),
                 const SizedBox(
@@ -48,7 +51,8 @@ class LoginPage extends StatelessWidget {
                 ),
                 CustomTextField(
                   obscureText: true,
-                  hintText: 'Password',
+                  // hintText: 'Password',
+                  hintText: S.of(context).PasswordHint,
                   onChanged: (String) {},
                 ),
                 const SizedBox(
@@ -77,18 +81,20 @@ class LoginPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        child: Text(
+                          // 'Login',
+                          S.of(context).Login,
+                          style: const TextStyle(color: Colors.white, fontSize: 16),
                         ),
                       ),
                       // ),
-                      const Text(
-                        'forgot password ?',
-                        style: TextStyle(
+                       Text(
+                        // 'forgot password ?',
+                        S.of(context).forgotPassword,
+                        style: const TextStyle(
                           color: Color(0xff322653),
                           // color: Colors.white,
-                          fontSize: 16,
+                          fontSize: 18,
                         ),
                       ),
                     ],
