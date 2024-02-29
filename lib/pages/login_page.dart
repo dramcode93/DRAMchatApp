@@ -2,6 +2,8 @@ import 'package:dram/generated/l10n.dart';
 import 'package:dram/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/custom_underline_button.dart';
+
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
   static String id = 'LoginPage';
@@ -88,15 +90,24 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       // ),
-                       Text(
-                        // 'forgot password ?',
-                        S.of(context).forgotPassword,
-                        style: const TextStyle(
-                          color: Color(0xff322653),
-                          // color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      ),
+                      // UnderLineBtn(btnText: S.of(context).forgotPassword, onTap: () {  },),
+                       GestureDetector(
+                         // onTap:(){  Navigator.push(
+                         //   context,
+                         //   CustomPageRoute(
+                         //     page: const NumberPage(),
+                         //   ),
+                         // )} ,
+                         child: Text(
+                          // 'forgot password ?',
+                          S.of(context).forgotPassword,
+                          style: const TextStyle(
+                            color: Color(0xff322653),
+                            // color: Colors.white,
+                            fontSize: 18,
+                          ),
+                                               ),
+                       ),
                     ],
                   ),
                 ),

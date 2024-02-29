@@ -57,6 +57,7 @@ class _MyAppState extends State<MyApp> {
         CodePage.id: (context) => const CodePage(),
         Profile.id: (context) => const Profile(),
         LoginPage.id: (context) => const LoginPage(),
+
       },
       debugShowCheckedModeBanner: false,
       home: const Splash(),

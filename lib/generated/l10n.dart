@@ -239,7 +239,15 @@ class S {
       args: [],
     );
   }
-
+  /// `selectLanguage`
+  // String get selectLanguage {
+  //   return Intl.message(
+  //     'Select Language',
+  //     name: 'selectLanguage',
+  //     desc: '',
+  //     args: [],
+  //   );
+  // }
   /// `Confirm`
   String get confirm {
     return Intl.message(

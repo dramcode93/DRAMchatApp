@@ -5,7 +5,7 @@
     "Camera":"Camera",
     "Gallary":"Gallary",
     "DeleteImage":"Delete image",
-
+   "SelectLanguage" :"Select Language",
 
     "PasswordTitle":"Create Your Password",
     "PasswordHint":"Password",

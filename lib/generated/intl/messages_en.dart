@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "codeHint": MessageLookupByLibrary.simpleMessage("Code"),
         "codeTitle":
             MessageLookupByLibrary.simpleMessage("Activate your Account"),
+    // "SelectLanguage": MessageLookupByLibrary.simpleMessage("Select Language"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "countryHint": MessageLookupByLibrary.simpleMessage("Country"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
