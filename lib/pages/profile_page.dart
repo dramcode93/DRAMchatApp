@@ -5,8 +5,9 @@ import 'package:dram/widgets/custom_modal_profile.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
-import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
+
 import 'package:image_picker/image_picker.dart';
+
 class Profile extends StatefulWidget {
   const Profile({super.key});
   static String id = 'ProfilePage';
@@ -16,6 +17,9 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  // final _controller = TextEditingController();
+  // final _scrollController = ScrollController();
+  // bool _emojiShowing = false;
   // TextEditingController _nameController = TextEditingController();
   // bool _emojiShowing = false;
   // bool _showEmojiPicker = false;
@@ -187,6 +191,8 @@ class _ProfileState extends State<Profile> {
                   child: SizedBox(
                     width: 332,
                     child: TextField(
+                      // controller: _controller,
+                      // scrollController: _scrollController,
                       // controller: EmojiTextEditingController(),
                       decoration: InputDecoration(
                         // hintText: 'Name',
@@ -202,9 +208,13 @@ class _ProfileState extends State<Profile> {
                           borderSide: BorderSide(color: Colors.grey),
                         ),
                         suffixIcon: IconButton(
-                          onPressed: (){
-                            // toggleEmojiPicker();
-                            },
+                             onPressed: () {
+                               //   setState(() {
+                               // _emojiShowing = !_emojiShowing;
+                               //     });},
+                               // onPressed: (){
+                               //   // toggleEmojiPicker();},
+                             },
                           icon: const Icon(
                             Icons.emoji_emotions_outlined, //emoji_emotions
                             size: 28,
@@ -216,6 +226,30 @@ class _ProfileState extends State<Profile> {
 
                   ),
                 ),
+                // Offstage(
+                //   offstage: !_emojiShowing,
+                //   child: EmojiPicker(
+                //     textEditingController: _controller,
+                //     scrollController: _scrollController,
+                //     config: Config(
+                //       height: 256,
+                //       checkPlatformCompatibility: true,
+                //       emojiViewConfig: EmojiViewConfig(
+                //         // Issue: https://github.com/flutter/flutter/issues/28894
+                //         emojiSizeMax: 28 *
+                //             (foundation.defaultTargetPlatform ==
+                //                 TargetPlatform.iOS
+                //                 ? 1.2
+                //                 : 1.0),
+                //       ),
+                //       swapCategoryAndBottomBar: false,
+                //       skinToneConfig: const SkinToneConfig(),
+                //       categoryViewConfig: const CategoryViewConfig(),
+                //       bottomActionBarConfig: const BottomActionBarConfig(),
+                //       searchViewConfig: const SearchViewConfig(),
+                //     ),
+                //   ),
+                // ),
                 // Visibility(
                 //   visible: _showEmojiPicker,
                 //   child: EmojiPicker(
@@ -248,4 +282,8 @@ class _ProfileState extends State<Profile> {
       ),
     );
   }
+  // void dispose() {
+  //   _controller.dispose();
+  //   super.dispose();
+  // }
 }

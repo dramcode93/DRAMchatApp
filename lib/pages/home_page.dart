@@ -91,50 +91,74 @@ class _HomeState extends State<Home> {
                       );
                     }),
                 const SizedBox(
-                  height: 10,
-                ),
-    DropdownButton<String>(
-      dropdownColor: Color(0xffBFBEBD),
+                  height: 10,),
+                // PopupMenuButton<String>(
+                //   color: Color(0xffBFBEBD),
+                //   initialValue: selectedValue,
+                //   icon: Icon(Icons.arrow_drop_down_outlined, color: Colors.white),
+                //   itemBuilder: (BuildContext context) {
+                //     return ['Arabic', 'English'].map((String value) {
+                //       return PopupMenuItem<String>(
+                //         value: value,
+                //         child: Text(
+                //           value,
+                //           style: TextStyle(color: Colors.white, fontSize: 16),
+                //         ),
+                //       );
+                //     }).toList();
+                //   },
+                //   onSelected: (String? newValue) {
+                //     setState(() {
+                //       selectedValue = newValue;
+                //     });
+                //     _switchLanguage(newValue);
+                //   },
+                // )
 
-    hint: Padding(
-      padding: const EdgeInsets.only(right:9.0),
-      child: Text('Select Language',style:const TextStyle(fontSize: 16,color:  Colors.white),),
-    ),
+    Container(height: 100,
+      child: DropdownButton<String>(
+        dropdownColor: const Color(0xffBFBEBD),
 
-    value: selectedValue,
-    icon: Icon(Icons.arrow_drop_down_outlined,color: Colors.white,),
+      hint: const Padding(
+        padding:  EdgeInsets.only(right:9.0),
+        child: Text('Select Language',style: TextStyle(fontSize: 16,color:  Colors.white),),
+      ),
 
-    iconSize: 32,
-    elevation: 16,
+      value: selectedValue,
+      icon: const Icon(Icons.arrow_drop_down_outlined,color: Colors.white,),
 
-    underline: Container(
+      iconSize: 32,
+      elevation: 16,
 
-      height: 2,
-      color: Color(0xff000014),
+      underline: Container(
 
-    ),
-    onChanged: (String? newValue) {
-    setState(() {
-    selectedValue = newValue;
-    });
-    _switchLanguage(newValue);
-    },
-    items: <String>['Arabic' , 'English']
-        .map<DropdownMenuItem<String>>((String value) {
+        height: 2,
+        color: const Color(0xff000014),
 
-    return DropdownMenuItem<String>(
+      ),
+      onChanged: (String? newValue) {
+      setState(() {
+      selectedValue = newValue;
+      });
+      _switchLanguage(newValue);
+      },
+      items: <String>['Arabic' , 'English']
+          .map<DropdownMenuItem<String>>((String value) {
 
-    value: value,
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 17.0),
-      child: Text(value,style: const TextStyle(color: Colors.white, // Change color to whatever you want
-      fontSize: 16, ),),
-    ),
-    );
-    }).toList(),
-    // isExpanded: true,
+      return DropdownMenuItem<String>(
+
+      value: value,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 17.0),
+        child: Text(value,style: const TextStyle(color: Colors.white, // Change color to whatever you want
+        fontSize: 16, ),),
+      ),
+      );
+      }).toList(),
+      // isExpanded: true,
 
 
+      ),
     ),
   ]
 
@@ -151,11 +175,11 @@ void _switchLanguage(String? languageCode) {
   Locale locale;
   switch (languageCode) {
     case 'Arabic':
-      locale = Locale('ar', 'AR');
+      locale = const Locale('ar', 'AR');
       break;
     case 'English':
     default:
-      locale = Locale('en', 'US');
+      locale =const  Locale('en', 'US');
   }
   // Set the new locale
   S.load(locale);
