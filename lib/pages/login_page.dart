@@ -9,7 +9,13 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body:
+          //  LayoutBuilder(
+          //   builder: (context, constraints) {
+          //     final heightScreen = constraints.maxHeight;
+          //     final widthScreen = constraints.maxWidth;
+          //     return
+          ListView(
         physics: const BouncingScrollPhysics(),
         children: [
           const SizedBox(
@@ -23,10 +29,12 @@ class LoginPage extends StatelessWidget {
           Container(
             // width: double.infinity,
             width: 332,
+            // width: widthScreen * 0.8,
             padding: const EdgeInsets.symmetric(
               horizontal: 16,
             ),
             height: 460,
+            // height: heightScreen - 350,
             decoration: const BoxDecoration(
                 // color: Colors.blueGrey,
                 // borderRadius: BorderRadius.only(
@@ -84,11 +92,12 @@ class LoginPage extends StatelessWidget {
                         child: Text(
                           // 'Login',
                           S.of(context).Login,
-                          style: const TextStyle(color: Colors.white, fontSize: 16),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 16),
                         ),
                       ),
                       // ),
-                       Text(
+                      Text(
                         // 'forgot password ?',
                         S.of(context).forgotPassword,
                         style: const TextStyle(
@@ -105,6 +114,8 @@ class LoginPage extends StatelessWidget {
           ),
         ],
       ),
+      //   },
+      // ),
     );
   }
 }

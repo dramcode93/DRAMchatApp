@@ -10,7 +10,14 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'dart:ui' as ui;
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitDown,
+    DeviceOrientation.portraitUp,
+  ]);
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatefulWidget {
