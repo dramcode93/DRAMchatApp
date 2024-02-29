@@ -5,7 +5,7 @@
     "Camera":"الكاميرا",
     "Gallary":"المعرض",
     "DeleteImage":"حذف الصورة",
-    "SelectLanguage" :"اختر اللغة",
+
 
     "PasswordTitle": "أنشئ كلمة المرور الخاصة بك",
     "PasswordHint": "كلمة المرور",
@@ -30,7 +30,9 @@
     "Login": " الدخول ",
     "SignUp": "التسجيل",
     "forgotPassword": "نسيت كلمة المرور؟",
-
+    "SelectLanguage" :"اختر اللغة",
+    "Arabic":"العربية",
+    "English":"الانجليزية",
 
     "codeTitle": "تفعيل حسابك",
     "codeAsk": "أدخل الكود المرسل إلى رقمك:\n",

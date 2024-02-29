@@ -22,18 +22,20 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Arabic": MessageLookupByLibrary.simpleMessage("العربية"),
         "Camera": MessageLookupByLibrary.simpleMessage("الكاميرا"),
         "ConfirmPasswordHint":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "DeleteImage": MessageLookupByLibrary.simpleMessage("حذف الصورة"),
-    // "SelectLanguage": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
         "Egypt": MessageLookupByLibrary.simpleMessage("مصر"),
+        "English": MessageLookupByLibrary.simpleMessage("الانجليزية"),
         "Gallary": MessageLookupByLibrary.simpleMessage("المعرض"),
         "Login": MessageLookupByLibrary.simpleMessage(" الدخول "),
         "PasswordHint": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "PasswordTitle":
             MessageLookupByLibrary.simpleMessage("أنشئ كلمة المرور الخاصة بك"),
         "ProfileFinish": MessageLookupByLibrary.simpleMessage("إنهاء"),
+        "SelectLanguage": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
         "SignUp": MessageLookupByLibrary.simpleMessage("التسجيل"),
         "SubmitPassword": MessageLookupByLibrary.simpleMessage("إرسال"),
         "alertDescription": MessageLookupByLibrary.simpleMessage(

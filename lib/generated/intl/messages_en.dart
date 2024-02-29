@@ -22,17 +22,21 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "Camera": MessageLookupByLibrary.simpleMessage("Camera"),
         "ConfirmPasswordHint":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "DeleteImage": MessageLookupByLibrary.simpleMessage("Delete image"),
         "Egypt": MessageLookupByLibrary.simpleMessage("Egypt"),
+        "English": MessageLookupByLibrary.simpleMessage("English"),
         "Gallary": MessageLookupByLibrary.simpleMessage("Gallary"),
         "Login": MessageLookupByLibrary.simpleMessage("  Login  "),
         "PasswordHint": MessageLookupByLibrary.simpleMessage("Password"),
         "PasswordTitle":
             MessageLookupByLibrary.simpleMessage("Create Your Password"),
         "ProfileFinish": MessageLookupByLibrary.simpleMessage("Finish"),
+        "SelectLanguage":
+            MessageLookupByLibrary.simpleMessage("Select Language"),
         "SignUp": MessageLookupByLibrary.simpleMessage("SignUp"),
         "SubmitPassword": MessageLookupByLibrary.simpleMessage("Submit"),
         "alertDescription": MessageLookupByLibrary.simpleMessage(
@@ -46,7 +50,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "codeHint": MessageLookupByLibrary.simpleMessage("Code"),
         "codeTitle":
             MessageLookupByLibrary.simpleMessage("Activate your Account"),
-    // "SelectLanguage": MessageLookupByLibrary.simpleMessage("Select Language"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "countryHint": MessageLookupByLibrary.simpleMessage("Country"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),

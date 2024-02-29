@@ -5,7 +5,6 @@
     "Camera":"Camera",
     "Gallary":"Gallary",
     "DeleteImage":"Delete image",
-   "SelectLanguage" :"Select Language",
 
     "PasswordTitle":"Create Your Password",
     "PasswordHint":"Password",
@@ -30,7 +29,9 @@
     "Login":"  Login  ",
     "SignUp":"SignUp",
     "forgotPassword":"forgot password ?",
-
+    "SelectLanguage":"Select Language",
+    "Arabic":"Arabic",
+    "English":"English",
     
     "codeTitle":"Activate your Account",
     "codeAsk":"Enter the code sent to your number:\n",

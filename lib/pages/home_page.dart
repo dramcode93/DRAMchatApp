@@ -5,17 +5,15 @@ import 'package:dram/widgets/custom_button.dart';
 import 'package:dram/widgets/navigate.dart';
 import 'package:flutter/material.dart';
 
-
-
 class Home extends StatefulWidget {
-  const Home({super.key});
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  String? selectedValue ;
+  String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -43,147 +41,150 @@ class _HomeState extends State<Home> {
               ),
             ),
             const SizedBox(
-              height: 300,
+              height: 123,
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomBtn(
+            Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              CustomBtn(
                   // btnText: 'SignUp',
-                    btnText: S
-                        .of(context)
-                        .SignUp,
-                    btnColor: const Color.fromARGB(255, 252, 248, 248),
-                    txtColor: const Color(0xff322653),
-                    onTap: () {
-                      // Navigator.pushNamed(
-                      //   context,
-                      //   NumberPage.id,
-                      // );
-                      Navigator.push(
-                        context,
-                        CustomPageRoute(
-                          page: const NumberPage(),
-                        ),
-                      );
-                    }),
-                const SizedBox(
-                  height: 10,
-                ),
-                CustomBtn(
+                  btnText: S.of(context).SignUp,
+                  btnColor: const Color.fromARGB(255, 252, 248, 248),
+                  txtColor: const Color(0xff322653),
+                  onTap: () {
+                    // Navigator.pushNamed(
+                    //   context,
+                    //   NumberPage.id,
+                    // );
+                    Navigator.push(
+                      context,
+                      CustomPageRoute(
+                        page: const NumberPage(),
+                      ),
+                    );
+                  }),
+              const SizedBox(
+                height: 10,
+              ),
+              CustomBtn(
                   // btnText: '  LogIn ',
-                    btnText: S
-                        .of(context)
-                        .Login,
-                    btnColor: const Color.fromARGB(255, 252, 248, 248),
-                    txtColor: const Color(0xff322653),
-                    onTap: () {
-                      // Navigator.pushNamed(
-                      //   context,
-                      //   LoginPage.id,
-                      // );
+                  btnText: S.of(context).Login,
+                  btnColor: const Color.fromARGB(255, 252, 248, 248),
+                  txtColor: const Color(0xff322653),
+                  onTap: () {
+                    // Navigator.pushNamed(
+                    //   context,
+                    //   LoginPage.id,
+                    // );
 
-                      Navigator.push(
-                        context,
-                        CustomPageRoute(
-                          page: const LoginPage(),
+                    Navigator.push(
+                      context,
+                      CustomPageRoute(
+                        page: const LoginPage(),
+                      ),
+                    );
+                  }),
+              const SizedBox(
+                height: 10,
+              ),
+              // PopupMenuButton<String>(
+              //   color: Color(0xffBFBEBD),
+              //   initialValue: selectedValue,
+              //   icon: Icon(Icons.arrow_drop_down_outlined, color: Colors.white),
+              //   itemBuilder: (BuildContext context) {
+              //     return ['Arabic', 'English'].map((String value) {
+              //       return PopupMenuItem<String>(
+              //         value: value,
+              //         child: Text(
+              //           value,
+              //           style: TextStyle(color: Colors.white, fontSize: 16),
+              //         ),
+              //       );
+              //     }).toList();
+              //   },
+              //   onSelected: (String? newValue) {
+              //     setState(() {
+              //       selectedValue = newValue;
+              //     });
+              //     _switchLanguage(newValue);
+              //   },
+              // )
+
+              Container(
+                height: 140,
+                child: DropdownButton<String>(
+                  dropdownColor: const Color(0xff322653),
+                  hint: Padding(
+                    padding: EdgeInsets.only(right: 9),
+                    child: Text(
+                      S.of(context).SelectLanguage,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+
+                  value: selectedValue,
+                  icon: const Icon(
+                    Icons.arrow_drop_down_outlined,
+                    color: Colors.white,
+                  ),
+                  iconSize: 32,
+                  elevation: 2,
+                  borderRadius: BorderRadius.circular(32),
+                  focusColor: Colors.blue,
+                  underline: Container(
+                    height: 0,
+                    color: const Color(0xff000014),
+                  ),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedValue = newValue;
+                    });
+                    _switchLanguage(newValue);
+                  },
+                  items: <String>['arabic', 'english'].map((String value) {
+                    return DropdownMenuItem<String>(
+                      alignment: Alignment.center,
+                      value: value,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 0),
+                        child: Text(
+                          value == 'arabic'
+                              ? S.of(context).Arabic
+                              : S.of(context).English,
+                          style: const TextStyle(
+                            color: Colors
+                                .white, // Change color to whatever you want
+                            fontSize: 16,
+                          ),
                         ),
-                      );
-                    }),
-                const SizedBox(
-                  height: 10,),
-                // PopupMenuButton<String>(
-                //   color: Color(0xffBFBEBD),
-                //   initialValue: selectedValue,
-                //   icon: Icon(Icons.arrow_drop_down_outlined, color: Colors.white),
-                //   itemBuilder: (BuildContext context) {
-                //     return ['Arabic', 'English'].map((String value) {
-                //       return PopupMenuItem<String>(
-                //         value: value,
-                //         child: Text(
-                //           value,
-                //           style: TextStyle(color: Colors.white, fontSize: 16),
-                //         ),
-                //       );
-                //     }).toList();
-                //   },
-                //   onSelected: (String? newValue) {
-                //     setState(() {
-                //       selectedValue = newValue;
-                //     });
-                //     _switchLanguage(newValue);
-                //   },
-                // )
-
-    Container(height: 100,
-      child: DropdownButton<String>(
-        dropdownColor: const Color(0xffBFBEBD),
-
-      hint: const Padding(
-        padding:  EdgeInsets.only(right:9.0),
-        child: Text('Select Language',style: TextStyle(fontSize: 16,color:  Colors.white),),
-      ),
-
-      value: selectedValue,
-      icon: const Icon(Icons.arrow_drop_down_outlined,color: Colors.white,),
-
-      iconSize: 32,
-      elevation: 16,
-
-      underline: Container(
-
-        height: 2,
-        color: const Color(0xff000014),
-
-      ),
-      onChanged: (String? newValue) {
-      setState(() {
-      selectedValue = newValue;
-      });
-      _switchLanguage(newValue);
-      },
-      items: <String>['Arabic' , 'English']
-          .map<DropdownMenuItem<String>>((String value) {
-
-      return DropdownMenuItem<String>(
-
-      value: value,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 17.0),
-        child: Text(value,style: const TextStyle(color: Colors.white, // Change color to whatever you want
-        fontSize: 16, ),),
-      ),
-      );
-      }).toList(),
-      // isExpanded: true,
-
-
-      ),
-    ),
-  ]
-
-
-
-
-            ),
+                      ),
+                    );
+                  }).toList(),
+                  // isExpanded: true,
+                ),
+              ),
+            ]),
           ],
         ),
       ),
     );
   }
-void _switchLanguage(String? languageCode) {
-  Locale locale;
-  switch (languageCode) {
-    case 'Arabic':
-      locale = const Locale('ar', 'AR');
-      break;
-    case 'English':
-    default:
-      locale =const  Locale('en', 'US');
-  }
-  // Set the new locale
-  S.load(locale);
-  setState(() {});
-}
 
+  void _switchLanguage(String? languageCode) {
+    Locale locale;
+    switch (languageCode) {
+      case 'arabic':
+        locale = const Locale('ar', 'AR');
+        break;
+      case 'english':
+        locale = const Locale('en', 'US');
+        break;
+      default:
+        locale = const Locale('en', 'US');
+    }
+    // Set the new locale
+    S.load(locale);
+    setState(() {});
+  }
 }
