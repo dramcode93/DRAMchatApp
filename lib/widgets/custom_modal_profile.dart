@@ -1,8 +1,9 @@
 import 'package:dram/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-class CustomModalProfile extends StatelessWidget {
+class CustomModalProfile extends StatefulWidget {
   const CustomModalProfile({
     super.key,
     required this.selectCamera,
@@ -15,6 +16,14 @@ class CustomModalProfile extends StatelessWidget {
   final VoidCallback? removeImg;
   // Uint8List? image;
   final XFile? image;
+
+  @override
+  State<CustomModalProfile> createState() => _CustomModalProfileState();
+}
+
+class _CustomModalProfileState extends State<CustomModalProfile> {
+
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -28,7 +37,7 @@ class CustomModalProfile extends StatelessWidget {
               color: Colors.grey,
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 40, left: 20,right: 20),
+              padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
               child: Column(
                 children: [
                   Row(
@@ -38,12 +47,31 @@ class CustomModalProfile extends StatelessWidget {
                         width: 15,
                       ),
                       GestureDetector(
-                        onTap: () {
-                          selectCamera!();
+                        onTap: () async {
+
+                          if (await Permission.camera.isGranted) {
+
+                            widget.selectCamera!();
+                          } else {
+
+                            PermissionStatus status =
+                                await Permission.camera.request();
+
+                            if (status == PermissionStatus.granted) {
+                              widget.selectCamera!();
+                            } else {
+
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                      'Camera permission is required to select camera'),
+                                ),
+                              );
+                            }
+                          }
                         },
                         child: Text(
-                          // 'Camera',
-                           S.of(context).Camera,
+                          S.of(context).Camera,
                           style: const TextStyle(fontSize: 18),
                         ),
                       ),
@@ -60,9 +88,9 @@ class CustomModalProfile extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          selectImage!();
+                          widget.selectImage!();
                         },
-                        child:  Text(
+                        child: Text(
                           // 'Gallary',
                           S.of(context).Gallary,
                           style: const TextStyle(fontSize: 18),
@@ -73,7 +101,7 @@ class CustomModalProfile extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  if (image != null)
+                  if (widget.image != null)
                     Row(
                       children: [
                         const Icon(
@@ -85,9 +113,9 @@ class CustomModalProfile extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            removeImg!();
+                            widget.removeImg!();
                           },
-                          child:  Text(
+                          child: Text(
                             // 'Delete image',
                             S.of(context).DeleteImage,
                             style: const TextStyle(

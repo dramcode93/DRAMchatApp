@@ -19,14 +19,14 @@ class PasswordPage extends StatelessWidget {
                 const SizedBox(
                   height: 70,
                 ),
-                 Text(
-                  // 'Create Your Pasword',
-                  S.of(context).PasswordTitle,
-                  style: const TextStyle(
-                    fontSize: 30,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+                //  Text(
+                //   // 'Create Your Pasword',
+                //   S.of(context).PasswordTitle,
+                //   style: const TextStyle(
+                //     fontSize: 30,
+                //   ),
+                //   textAlign: TextAlign.center,
+                // ),
                 SizedBox(
                   width: 332,
                   // padding: const EdgeInsets.symmetric(

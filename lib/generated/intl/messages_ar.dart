@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ConfirmPasswordHint":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "DeleteImage": MessageLookupByLibrary.simpleMessage("حذف الصورة"),
+    // "SelectLanguage": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
         "Egypt": MessageLookupByLibrary.simpleMessage("مصر"),
         "Gallary": MessageLookupByLibrary.simpleMessage("المعرض"),
         "Login": MessageLookupByLibrary.simpleMessage(" الدخول "),

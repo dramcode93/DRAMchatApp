@@ -2,13 +2,11 @@ import 'dart:io';
 import 'package:dram/generated/l10n.dart';
 import 'package:dram/widgets/custom_button.dart';
 import 'package:dram/widgets/custom_modal_profile.dart';
-// import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
+import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-// import 'package:flutter/foundation.dart' as foundation;
-
 class Profile extends StatefulWidget {
   const Profile({super.key});
   static String id = 'ProfilePage';
@@ -18,13 +16,19 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  // final _controller = TextEditingController();
-  // final _scrollController = ScrollController();
-  bool _emojiShowing = false;
-  Uint8List? image;
+  // TextEditingController _nameController = TextEditingController();
+  // bool _emojiShowing = false;
+  // bool _showEmojiPicker = false;
+  //
+  // void toggleEmojiPicker() {
+  //   setState(() {
+  //     _showEmojiPicker = !_showEmojiPicker;
+  //     print('Emoji Picker Visibility: $_showEmojiPicker');
+  //   });
+  // }
 
+  Uint8List? image;
   XFile? _pickedImage;
-  // CroppedFile? _croppedImage;
 
   cropImage() async {
     var result = await ImageCropper().cropImage(
@@ -59,28 +63,22 @@ class _ProfileState extends State<Profile> {
   }
 
   void selectImage() async {
-    // Uint8List? ing = await pickImage(ImageSource.gallery);
-    // setState(() {
-    //   image = ing;
-    // });
+
     var result = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (result != null) {
       _pickedImage = result;
+
       cropImage();
-      // setState(() {});
+
     }
   }
 
   void selectCamera() async {
-    // Uint8List? ing = await pickImage(ImageSource.camera);
-    // setState(() {
-    //   image = ing;
-    // });
     var result = await ImagePicker().pickImage(source: ImageSource.camera);
     if (result != null) {
       _pickedImage = result;
       cropImage();
-      // setState(() {});
+
     }
   }
 
@@ -94,17 +92,6 @@ class _ProfileState extends State<Profile> {
     }
 
     return Scaffold(
-      // appBar: AppBar(
-      //   toolbarHeight: 80,
-      //   automaticallyImplyLeading: false,
-      //   centerTitle: true,
-      //   elevation: 0,
-      //   backgroundColor: Colors.transparent,
-      //   title: const Text(
-      //     'Create Your Profile',
-      //     style: TextStyle(color: Colors.black, fontSize: 28),
-      //   ),
-      // ),
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
@@ -122,23 +109,19 @@ class _ProfileState extends State<Profile> {
                   S.of(context).profileTitle,
                   style: const TextStyle(
                     fontSize: 30,
-                    // fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(
                   height: 70,
                 ),
-                // const Spacer(
-                //   flex: 1,
-                // ),
+
                 Stack(
                   children: [
                     // image != null
                     _pickedImage != null
                         ? CircleAvatar(
                             radius: 65,
-                            // backgroundImage: MemoryImage(image!),
                             backgroundImage: FileImage(
                               File(_pickedImage!.path),
                             ),
@@ -171,7 +154,6 @@ class _ProfileState extends State<Profile> {
                                     removeImg: removeImg,
                                     selectCamera: selectCamera,
                                     selectImage: selectImage,
-                                    // image: image,
                                     image: _pickedImage,
                                   );
                                 },
@@ -205,6 +187,7 @@ class _ProfileState extends State<Profile> {
                   child: SizedBox(
                     width: 332,
                     child: TextField(
+                      // controller: EmojiTextEditingController(),
                       decoration: InputDecoration(
                         // hintText: 'Name',
                         hintText: S.of(context).profileHint,
@@ -219,11 +202,9 @@ class _ProfileState extends State<Profile> {
                           borderSide: BorderSide(color: Colors.grey),
                         ),
                         suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              _emojiShowing = !_emojiShowing;
-                            });
-                          },
+                          onPressed: (){
+                            // toggleEmojiPicker();
+                            },
                           icon: const Icon(
                             Icons.emoji_emotions_outlined, //emoji_emotions
                             size: 28,
@@ -232,41 +213,20 @@ class _ProfileState extends State<Profile> {
                         ),
                       ),
                     ),
+
                   ),
                 ),
-                // const SizedBox(
-                //   height: 230,
-                // ),
-                // Offstage(
-                //   offstage: !_emojiShowing,
+                // Visibility(
+                //   visible: _showEmojiPicker,
                 //   child: EmojiPicker(
-                //     textEditingController: _controller,
-                //     scrollController: _scrollController,
-                //     config: Config(
-                //       height: 256,
-                //       checkPlatformCompatibility: true,
-                //       emojiViewConfig: EmojiViewConfig(
-                //         // Issue: https://github.com/flutter/flutter/issues/28894
-                //         emojiSizeMax: 28 *
-                //             (foundation.defaultTargetPlatform ==
-                //                     TargetPlatform.android
-                //                 ? 1.2
-                //                 : 1.0),
-                //       ),
-                //       swapCategoryAndBottomBar: false,
-                //       skinToneConfig: const SkinToneConfig(),
-                //       categoryViewConfig: const CategoryViewConfig(),
-                //       bottomActionBarConfig: const BottomActionBarConfig(),
-                //       searchViewConfig: const SearchViewConfig(),
-                //     ),
+                //     onEmojiSelected: (emoji, category) {
+                //       // Handle emoji selection
+                //     },
                 //   ),
                 // ),
-                // const Spacer(
-                //   flex: 4,
+                // const SizedBox(
+                //   height: 190,
                 // ),
-                const SizedBox(
-                  height: 190,
-                ),
                 CustomBtn(
                   // btnText: 'Finish',
                   btnText: S.of(context).ProfileFinish,
@@ -280,6 +240,7 @@ class _ProfileState extends State<Profile> {
                 const SizedBox(
                   height: 70,
                 ),
+
               ],
             ),
           ),
