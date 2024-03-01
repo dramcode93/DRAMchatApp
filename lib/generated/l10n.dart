@@ -239,15 +239,7 @@ class S {
       args: [],
     );
   }
-  /// `selectLanguage`
-  // String get selectLanguage {
-  //   return Intl.message(
-  //     'Select Language',
-  //     name: 'selectLanguage',
-  //     desc: '',
-  //     args: [],
-  //   );
-  // }
+
   /// `Confirm`
   String get confirm {
     return Intl.message(
@@ -303,6 +295,36 @@ class S {
     return Intl.message(
       'forgot password ?',
       name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Language`
+  String get SelectLanguage {
+    return Intl.message(
+      'Select Language',
+      name: 'SelectLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Arabic`
+  String get Arabic {
+    return Intl.message(
+      'Arabic',
+      name: 'Arabic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get English {
+    return Intl.message(
+      'English',
+      name: 'English',
       desc: '',
       args: [],
     );

@@ -4,6 +4,7 @@ import 'package:dram/widgets/custom_button.dart';
 import 'package:dram/widgets/formated_number.dart';
 import 'package:dram/widgets/navigate.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 
 class NumberPage extends StatefulWidget {
@@ -75,56 +76,61 @@ class _NumberPageState extends State<NumberPage> {
                     height: 70,
                   ),
                   SizedBox(
-                    // height: 65,
+                    // height: 170,
                     width: 332,
                     child: DropdownButtonFormField<String>(
                       // validator: (value) {
                       //   if (value != null ) {
                       //   }
                       // },
-                      decoration: InputDecoration(
-                        // hintText: 'Country',
-                        hintText: S.of(context).countryHint,
-                        hintStyle: const TextStyle(
+                      
+                      isExpanded: false,
+                      dropdownColor: const Color(0xff322653),
+                      hint: Text(
+                        S.of(context).countryHint,
+                        style: TextStyle(
+                          fontSize: 16,
                           color: Colors.grey,
-                          fontSize: 18,
                         ),
-                        focusedBorder: const UnderlineInputBorder(
+                      ),
+                      value: selectedOption,
+                      icon: Transform.rotate(
+                        angle: isArabic()
+                            ? 5 * 3.1415926535 / 2
+                            : 3 * 3.1415926535 / 2,
+                        child: const Icon(Icons.arrow_back_ios),
+                      ),
+                      iconSize: 26,
+                      iconEnabledColor: Colors.grey,
+                      elevation: 2,
+                      borderRadius: BorderRadius.circular(14),
+                      focusColor: Color(0xff322653),
+                      decoration: const InputDecoration(
+                        focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.grey,
                           ),
                         ),
                       ),
-                      value: selectedOption,
-                      items:
-                          country.map<DropdownMenuItem<String>>((String value) {
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedOption = newValue;
+                          codeHintText = '+20';
+                        });
+                      },
+                      items: country.map((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(
                             value,
                             style: const TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: Color.fromARGB(255, 124, 120, 120),
-                                fontSize: 18),
+                              fontWeight: FontWeight.w700,
+                              color: Colors.grey,
+                              fontSize: 18,
+                            ),
                           ),
                         );
                       }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          selectedOption = newValue!;
-                          codeHintText = '+20';
-                        });
-                      },
-                      isExpanded: true,
-                      icon: Transform.rotate(
-                        angle: isArabic()?5*3.1415926535/2 :3 * 3.1415926535 / 2,
-                        child: const Icon(Icons.arrow_back_ios),
-                      ),
-                      iconEnabledColor: Colors.grey,
-                      style: const TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                      ),
                     ),
                   ),
                   SizedBox(
@@ -284,12 +290,12 @@ class _NumberPageState extends State<NumberPage> {
                             title: Text(
                               // "You have entered the phone number:\n\n${controller.text} $formattedNumber",
                               "${S.of(context).alertTitle}${isArabic() ? formattedNumber.split('').reversed.join('') : formattedNumber}",
-                              style: TextStyle( fontSize:isArabic()? 18:16),
+                              style: TextStyle(fontSize: isArabic() ? 18 : 16),
                             ),
                             content: Text(
                               // "Is this number correct\nor do you want to modify the number?",
                               S.of(context).alertDescription,
-                              style: TextStyle(fontSize:isArabic()? 16:14),
+                              style: TextStyle(fontSize: isArabic() ? 16 : 14),
                             ),
                             actions: [
                               Row(

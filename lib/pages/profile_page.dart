@@ -258,9 +258,9 @@ class _ProfileState extends State<Profile> {
                 //     },
                 //   ),
                 // ),
-                // const SizedBox(
-                //   height: 190,
-                // ),
+                const SizedBox(
+                  height: 190,
+                ),
                 CustomBtn(
                   // btnText: 'Finish',
                   btnText: S.of(context).ProfileFinish,
