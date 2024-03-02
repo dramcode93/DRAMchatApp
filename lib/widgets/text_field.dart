@@ -2,22 +2,24 @@ import 'package:dram/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({
-    Key? key,
-    required this.hintText,
-    required this.onChanged,
-    this.obscureText = false,
-  }) : super(key: key);
+  CustomTextField(
+      {Key? key,
+      required this.hintText,
+      required this.onChanged,
+      this.obscureText = false,
+      this.textControler})
+      : super(key: key);
   final String? hintText;
   final Function(String)? onChanged;
   final bool? obscureText;
-
+  TextEditingController? textControler;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 332,
       child: TextFormField(
         obscureText: obscureText!,
+        controller: textControler,
         validator: (data) {
           if (data!.isEmpty) {
             return S.of(context).requiredHint;

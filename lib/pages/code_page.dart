@@ -47,7 +47,7 @@ class _CodePageState extends State<CodePage> {
     var phoneNumber = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       body: ListView(
-         physics: const BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
           Center(
             child: Column(
@@ -58,7 +58,7 @@ class _CodePageState extends State<CodePage> {
                 //  const Spacer(
                 //   flex: 1,
                 // ),
-                 Text(
+                Text(
                   // 'Activate your Account',
                   S.of(context).codeTitle,
                   style: const TextStyle(
@@ -126,7 +126,7 @@ class _CodePageState extends State<CodePage> {
                 ),
                 UnderLineBtn(
                   // btnText: 'Request a new code',
-                  btnText:  S.of(context).requestNew,
+                  btnText: S.of(context).requestNew,
                   onTap: () {
                     // showModalBottomSheet(
                     //   context: context,
@@ -180,7 +180,7 @@ class _CodePageState extends State<CodePage> {
                     Navigator.push(
                       context,
                       CustomPageRoute(
-                        page: const PasswordPage(),
+                        page: PasswordPage(),
                       ),
                     );
                   },
