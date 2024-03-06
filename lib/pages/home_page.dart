@@ -1,9 +1,12 @@
 import 'package:dram/generated/l10n.dart';
+import 'package:dram/models/select_language.dart';
 import 'package:dram/pages/login_page.dart';
 import 'package:dram/pages/number_page.dart';
 import 'package:dram/widgets/custom_button.dart';
 import 'package:dram/widgets/navigate.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -140,7 +143,9 @@ class _HomeState extends State<Home> {
                     setState(() {
                       selectedValue = newValue;
                     });
-                    _switchLanguage(newValue);
+                    // _switchLanguage(newValue);
+                    context.read<LanguageProvider>().switchLanguage(newValue);
+                    // context.read<LanguageProvider>().saveLang(newValue);
                   },
                   items: <String>['arabic', 'english'].map((String value) {
                     return DropdownMenuItem<String>(
@@ -169,22 +174,5 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
-  }
-
-  void _switchLanguage(String? languageCode) {
-    Locale locale;
-    switch (languageCode) {
-      case 'arabic':
-        locale = const Locale('ar', 'AR');
-        break;
-      case 'english':
-        locale = const Locale('en', 'US');
-        break;
-      default:
-        locale = const Locale('en', 'US');
-    }
-    // Set the new locale
-    S.load(locale);
-    setState(() {});
   }
 }

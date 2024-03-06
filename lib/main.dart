@@ -1,4 +1,5 @@
 import 'package:dram/generated/l10n.dart';
+import 'package:dram/models/select_language.dart';
 import 'package:dram/pages/code_page.dart';
 import 'package:dram/pages/login_page.dart';
 import 'package:dram/pages/number_page.dart';
@@ -7,7 +8,8 @@ import 'package:dram/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'dart:ui' as ui;
+// import 'dart:ui' as ui;
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,16 +23,22 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late Locale _currentLocale;
+  // late Locale _currentLocale;
 
-  @override
-  void initState() {
-    super.initState();
-    _currentLocale = ui.window.locale;
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   // _currentLocale = ui.window.locale;
+  //   // initializeApp();
+
+  // }
 
   @override
   Widget build(BuildContext context) {
+    // Ensure that the language provider is created only once
+    LanguageProvider languageProvider = LanguageProvider();
+    languageProvider
+        .loadSavedLang(); // Load saved language during initialization
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
           statusBarColor: Color(0xff322653),
@@ -40,28 +48,38 @@ class _MyAppState extends State<MyApp> {
           systemNavigationBarColor: Color(0xff322653),
           systemNavigationBarIconBrightness: Brightness.light),
     );
-    return MaterialApp(
-      // locale: const Locale('ar'),
-      // locale: ui.window.locale,
-      locale: _currentLocale,
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      routes: {
-        Splash.id: (context) => const Splash(),
-        NumberPage.id: (context) => const NumberPage(),
-        CodePage.id: (context) => const CodePage(),
-        Profile.id: (context) => const Profile(),
-        LoginPage.id: (context) => const LoginPage(),
-
-      },
-      debugShowCheckedModeBanner: false,
-      home: const Splash(),
-      // initialRoute: Splash.id,
+    return ChangeNotifierProvider<LanguageProvider>.value(
+      value: languageProvider,
+      // create: (context) => LanguageProvider(),
+      child: Builder(
+        builder: (context) {
+          // Locale currentLocale =
+          //     Provider.of<LanguageProvider>(context).currentLocale;
+          return MaterialApp(
+            // locale: const Locale('ar'),
+            // locale: ui.window.locale,
+            // locale: currentLocale,
+            locale: context.watch<LanguageProvider>().currentLocale,
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: S.delegate.supportedLocales,
+            routes: {
+              Splash.id: (context) => const Splash(),
+              NumberPage.id: (context) => const NumberPage(),
+              CodePage.id: (context) => const CodePage(),
+              Profile.id: (context) => const Profile(),
+              LoginPage.id: (context) => const LoginPage(),
+            },
+            debugShowCheckedModeBanner: false,
+            home: const Splash(),
+            // initialRoute: Splash.id,
+          );
+        },
+      ),
     );
   }
 }
