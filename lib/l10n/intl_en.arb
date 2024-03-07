@@ -26,7 +26,7 @@
     "alertDescription":"Is this number correct\nor do you want to modify the number?",
 
     
-    "Login":"  Login  ",
+    "Login":"  Login",
     "SignUp":"SignUp",
     "forgotPassword":"forgot password ?",
     "SelectLanguage":"Select Language",
@@ -39,5 +39,9 @@
     "requestNew":"Request a new code",
     "requestTime":"You can request a new code within",
     "sendAgain":"Send the message again",
-    "callMe":"               Call me               "
+    "callMe":"               Call me               ",
+
+    "matchTitle":"Passwords do not match.",
+    "matchDescription":"Please make sure the passwords match.",
+    "Edit":"Edit"
 }

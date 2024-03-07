@@ -67,13 +67,11 @@ class _ProfileState extends State<Profile> {
   }
 
   void selectImage() async {
-
     var result = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (result != null) {
       _pickedImage = result;
 
       cropImage();
-
     }
   }
 
@@ -82,12 +80,21 @@ class _ProfileState extends State<Profile> {
     if (result != null) {
       _pickedImage = result;
       cropImage();
-
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    // final orientationDevice = MediaQuery.of(context).orientation;
+// orientationDevice == Orientation.portrait ? :
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final appBar = AppBar();
+    // print(appBar.preferredSize.height);
+    final bodyHeight = screenHeight -
+        appBar.preferredSize.height -
+        MediaQuery.of(context).padding.top;
+
     void removeImg() {
       setState(() {
         // image = null;
@@ -189,7 +196,7 @@ class _ProfileState extends State<Profile> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: SizedBox(
-                    width: 332,
+                    width: screenWidth * 0.73,
                     child: TextField(
                       // controller: _controller,
                       // scrollController: _scrollController,
@@ -208,13 +215,13 @@ class _ProfileState extends State<Profile> {
                           borderSide: BorderSide(color: Colors.grey),
                         ),
                         suffixIcon: IconButton(
-                             onPressed: () {
-                               //   setState(() {
-                               // _emojiShowing = !_emojiShowing;
-                               //     });},
-                               // onPressed: (){
-                               //   // toggleEmojiPicker();},
-                             },
+                          onPressed: () {
+                            //   setState(() {
+                            // _emojiShowing = !_emojiShowing;
+                            //     });},
+                            // onPressed: (){
+                            //   // toggleEmojiPicker();},
+                          },
                           icon: const Icon(
                             Icons.emoji_emotions_outlined, //emoji_emotions
                             size: 28,
@@ -223,7 +230,6 @@ class _ProfileState extends State<Profile> {
                         ),
                       ),
                     ),
-
                   ),
                 ),
                 // Offstage(
@@ -258,8 +264,8 @@ class _ProfileState extends State<Profile> {
                 //     },
                 //   ),
                 // ),
-                const SizedBox(
-                  height: 190,
+                 SizedBox(
+                  height:  bodyHeight*0.3,
                 ),
                 CustomBtn(
                   // btnText: 'Finish',
@@ -271,10 +277,9 @@ class _ProfileState extends State<Profile> {
                 // const Spacer(
                 //   flex: 1,
                 // ),
-                const SizedBox(
-                  height: 70,
-                ),
-
+                //  SizedBox(
+                //   height:  bodyHeight*0.4,
+                // ),
               ],
             ),
           ),

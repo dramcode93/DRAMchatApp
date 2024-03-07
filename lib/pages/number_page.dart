@@ -27,6 +27,16 @@ class _NumberPageState extends State<NumberPage> {
   String phone = 'Phone number';
   @override
   Widget build(BuildContext context) {
+    // final orientationDevice = MediaQuery.of(context).orientation;
+// orientationDevice == Orientation.portrait ? :
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final appBar = AppBar();
+    // print(appBar.preferredSize.height);
+    final bodyHeight = screenHeight -
+        appBar.preferredSize.height -
+        MediaQuery.of(context).padding.top;
+
     country = [S.of(context).Egypt];
     return Scaffold(
       body: ListView(
@@ -54,7 +64,8 @@ class _NumberPageState extends State<NumberPage> {
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(
-                    width: 332,
+                    // width: 332,
+                    width: screenWidth * 0.73,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 32),
                       child: Text(
@@ -77,13 +88,14 @@ class _NumberPageState extends State<NumberPage> {
                   ),
                   SizedBox(
                     // height: 170,
-                    width: 332,
+                    // width: 332,
+                    width: screenWidth * 0.73,
                     child: DropdownButtonFormField<String>(
                       // validator: (value) {
                       //   if (value != null ) {
                       //   }
                       // },
-                      
+
                       isExpanded: false,
                       dropdownColor: const Color(0xff322653),
                       hint: Text(
@@ -134,13 +146,13 @@ class _NumberPageState extends State<NumberPage> {
                     ),
                   ),
                   SizedBox(
-                    width: 332,
+                    width: screenWidth * 0.73,
                     height: 80,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                          width: 85,
+                          width: screenWidth * 0.15,
                           // decoration: const BoxDecoration(
                           //   border: Border(
                           //     bottom: BorderSide(
@@ -182,7 +194,7 @@ class _NumberPageState extends State<NumberPage> {
                           ),
                         ),
                         SizedBox(
-                          width: 220,
+                          width: screenWidth * 0.52,
                           // height: 55,
                           // decoration: const BoxDecoration(
                           //   border: Border(
@@ -239,8 +251,8 @@ class _NumberPageState extends State<NumberPage> {
                   // const Spacer(
                   //   flex: 4,
                   // ),
-                  const SizedBox(
-                    height: 230,
+                  SizedBox(
+                    height: bodyHeight * 0.302,
                   ),
                   CustomBtn(
                     // btnText: 'Next',
@@ -290,7 +302,9 @@ class _NumberPageState extends State<NumberPage> {
                             title: Text(
                               // "You have entered the phone number:\n\n${controller.text} $formattedNumber",
                               "${S.of(context).alertTitle}${isArabic() ? formattedNumber.split('').reversed.join('') : formattedNumber}",
-                              style: TextStyle(fontSize: isArabic() ? 18 : 16),
+                              style: TextStyle(
+                                fontSize: isArabic() ? 18 : 16,
+                              ),
                             ),
                             content: Text(
                               // "Is this number correct\nor do you want to modify the number?",
@@ -323,9 +337,9 @@ class _NumberPageState extends State<NumberPage> {
                   // const Spacer(
                   //   flex: 1,
                   // ),
-                  const SizedBox(
-                    height: 80,
-                  ),
+                  // SizedBox(
+                  //   height: bodyHeight * 0.69,
+                  // ),
                 ],
               ),
             ),

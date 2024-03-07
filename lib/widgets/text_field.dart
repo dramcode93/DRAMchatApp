@@ -7,19 +7,29 @@ class CustomTextField extends StatelessWidget {
       required this.hintText,
       required this.onChanged,
       this.obscureText = false,
-      this.textControler})
+      this.textController})
       : super(key: key);
   final String? hintText;
   final Function(String)? onChanged;
   final bool? obscureText;
-  TextEditingController? textControler;
+  TextEditingController? textController;
   @override
   Widget build(BuildContext context) {
+    // final orientationDevice = MediaQuery.of(context).orientation;
+// orientationDevice == Orientation.portrait ? :
+    // final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    // final appBar = AppBar();
+    // print(appBar.preferredSize.height);
+    // final bodyHeight = screenHeight -
+    //     appBar.preferredSize.height -
+    //     MediaQuery.of(context).padding.top;
+
     return SizedBox(
-      width: 332,
+      width: screenWidth * 0.73,
       child: TextFormField(
         obscureText: obscureText!,
-        controller: textControler,
+        controller: textController,
         validator: (data) {
           if (data!.isEmpty) {
             return S.of(context).requiredHint;

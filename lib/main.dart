@@ -32,7 +32,6 @@ class _MyAppState extends State<MyApp> {
   //   // initializeApp();
 
   // }
-
   @override
   Widget build(BuildContext context) {
     // Ensure that the language provider is created only once

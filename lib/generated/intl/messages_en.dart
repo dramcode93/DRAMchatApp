@@ -27,10 +27,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "ConfirmPasswordHint":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "DeleteImage": MessageLookupByLibrary.simpleMessage("Delete image"),
+        "Edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "Egypt": MessageLookupByLibrary.simpleMessage("Egypt"),
         "English": MessageLookupByLibrary.simpleMessage("English"),
         "Gallary": MessageLookupByLibrary.simpleMessage("Gallary"),
-        "Login": MessageLookupByLibrary.simpleMessage("  Login  "),
+        "Login": MessageLookupByLibrary.simpleMessage("  Login"),
         "PasswordHint": MessageLookupByLibrary.simpleMessage("Password"),
         "PasswordTitle":
             MessageLookupByLibrary.simpleMessage("Create Your Password"),
@@ -56,6 +57,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "editNumber": MessageLookupByLibrary.simpleMessage("Edit number"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("forgot password ?"),
+        "matchDescription": MessageLookupByLibrary.simpleMessage(
+            "Please make sure the passwords match."),
+        "matchTitle":
+            MessageLookupByLibrary.simpleMessage("Passwords do not match."),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "numberDescription": MessageLookupByLibrary.simpleMessage(
             "Make sure this number receives SMS and calls you will receive an activation code through it"),

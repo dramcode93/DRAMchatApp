@@ -41,6 +41,16 @@ class _CodePageState extends State<CodePage> {
 
   @override
   Widget build(BuildContext context) {
+    // final orientationDevice = MediaQuery.of(context).orientation;
+// orientationDevice == Orientation.portrait ? :
+    final screenHeight = MediaQuery.of(context).size.height;
+    // final screenWidth = MediaQuery.of(context).size.width;
+    final appBar = AppBar();
+    // print(appBar.preferredSize.height);
+    final bodyHeight = screenHeight -
+        appBar.preferredSize.height -
+        MediaQuery.of(context).padding.top;
+
     String formattedTime =
         '${(remainingSeconds ~/ 60).toString().padLeft(2, '0')}:${(remainingSeconds % 60).toString().padLeft(2, '0')}';
 
@@ -53,7 +63,7 @@ class _CodePageState extends State<CodePage> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 70,
+                  height: 75,
                 ),
                 //  const Spacer(
                 //   flex: 1,
@@ -166,8 +176,8 @@ class _CodePageState extends State<CodePage> {
                 // const Spacer(
                 //   flex: 3,
                 // ),
-                const SizedBox(
-                  height: 260,
+                SizedBox(
+                  height: bodyHeight * 0.35,
                 ),
                 CustomBtn(
                   // btnText: 'Next',
@@ -190,9 +200,9 @@ class _CodePageState extends State<CodePage> {
                 // const Spacer(
                 //   flex: 1,
                 // ),
-                const SizedBox(
-                  height: 80,
-                ),
+                //  SizedBox(
+                //  height: bodyHeight * 0.3,
+                // ),
               ],
             ),
           ),

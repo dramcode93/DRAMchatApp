@@ -3,6 +3,7 @@ import 'package:dram/pages/profile_page.dart';
 import 'package:dram/widgets/navigate.dart';
 import 'package:dram/widgets/text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class PasswordPage extends StatelessWidget {
   PasswordPage({super.key});
@@ -13,6 +14,16 @@ class PasswordPage extends StatelessWidget {
   TextEditingController confirmPasswordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    // final orientationDevice = MediaQuery.of(context).orientation;
+// orientationDevice == Orientation.portrait ? :
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final appBar = AppBar();
+    // print(appBar.preferredSize.height);
+    final bodyHeight = screenHeight -
+        appBar.preferredSize.height -
+        MediaQuery.of(context).padding.top;
+
     return Scaffold(
       body: Form(
         key: formKey,
@@ -34,18 +45,20 @@ class PasswordPage extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(
-                    width: 332,
+                    // width: 332,
+                    width: screenWidth * 0.73,
                     // padding: const EdgeInsets.symmetric(
                     //   horizontal: 16,
                     // ),
-                    height: 590,
+                    // height: 590,
+                    height: bodyHeight * 0.89,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         CustomTextField(
                           obscureText: true,
-                          textControler: passwordController,
+                          textController: passwordController,
                           // hintText: 'Password',
                           hintText: S.of(context).PasswordHint,
 
@@ -57,7 +70,7 @@ class PasswordPage extends StatelessWidget {
                           height: 20,
                         ),
                         CustomTextField(
-                          textControler: confirmPasswordController,
+                          textController: confirmPasswordController,
                           obscureText: true,
                           // hintText: 'Confirm Password',
                           hintText: S.of(context).ConfirmPasswordHint,
@@ -75,7 +88,7 @@ class PasswordPage extends StatelessWidget {
                         //   txtColor: Colors.white,
                         // ),
                         SizedBox(
-                          width: 332,
+                          width: screenWidth * 0.73,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -101,19 +114,34 @@ class PasswordPage extends StatelessWidget {
                                         context: context,
                                         builder: (BuildContext context) {
                                           return AlertDialog(
-                                            title:
-                                                Text('Passwords do not match'),
+                                            title: Text(
+                                                S.of(context).matchTitle,
+                                                style: TextStyle(
+                                                  fontSize:
+                                                      isArabic() ? 18 : 16,
+                                                  fontWeight: FontWeight.bold,
+                                                )),
                                             content: Text(
-                                                'Please make sure the passwords match.'),
+                                                S.of(context).matchDescription,
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        isArabic() ? 16 : 14)),
                                             actions: [
-                                              ElevatedButton(
-                                                onPressed: () {
-                                                  passwordController.clear();
-                                                  confirmPasswordController
-                                                      .clear();
-                                                  Navigator.of(context).pop();
-                                                },
-                                                child: Text('OK'),
+                                              Row(
+                                                children: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      passwordController
+                                                          .clear();
+                                                      confirmPasswordController
+                                                          .clear();
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    },
+                                                    child: Text(
+                                                        S.of(context).Edit),
+                                                  ),
+                                                ],
                                               ),
                                             ],
                                           );
@@ -158,4 +186,8 @@ class PasswordPage extends StatelessWidget {
       ),
     );
   }
+}
+
+bool isArabic() {
+  return Intl.getCurrentLocale() == 'ar';
 }

@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ConfirmPasswordHint":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "DeleteImage": MessageLookupByLibrary.simpleMessage("حذف الصورة"),
+        "Edit": MessageLookupByLibrary.simpleMessage("تعديل"),
         "Egypt": MessageLookupByLibrary.simpleMessage("مصر"),
         "English": MessageLookupByLibrary.simpleMessage("الانجليزية"),
         "Gallary": MessageLookupByLibrary.simpleMessage("المعرض"),
@@ -54,6 +55,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "editNumber": MessageLookupByLibrary.simpleMessage("تعديل الرقم"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+        "matchDescription": MessageLookupByLibrary.simpleMessage(
+            "يرجى التأكد من تطابق كلمة المرور."),
+        "matchTitle":
+            MessageLookupByLibrary.simpleMessage(".كلمة المرور غير متطابقة"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "numberDescription": MessageLookupByLibrary.simpleMessage(
             "تأكد من أن هذا الرقم يستقبل الرسائل النصية القصيرة والمكالمات. سوف تتلقى رمز التفعيل من خلاله"),
