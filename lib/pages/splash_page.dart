@@ -15,11 +15,11 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     Timer(
-      const Duration(seconds: 3),
+      const Duration(seconds: 1),
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) =>  Home(),
+          builder: (context) => Home(),
         ),
       ),
     );
@@ -27,6 +27,16 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
+    final orientationDevice = MediaQuery.of(context).orientation;
+// orientationDevice == Orientation.portrait ? :
+    final screenHeight = MediaQuery.of(context).size.height;
+    // final screenWidth = MediaQuery.of(context).size.width;
+    final appBar = AppBar();
+    // print(appBar.preferredSize.height);
+    final bodyHeight = screenHeight -
+        appBar.preferredSize.height -
+        MediaQuery.of(context).padding.top;
+    print(bodyHeight);
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -40,31 +50,45 @@ class _SplashState extends State<Splash> {
             stops: [0.2, 0.8],
           ),
         ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Image.asset(
-                'assets/images/logo.png',
-                height: 220,
-                width: 220,
-              ),
-              // const SizedBox(
-              //   height: 205,
-              // ),
-              Padding(
-                padding: const EdgeInsets.only(top: 242),
-                child: Text(
-                  'Chat'.toUpperCase(),
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
+        child: ListView(
+          physics: const BouncingScrollPhysics(),
+          children: [
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                    height: orientationDevice == Orientation.portrait ? 50 : 20,
                   ),
-                ),
+                  Image.asset(
+                    'assets/images/logo.png',
+                    height: 220,
+                    width: 220,
+                  ),
+                  SizedBox(
+                    // height: bodyHeight * 0.473,
+                    height: orientationDevice == Orientation.portrait
+                        ? bodyHeight * 0.473
+                        : 20,
+                  ),
+                  Text(
+                    'Chat'.toUpperCase(),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    // height: bodyHeight * 0.1,
+                    height: orientationDevice == Orientation.portrait
+                        ? bodyHeight * 0.1
+                        : 10,
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

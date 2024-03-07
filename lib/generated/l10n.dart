@@ -270,10 +270,10 @@ class S {
     );
   }
 
-  /// `  Login  `
+  /// `  Login`
   String get Login {
     return Intl.message(
-      '  Login  ',
+      '  Login',
       name: 'Login',
       desc: '',
       args: [],
@@ -395,6 +395,36 @@ class S {
     return Intl.message(
       '               Call me               ',
       name: 'callMe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passwords do not match.`
+  String get matchTitle {
+    return Intl.message(
+      'Passwords do not match.',
+      name: 'matchTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please make sure the passwords match.`
+  String get matchDescription {
+    return Intl.message(
+      'Please make sure the passwords match.',
+      name: 'matchDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get Edit {
+    return Intl.message(
+      'Edit',
+      name: 'Edit',
       desc: '',
       args: [],
     );
