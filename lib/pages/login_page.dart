@@ -51,7 +51,9 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.symmetric(
               horizontal: 16,
             ),
-            height:orientationDevice == Orientation.portrait ? bodyHeight * 0.7:bodyHeight ,
+            height: orientationDevice == Orientation.portrait
+                ? bodyHeight * 0.7
+                : bodyHeight,
             decoration: const BoxDecoration(
                 // color: Colors.blueGrey,
                 // borderRadius: BorderRadius.only(
@@ -131,108 +133,313 @@ class _LoginPageState extends State<LoginPage> {
                     }).toList(),
                   ),
                 ),
+                // SizedBox(
+                //   width: screenWidth * 0.73,
+                //   height: 80,
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: [
+                //       SizedBox(
+                //         // width: 85,
+                //         width: screenWidth * 0.15,
+                //         // decoration: const BoxDecoration(
+                //         //   border: Border(
+                //         //     bottom: BorderSide(
+                //         //       color: Colors.grey,
+                //         //     ),
+                //         //   ),
+                //         // ),
+                //         child: TextField(
+                //           // controller: controller,
+                //           decoration: InputDecoration(
+                //             border: const UnderlineInputBorder(
+                //               borderSide: BorderSide(
+                //                 color: Colors.grey,
+                //               ),
+                //             ),
+                //             enabledBorder: const UnderlineInputBorder(
+                //               borderSide: BorderSide(
+                //                 color: Colors.grey,
+                //               ),
+                //             ),
+                //             focusedBorder: const UnderlineInputBorder(
+                //               borderSide: BorderSide(
+                //                 color: Colors.grey,
+                //               ),
+                //             ),
+                //             // hintText: 'Code',
+                //             hintText: S.of(context).codeHint,
+                //             hintStyle: const TextStyle(
+                //               color: Colors.grey,
+                //               fontSize: 16,
+                //             ),
+                //           ),
+                //           controller: TextEditingController(text: codeHintText),
+                //           style: const TextStyle(
+                //             color: Colors.black,
+                //             fontSize: 20,
+                //           ),
+                //         ),
+                //       ),
+                //       SizedBox(
+                //         // width: 220,
+                //         width: screenWidth * 0.52,
+                //         // height: 55,
+                //         // decoration: const BoxDecoration(
+                //         //   border: Border(
+                //         //     bottom: BorderSide(color: Colors.grey),
+                //         //   ),
+                //         // ),
+                //         child: TextFormField(
+                //           validator: (data) {
+                //             if (data!.isEmpty) {
+                //               return S.of(context).requiredHint;
+                //             }
+                //             return null;
+                //           },
+                //           onChanged: (data) {
+                //             phoneNumber = data;
+                //           },
+                //           keyboardType: const TextInputType.numberWithOptions(),
+                //           decoration: InputDecoration(
+                //             errorStyle: const TextStyle(
+                //               color: Colors.red,
+                //             ),
+                //             border: const UnderlineInputBorder(
+                //               borderSide: BorderSide(
+                //                 color: Colors.grey,
+                //               ),
+                //             ),
+                //             enabledBorder: const UnderlineInputBorder(
+                //               borderSide: BorderSide(
+                //                 color: Colors.grey,
+                //               ),
+                //             ),
+                //             focusedBorder: const UnderlineInputBorder(
+                //               borderSide: BorderSide(
+                //                 color: Colors.grey,
+                //               ),
+                //             ),
+                //             // hintText: 'Phone number',
+                //             hintText: S.of(context).phoneHint,
+                //             hintStyle: const TextStyle(
+                //               color: Colors.grey,
+                //               fontSize: 18,
+                //             ),
+                //           ),
+                //           style: const TextStyle(
+                //             color: Colors.black,
+                //             fontSize: 20,
+                //           ),
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
                 SizedBox(
                   width: screenWidth * 0.73,
                   height: 80,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        // width: 85,
-                        width: screenWidth * 0.15,
-                        // decoration: const BoxDecoration(
-                        //   border: Border(
-                        //     bottom: BorderSide(
-                        //       color: Colors.grey,
-                        //     ),
-                        //   ),
-                        // ),
-                        child: TextField(
-                          // controller: controller,
-                          decoration: InputDecoration(
-                            border: const UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.grey,
+                  child: isArabic()
+                      ? Row(
+                          // textDirection: TextDirection.ltr,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: screenWidth * 0.15,
+                              // decoration: const BoxDecoration(
+                              //   border: Border(
+                              //     bottom: BorderSide(
+                              //       color: Colors.grey,
+                              //     ),
+                              //   ),
+                              // ),
+                              child: TextField(
+                                // controller: controller,
+                                decoration: InputDecoration(
+                                  border: const UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  enabledBorder: const UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  focusedBorder: const UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  // hintText: 'Code',
+                                  hintText: S.of(context).codeHint,
+                                  hintStyle: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                controller:
+                                    TextEditingController(text: codeHintText),
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                ),
                               ),
                             ),
-                            enabledBorder: const UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.grey,
+                            SizedBox(
+                              width: screenWidth * 0.52,
+                              // height: 55,
+                              // decoration: const BoxDecoration(
+                              //   border: Border(
+                              //     bottom: BorderSide(color: Colors.grey),
+                              //   ),
+                              // ),
+                              child: TextFormField(
+                                validator: (data) {
+                                  if (data!.isEmpty) {
+                                    return S.of(context).requiredHint;
+                                  }
+                                  return null;
+                                },
+                                onChanged: (data) {
+                                  phoneNumber = data;
+                                },
+                                keyboardType:
+                                    const TextInputType.numberWithOptions(),
+                                decoration: InputDecoration(
+                                  errorStyle: const TextStyle(
+                                    color: Colors.red,
+                                  ),
+                                  border: const UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  enabledBorder: const UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  focusedBorder: const UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  // hintText: 'Phone number',
+                                  hintText: S.of(context).phoneHint,
+                                  hintStyle: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                ),
                               ),
                             ),
-                            focusedBorder: const UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.grey,
+                          ].reversed.toList(),
+                        )
+                      : Row(
+                          // textDirection: TextDirection.ltr,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: screenWidth * 0.15,
+                              // decoration: const BoxDecoration(
+                              //   border: Border(
+                              //     bottom: BorderSide(
+                              //       color: Colors.grey,
+                              //     ),
+                              //   ),
+                              // ),
+                              child: TextField(
+                                // controller: controller,
+                                decoration: InputDecoration(
+                                  border: const UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  enabledBorder: const UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  focusedBorder: const UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  // hintText: 'Code',
+                                  hintText: S.of(context).codeHint,
+                                  hintStyle: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                controller:
+                                    TextEditingController(text: codeHintText),
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                ),
                               ),
                             ),
-                            // hintText: 'Code',
-                            hintText: S.of(context).codeHint,
-                            hintStyle: const TextStyle(
-                              color: Colors.grey,
-                              fontSize: 16,
+                            SizedBox(
+                              width: screenWidth * 0.52,
+                              // height: 55,
+                              // decoration: const BoxDecoration(
+                              //   border: Border(
+                              //     bottom: BorderSide(color: Colors.grey),
+                              //   ),
+                              // ),
+                              child: TextFormField(
+                                validator: (data) {
+                                  if (data!.isEmpty) {
+                                    return S.of(context).requiredHint;
+                                  }
+                                  return null;
+                                },
+                                onChanged: (data) {
+                                  phoneNumber = data;
+                                },
+                                keyboardType:
+                                    const TextInputType.numberWithOptions(),
+                                decoration: InputDecoration(
+                                  errorStyle: const TextStyle(
+                                    color: Colors.red,
+                                  ),
+                                  border: const UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  enabledBorder: const UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  focusedBorder: const UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  // hintText: 'Phone number',
+                                  hintText: S.of(context).phoneHint,
+                                  hintStyle: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                ),
+                              ),
                             ),
-                          ),
-                          controller: TextEditingController(text: codeHintText),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                          ),
+                          ],
                         ),
-                      ),
-                      SizedBox(
-                        // width: 220,
-                        width: screenWidth * 0.52,
-                        // height: 55,
-                        // decoration: const BoxDecoration(
-                        //   border: Border(
-                        //     bottom: BorderSide(color: Colors.grey),
-                        //   ),
-                        // ),
-                        child: TextFormField(
-                          validator: (data) {
-                            if (data!.isEmpty) {
-                              return S.of(context).requiredHint;
-                            }
-                            return null;
-                          },
-                          onChanged: (data) {
-                            phoneNumber = data;
-                          },
-                          keyboardType: const TextInputType.numberWithOptions(),
-                          decoration: InputDecoration(
-                            errorStyle: const TextStyle(
-                              color: Colors.red,
-                            ),
-                            border: const UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.grey,
-                              ),
-                            ),
-                            enabledBorder: const UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.grey,
-                              ),
-                            ),
-                            focusedBorder: const UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.grey,
-                              ),
-                            ),
-                            // hintText: 'Phone number',
-                            hintText: S.of(context).phoneHint,
-                            hintStyle: const TextStyle(
-                              color: Colors.grey,
-                              fontSize: 18,
-                            ),
-                          ),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                 ),
                 // const Spacer(
                 //   flex: 4,
@@ -274,7 +481,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         child: Text(
                           // 'Login',
-                          S.of(context).Login,
+                          S.of(context).Loginbtn,
                           style: const TextStyle(
                               color: Colors.white, fontSize: 16),
                         ),

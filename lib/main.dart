@@ -30,14 +30,11 @@ class _MyAppState extends State<MyApp> {
   //   super.initState();
   //   // _currentLocale = ui.window.locale;
   //   // initializeApp();
-
   // }
   @override
   Widget build(BuildContext context) {
-    // Ensure that the language provider is created only once
     LanguageProvider languageProvider = LanguageProvider();
-    languageProvider
-        .loadSavedLang(); // Load saved language during initialization
+    languageProvider.loadSavedLang();
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
           statusBarColor: Color(0xff322653),
@@ -74,6 +71,17 @@ class _MyAppState extends State<MyApp> {
               LoginPage.id: (context) => const LoginPage(),
             },
             debugShowCheckedModeBanner: false,
+            // builder: (context, child) {
+            //   return Directionality(
+            //     textDirection: TextDirection.ltr,
+            //     child: Builder(builder: (context) {
+            //       return MediaQuery(
+            //         data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+            //         child: child!,
+            //       );
+            //     }),
+            //   );
+            // },
             home: const Splash(),
             // initialRoute: Splash.id,
           );

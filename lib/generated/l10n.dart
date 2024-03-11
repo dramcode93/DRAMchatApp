@@ -270,20 +270,30 @@ class S {
     );
   }
 
-  /// `  Login`
+  /// `Login`
+  String get Loginbtn {
+    return Intl.message(
+      'Login',
+      name: 'Loginbtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `           Login         `
   String get Login {
     return Intl.message(
-      '  Login',
+      '           Login         ',
       name: 'Login',
       desc: '',
       args: [],
     );
   }
 
-  /// `SignUp`
+  /// `        SignUp        `
   String get SignUp {
     return Intl.message(
-      'SignUp',
+      '        SignUp        ',
       name: 'SignUp',
       desc: '',
       args: [],

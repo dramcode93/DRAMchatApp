@@ -27,8 +27,8 @@
     "alertDescription": "هل هذا الرقم صحيح أم أنك تريد تعديل الرقم؟",
 
 
-    "Login": " الدخول ",
-    "SignUp": "التسجيل",
+    "Login": "  الدخول  ",
+    "SignUp": " التسجيل",
     "forgotPassword": "نسيت كلمة المرور؟",
     "SelectLanguage" :"اختر اللغة",
     "Arabic":"العربية",

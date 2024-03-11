@@ -70,8 +70,10 @@ class _ProfileState extends State<Profile> {
     var result = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (result != null) {
       _pickedImage = result;
-
       cropImage();
+      setState(() {
+        Navigator.pop(context);
+      });
     }
   }
 
@@ -80,6 +82,9 @@ class _ProfileState extends State<Profile> {
     if (result != null) {
       _pickedImage = result;
       cropImage();
+      setState(() {
+        Navigator.pop(context);
+      });
     }
   }
 
@@ -99,6 +104,7 @@ class _ProfileState extends State<Profile> {
       setState(() {
         // image = null;
         _pickedImage = null;
+        Navigator.pop(context);
       });
     }
 
@@ -264,8 +270,8 @@ class _ProfileState extends State<Profile> {
                 //     },
                 //   ),
                 // ),
-                 SizedBox(
-                  height:  bodyHeight*0.3,
+                SizedBox(
+                  height: bodyHeight * 0.3,
                 ),
                 CustomBtn(
                   // btnText: 'Finish',

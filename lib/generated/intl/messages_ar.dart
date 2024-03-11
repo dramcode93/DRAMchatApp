@@ -31,13 +31,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "Egypt": MessageLookupByLibrary.simpleMessage("مصر"),
         "English": MessageLookupByLibrary.simpleMessage("الانجليزية"),
         "Gallary": MessageLookupByLibrary.simpleMessage("المعرض"),
-        "Login": MessageLookupByLibrary.simpleMessage(" الدخول "),
+        "Login": MessageLookupByLibrary.simpleMessage("  الدخول  "),
         "PasswordHint": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "PasswordTitle":
             MessageLookupByLibrary.simpleMessage("أنشئ كلمة المرور الخاصة بك"),
         "ProfileFinish": MessageLookupByLibrary.simpleMessage("إنهاء"),
         "SelectLanguage": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
-        "SignUp": MessageLookupByLibrary.simpleMessage("التسجيل"),
+        "SignUp": MessageLookupByLibrary.simpleMessage(" التسجيل"),
         "SubmitPassword": MessageLookupByLibrary.simpleMessage("إرسال"),
         "alertDescription": MessageLookupByLibrary.simpleMessage(
             "هل هذا الرقم صحيح أم أنك تريد تعديل الرقم؟"),

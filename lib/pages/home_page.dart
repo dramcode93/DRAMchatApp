@@ -2,7 +2,9 @@ import 'package:dram/generated/l10n.dart';
 import 'package:dram/models/select_language.dart';
 import 'package:dram/pages/login_page.dart';
 import 'package:dram/pages/number_page.dart';
+import 'package:dram/widgets/CustomModalLang.dart';
 import 'package:dram/widgets/custom_button.dart';
+import 'package:dram/widgets/custom_modal_code.dart';
 import 'package:dram/widgets/navigate.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -129,64 +131,84 @@ class _HomeState extends State<Home> {
                   // )
 
                   Container(
-                    height: 140,
-                    child: DropdownButton<String>(
-                      dropdownColor: const Color(0xff322653),
-                      hint: Padding(
-                        padding: EdgeInsets.only(right: 9),
-                        child: Text(
-                          S.of(context).SelectLanguage,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-
-                      value: selectedValue,
-                      icon: const Icon(
-                        Icons.arrow_drop_down_outlined,
-                        color: Colors.white,
-                      ),
-                      iconSize: 32,
-                      elevation: 2,
-                      borderRadius: BorderRadius.circular(32),
-                      focusColor: Colors.blue,
-                      underline: Container(
-                        height: 0,
-                        color: const Color(0xff000014),
-                      ),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          selectedValue = newValue;
-                        });
-                        // _switchLanguage(newValue);
-                        context
-                            .read<LanguageProvider>()
-                            .switchLanguage(newValue);
-                        // context.read<LanguageProvider>().saveLang(newValue);
-                      },
-                      items: <String>['arabic', 'english'].map((String value) {
-                        return DropdownMenuItem<String>(
-                          alignment: Alignment.center,
-                          value: value,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 0),
-                            child: Text(
-                              value == 'arabic'
-                                  ? S.of(context).Arabic
-                                  : S.of(context).English,
-                              style: const TextStyle(
-                                color: Colors
-                                    .white, // Change color to whatever you want
-                                fontSize: 16,
-                              ),
+                    // height: 140,
+                    child: CustomBtn(
+                      btnColor: Colors.white,
+                      btnText: S.of(context).SelectLanguage,
+                      onTap: () {
+                        showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return CustomModalLang();
+                          },
+                          transitionAnimationController: AnimationController(
+                            vsync: Navigator.of(context),
+                            duration: const Duration(
+                              milliseconds: 400,
                             ),
                           ),
                         );
-                      }).toList(),
-                      // isExpanded: true,
+                      },
+                      txtColor: const Color(0xff322653),
                     ),
+                    // child: DropdownButton<String>(
+                    //   dropdownColor: const Color(0xff322653),
+                    //   hint: Padding(
+                    //     padding: EdgeInsets.only(right: 9),
+                    //     child: Text(
+                    //       S.of(context).SelectLanguage,
+                    //       style: TextStyle(
+                    //         fontSize: 16,
+                    //         color: Colors.white,
+                    //       ),
+                    //     ),
+                    //   ),
+
+                    //   value: selectedValue,
+                    //   icon: const Icon(
+                    //     Icons.arrow_drop_down_outlined,
+                    //     color: Colors.white,
+                    //   ),
+                    //   iconSize: 32,
+                    //   elevation: 2,
+                    //   borderRadius: BorderRadius.circular(32),
+                    //   focusColor: Colors.blue,
+                    //   underline: Container(
+                    //     height: 0,
+                    //     color: const Color(0xff000014),
+                    //   ),
+                    //   onChanged: (String? newValue) {
+                    //     setState(() {
+                    //       selectedValue = newValue;
+                    //     });
+                    //     // _switchLanguage(newValue);
+                    //     context
+                    //         .read<LanguageProvider>()
+                    //         .switchLanguage(newValue);
+                    //     // context.read<LanguageProvider>().saveLang(newValue);
+                    //   },
+                    //   items: <String>['arabic', 'english'].map((String value) {
+                    //     return DropdownMenuItem<String>(
+                    //       alignment: Alignment.center,
+                    //       value: value,
+                    //       child: Padding(
+                    //         padding: const EdgeInsets.symmetric(horizontal: 0),
+                    //         child: Text(
+                    //           value == 'arabic'
+                    //               ? S.of(context).Arabic
+                    //               : S.of(context).English,
+                    //           style: const TextStyle(
+                    //             color: Colors
+                    //                 .white, // Change color to whatever you want
+                    //             fontSize: 16,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     );
+                    //   }).toList(),
+                    //   // isExpanded: true,
+                    // ),
                   ),
                 ]),
               ],

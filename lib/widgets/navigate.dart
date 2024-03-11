@@ -40,7 +40,7 @@ import 'package:flutter/material.dart';
 class CustomPageRoute extends PageRouteBuilder {
   final Widget page;
   final Object? arguments;
-  CustomPageRoute({required this.page,this.arguments})
+  CustomPageRoute({required this.page, this.arguments})
       : super(
           pageBuilder: (
             BuildContext context,
@@ -79,7 +79,7 @@ class CustomPageRoute extends PageRouteBuilder {
               ),
             );
           },
-          transitionDuration: const Duration(milliseconds: 800),
+          transitionDuration: const Duration(milliseconds: 500),
           settings: RouteSettings(arguments: arguments),
         );
 }

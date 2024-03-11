@@ -31,14 +31,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "Egypt": MessageLookupByLibrary.simpleMessage("Egypt"),
         "English": MessageLookupByLibrary.simpleMessage("English"),
         "Gallary": MessageLookupByLibrary.simpleMessage("Gallary"),
-        "Login": MessageLookupByLibrary.simpleMessage("  Login"),
+        "Login":
+            MessageLookupByLibrary.simpleMessage("           Login         "),
+        "Loginbtn": MessageLookupByLibrary.simpleMessage("Login"),
         "PasswordHint": MessageLookupByLibrary.simpleMessage("Password"),
         "PasswordTitle":
             MessageLookupByLibrary.simpleMessage("Create Your Password"),
         "ProfileFinish": MessageLookupByLibrary.simpleMessage("Finish"),
         "SelectLanguage":
             MessageLookupByLibrary.simpleMessage("Select Language"),
-        "SignUp": MessageLookupByLibrary.simpleMessage("SignUp"),
+        "SignUp":
+            MessageLookupByLibrary.simpleMessage("        SignUp        "),
         "SubmitPassword": MessageLookupByLibrary.simpleMessage("Submit"),
         "alertDescription": MessageLookupByLibrary.simpleMessage(
             "Is this number correct\nor do you want to modify the number?"),
