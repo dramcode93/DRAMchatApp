@@ -20,24 +20,24 @@ class _CodePageState extends State<CodePage> {
   late int remainingSeconds;
   late Timer timer;
 
-  @override
-  void initState() {
-    super.initState();
-    // Set the initial time (1:00 in seconds)
-    remainingSeconds = 60;
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   // Set the initial time (1:00 in seconds)
+  //   remainingSeconds = 60;
 
-    // Start a timer that updates the UI every second
-    timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
-      setState(() {
-        if (remainingSeconds > 0) {
-          remainingSeconds--;
-        } else {
-          // Stop the timer when time reaches 0
-          timer.cancel();
-        }
-      });
-    });
-  }
+  //   // Start a timer that updates the UI every second
+  //   timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
+  //     setState(() {
+  //       if (remainingSeconds > 0) {
+  //         remainingSeconds--;
+  //       } else {
+  //         // Stop the timer when time reaches 0
+  //         timer.cancel();
+  //       }
+  //     });
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +51,8 @@ class _CodePageState extends State<CodePage> {
         appBar.preferredSize.height -
         MediaQuery.of(context).padding.top;
 
-    String formattedTime =
-        '${(remainingSeconds ~/ 60).toString().padLeft(2, '0')}:${(remainingSeconds % 60).toString().padLeft(2, '0')}';
+    // String formattedTime =
+    //     '${(remainingSeconds ~/ 60).toString().padLeft(2, '0')}:${(remainingSeconds % 60).toString().padLeft(2, '0')}';
 
     var phoneNumber = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
@@ -104,32 +104,35 @@ class _CodePageState extends State<CodePage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 25, bottom: 15),
-                  child: Pinput(
-                    focusedPinTheme: PinTheme(
-                      height: 35,
-                      width: 25,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.blue,
+                  child: Directionality(
+                    textDirection: TextDirection.ltr,
+                    child: Pinput(
+                      focusedPinTheme: PinTheme(
+                        height: 35,
+                        width: 25,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.blue,
+                          ),
                         ),
                       ),
-                    ),
-                    onCompleted: (pin) => print(pin),
-                    length: 6,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    defaultPinTheme: PinTheme(
-                      height: 35,
-                      width: 25,
-                      textStyle: const TextStyle(fontSize: 20),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(
-                            0xFF000000,
+                      onCompleted: (pin) => print(pin),
+                      length: 6,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      defaultPinTheme: PinTheme(
+                        height: 35,
+                        width: 25,
+                        textStyle: const TextStyle(fontSize: 20),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: const Color(
+                              0xFF000000,
+                            ),
+                            width: 1.6,
                           ),
-                          width: 1.6,
+                          borderRadius: BorderRadius.zero,
                         ),
-                        borderRadius: BorderRadius.zero,
                       ),
                     ),
                   ),
@@ -164,7 +167,8 @@ class _CodePageState extends State<CodePage> {
                   ),
                   child: Text(
                     // 'You can request a new code within $formattedTime',
-                    '${S.of(context).requestTime} $formattedTime',
+                    // '${S.of(context).requestTime} $formattedTime',
+                    '${S.of(context).requestTime} 1:00',
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 18,
