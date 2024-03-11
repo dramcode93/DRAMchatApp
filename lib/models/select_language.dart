@@ -1,6 +1,4 @@
-import 'package:dram/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
 
 import 'package:shared_preferences/shared_preferences.dart';
 

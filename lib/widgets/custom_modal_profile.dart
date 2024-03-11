@@ -62,7 +62,7 @@ class _CustomModalProfileState extends State<CustomModalProfile> {
                             } else {
 
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
+                                const SnackBar(
                                   content: Text(
                                       'Camera permission is required to select camera'),
                                 ),

@@ -88,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                     dropdownColor: const Color(0xff322653),
                     hint: Text(
                       S.of(context).countryHint,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         color: Colors.grey,
                       ),
@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                     iconEnabledColor: Colors.grey,
                     elevation: 2,
                     borderRadius: BorderRadius.circular(14),
-                    focusColor: Color(0xff322653),
+                    focusColor: const Color(0xff322653),
                     decoration: const InputDecoration(
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
@@ -481,7 +481,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         child: Text(
                           // 'Login',
-                          S.of(context).Loginbtn,
+                          S.of(context).LoginBtn,
                           style: const TextStyle(
                               color: Colors.white, fontSize: 16),
                         ),

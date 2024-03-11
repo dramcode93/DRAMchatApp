@@ -35,15 +35,15 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     LanguageProvider languageProvider = LanguageProvider();
     languageProvider.loadSavedLang();
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-          statusBarColor: Color(0xff322653),
-          statusBarIconBrightness: Brightness.light,
-          statusBarBrightness: Brightness.light,
-          systemNavigationBarDividerColor: Color(0xff322653),
-          systemNavigationBarColor: Color(0xff322653),
-          systemNavigationBarIconBrightness: Brightness.light),
-    );
+    // SystemChrome.setSystemUIOverlayStyle(
+    //   const SystemUiOverlayStyle(
+    //       statusBarColor: Color(0xff322653),
+    //       statusBarIconBrightness: Brightness.light,
+    //       statusBarBrightness: Brightness.light,
+    //       systemNavigationBarDividerColor: Color(0xff322653),
+    //       systemNavigationBarColor: Color(0xff322653),
+    //       systemNavigationBarIconBrightness: Brightness.light),
+    // );
     return ChangeNotifierProvider<LanguageProvider>.value(
       value: languageProvider,
       // create: (context) => LanguageProvider(),
@@ -52,6 +52,18 @@ class _MyAppState extends State<MyApp> {
           // Locale currentLocale =
           //     Provider.of<LanguageProvider>(context).currentLocale;
           return MaterialApp(
+            
+            theme: ThemeData(
+              appBarTheme: const AppBarTheme(
+                systemOverlayStyle: SystemUiOverlayStyle(
+                    statusBarColor: Color(0xff322653),
+                    statusBarIconBrightness: Brightness.light,
+                    statusBarBrightness: Brightness.light,
+                    systemNavigationBarDividerColor: Color(0xff322653),
+                    systemNavigationBarColor: Color(0xff322653),
+                    systemNavigationBarIconBrightness: Brightness.light),
+              ),
+            ),
             // locale: const Locale('ar'),
             // locale: ui.window.locale,
             // locale: currentLocale,

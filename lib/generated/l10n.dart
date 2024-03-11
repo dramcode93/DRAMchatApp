@@ -271,10 +271,10 @@ class S {
   }
 
   /// `Login`
-  String get Loginbtn {
+  String get LoginBtn {
     return Intl.message(
       'Login',
-      name: 'Loginbtn',
+      name: 'LoginBtn',
       desc: '',
       args: [],
     );
