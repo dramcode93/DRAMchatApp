@@ -1,17 +1,13 @@
 import 'package:dram/generated/l10n.dart';
-import 'package:dram/models/select_language.dart';
 import 'package:dram/pages/login_page.dart';
 import 'package:dram/pages/number_page.dart';
 import 'package:dram/widgets/CustomModalLang.dart';
 import 'package:dram/widgets/custom_button.dart';
-import 'package:dram/widgets/custom_modal_code.dart';
 import 'package:dram/widgets/navigate.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -50,7 +46,7 @@ class _HomeState extends State<Home> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Center(
@@ -140,7 +136,7 @@ class _HomeState extends State<Home> {
                           isScrollControlled: true,
                           context: context,
                           builder: (BuildContext context) {
-                            return CustomModalLang();
+                            return const CustomModalLang();
                           },
                           transitionAnimationController: AnimationController(
                             vsync: Navigator.of(context),

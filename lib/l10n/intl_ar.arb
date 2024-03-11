@@ -26,7 +26,7 @@
     "alertTitle": "لقد أدخلت رقم الهاتف:\n\n",
     "alertDescription": "هل هذا الرقم صحيح أم أنك تريد تعديل الرقم؟",
 
-
+    "LoginBtn":"الدخول",
     "Login": "  الدخول  ",
     "SignUp": " التسجيل",
     "forgotPassword": "نسيت كلمة المرور؟",

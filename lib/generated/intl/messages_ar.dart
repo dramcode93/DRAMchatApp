@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "English": MessageLookupByLibrary.simpleMessage("الانجليزية"),
         "Gallary": MessageLookupByLibrary.simpleMessage("المعرض"),
         "Login": MessageLookupByLibrary.simpleMessage("  الدخول  "),
+        "LoginBtn": MessageLookupByLibrary.simpleMessage("الدخول"),
         "PasswordHint": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "PasswordTitle":
             MessageLookupByLibrary.simpleMessage("أنشئ كلمة المرور الخاصة بك"),

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CustomModalLang extends StatefulWidget {
-  CustomModalLang({super.key});
+  const CustomModalLang({super.key});
 
   @override
   State<CustomModalLang> createState() => _CustomModalLangState();
@@ -39,13 +39,13 @@ class _CustomModalLangState extends State<CustomModalLang> {
             ),
             Text(
               S.of(context).SelectLanguage,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 // color: Color(0xff322653),
               ),
             ),
-            Divider(),
+            const Divider(),
             RadioListTile(
                 title: Text(S.of(context).Arabic),
                 value: 'arabic',

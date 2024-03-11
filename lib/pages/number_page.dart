@@ -4,7 +4,6 @@ import 'package:dram/widgets/custom_button.dart';
 import 'package:dram/widgets/formated_number.dart';
 import 'package:dram/widgets/navigate.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 
 class NumberPage extends StatefulWidget {
@@ -100,7 +99,7 @@ class _NumberPageState extends State<NumberPage> {
                       dropdownColor: const Color(0xff322653),
                       hint: Text(
                         S.of(context).countryHint,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           color: Colors.grey,
                         ),
@@ -117,7 +116,7 @@ class _NumberPageState extends State<NumberPage> {
                       iconEnabledColor: Colors.grey,
                       elevation: 2,
                       borderRadius: BorderRadius.circular(14),
-                      focusColor: Color(0xff322653),
+                      focusColor: const Color(0xff322653),
                       decoration: const InputDecoration(
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(

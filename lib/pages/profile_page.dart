@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:dram/generated/l10n.dart';
+import 'package:dram/pages/chats_page.dart';
 import 'package:dram/widgets/custom_button.dart';
 import 'package:dram/widgets/custom_modal_profile.dart';
+import 'package:dram/widgets/navigate.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -278,7 +280,14 @@ class _ProfileState extends State<Profile> {
                   btnText: S.of(context).ProfileFinish,
                   btnColor: const Color(0xff322653),
                   txtColor: Colors.white,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      CustomPageRoute(
+                        page: const ChatsPage(),
+                      ),
+                    );
+                  },
                 ),
                 // const Spacer(
                 //   flex: 1,
