@@ -1,3 +1,4 @@
+import 'package:dram/widgets/call_tab.dart';
 import 'package:dram/widgets/chats_tab.dart';
 import 'package:dram/widgets/drawer.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class _ChatsPageState extends State<ChatsPage> {
   List<Widget> tabs = [
     const ChatsTab(),
     const Center(child: Text('story', style: TextStyle(fontSize: 25))),
-    const Center(child: Text('call', style: TextStyle(fontSize: 25))),
+    CallTap(),
   ];
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   @override
