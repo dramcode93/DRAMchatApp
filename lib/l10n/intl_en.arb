@@ -26,12 +26,13 @@
     "alertDescription":"Is this number correct\nor do you want to modify the number?",
 
     "LoginBtn":"Login",
-    "Login":"           Login         ",
-    "SignUp":"        SignUp        ",
+    "Login":"  Login ",
+    "SignUp":"SignUp",
     "forgotPassword":"forgot password ?",
     "SelectLanguage":"Select Language",
     "Arabic":"Arabic",
     "English":"English",
+    "deviceLang":"(device language)",
     
     "codeTitle":"Activate your Account",
     "codeAsk":"Enter the code sent to your number:\n",

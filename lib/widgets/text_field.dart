@@ -39,34 +39,34 @@ class CustomTextField extends StatelessWidget {
         decoration: InputDecoration(
           // fillColor: Colors.amber,
           hintText: hintText,
-          hintStyle: const TextStyle(
+          hintStyle:  TextStyle(
             // color: Color(0xff322653),
             // color: Color.fromARGB(255, 97, 80, 145),
-            color: Colors.grey,
+            color: Theme.of(context).hintColor,
             // color: Colors.white,
-            // color: Colors.grey,
+            // color: Theme.of(context).hintColor,
           ),
-          focusedBorder: const UnderlineInputBorder(
+          focusedBorder:  UnderlineInputBorder(
             borderSide: BorderSide(
               // color: Color.fromARGB(255, 97, 80, 145),
-              color: Colors.grey,
+              color: Theme.of(context).hintColor,
               // color: Colors.white,
             ),
           ),
-          enabledBorder: const UnderlineInputBorder(
+          enabledBorder:  UnderlineInputBorder(
             borderSide: BorderSide(
               // color: Color(0xff322653),
               // color: Color.fromARGB(255, 97, 80, 145),
-              color: Colors.grey,
+              color: Theme.of(context).hintColor,
               // color: Colors.white,
             ),
           ),
-          border: const UnderlineInputBorder(
+          border:  UnderlineInputBorder(
             borderSide: BorderSide(
               // color: Color(0xff322653),
               // color: Color.fromARGB(255, 97, 80, 145),
               // color: Colors.white,
-              color: Colors.grey,
+              color: Theme.of(context).hintColor,
             ),
           ),
         ),

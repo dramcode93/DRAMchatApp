@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dram/constants.dart';
 import 'package:dram/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -39,15 +40,15 @@ class _SplashState extends State<Splash> {
     print(bodyHeight);
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
               Colors.black,
-              Color(0xff322653),
+              Theme.of(context).primaryColor,
             ],
-            stops: [0.2, 0.8],
+            stops: const [0.2, 0.8],
           ),
         ),
         child: ListView(
@@ -61,7 +62,7 @@ class _SplashState extends State<Splash> {
                     height: orientationDevice == Orientation.portrait ? 50 : 20,
                   ),
                   Image.asset(
-                    'assets/images/logo.png',
+                    kLogo,
                     height: 220,
                     width: 220,
                   ),

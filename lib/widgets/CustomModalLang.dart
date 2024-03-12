@@ -2,6 +2,7 @@ import 'package:dram/generated/l10n.dart';
 import 'package:dram/models/select_language.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dart:ui' as ui;
 
 class CustomModalLang extends StatefulWidget {
   const CustomModalLang({super.key});
@@ -28,14 +29,14 @@ class _CustomModalLangState extends State<CustomModalLang> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 220,
       child: Center(
         child: Column(
           children: [
-            const Icon(
+             Icon(
               Icons.remove,
               size: 32,
-              color: Colors.grey,
+              color: Theme.of(context).hintColor,
             ),
             Text(
               S.of(context).SelectLanguage,
@@ -47,7 +48,8 @@ class _CustomModalLangState extends State<CustomModalLang> {
             ),
             const Divider(),
             RadioListTile(
-                title: Text(S.of(context).Arabic),
+                title: Text(
+                    '${S.of(context).Arabic}${ui.window.locale.languageCode == 'ar' ? '\n${S.of(context).deviceLang}' : ''}'),
                 value: 'arabic',
                 groupValue: language,
                 onChanged: (value) {
@@ -58,7 +60,8 @@ class _CustomModalLangState extends State<CustomModalLang> {
                   });
                 }),
             RadioListTile(
-                title: Text(S.of(context).English),
+                title: Text(
+                    '${S.of(context).English}${ui.window.locale.languageCode == 'en' ? '\n${S.of(context).deviceLang}' : ''}'),
                 value: 'english',
                 groupValue: language,
                 onChanged: (value) {
@@ -72,5 +75,15 @@ class _CustomModalLangState extends State<CustomModalLang> {
         ),
       ),
     );
+  }
+}
+
+void deviceLocal() {
+  final deviceLocale = ui.window.locale;
+  final String currentLocale;
+  if (deviceLocal == 'ar') {
+    currentLocale = 'arabic';
+  } else if (deviceLocale == 'en') {
+    currentLocale = 'english';
   }
 }

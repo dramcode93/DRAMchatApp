@@ -1,3 +1,4 @@
+import 'package:dram/constants.dart';
 import 'package:dram/widgets/call_tab.dart';
 import 'package:dram/widgets/chats_tab.dart';
 import 'package:dram/widgets/drawer.dart';
@@ -42,7 +43,7 @@ class _ChatsPageState extends State<ChatsPage> {
               _pageController.jumpToPage(value);
             });
           },
-          backgroundColor: const Color(0xff322653),
+          backgroundColor:Theme.of(context).primaryColor,
           selectedItemColor: Colors.blue,
           unselectedItemColor: Colors.white,
           selectedFontSize: 16,
@@ -72,7 +73,7 @@ class _ChatsPageState extends State<ChatsPage> {
       ),
       appBar: AppBar(
         toolbarHeight: 80,
-        backgroundColor: const Color(0xff322653),
+        backgroundColor:Theme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         actions: [
           Expanded(
@@ -82,7 +83,7 @@ class _ChatsPageState extends State<ChatsPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Image.asset(
-                    'assets/images/logo.png',
+                    kLogo,
                   ),
                   Container(
                     width: 220,
@@ -94,12 +95,12 @@ class _ChatsPageState extends State<ChatsPage> {
                     child: TextField(
                       decoration: InputDecoration(
                           hintText: '',
-                          hintStyle: const TextStyle(
-                            color: Color(0xff322653),
+                          hintStyle:  TextStyle(
+                            color:Theme.of(context).primaryColor,
                           ),
-                          prefixIcon: const Icon(
+                          prefixIcon:  Icon(
                             Icons.search,
-                            color: Color(0xff322653),
+                            color:Theme.of(context).primaryColor,
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(

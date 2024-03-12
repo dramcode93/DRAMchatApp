@@ -1,3 +1,4 @@
+import 'package:dram/constants.dart';
 import 'package:flutter/material.dart';
 
 class CallTap extends StatelessWidget {
@@ -26,7 +27,7 @@ class CallTap extends StatelessWidget {
     // Add more call data maps as needed
   ];
 
-  CallTap({Key? key}) : super(key: key);
+  CallTap({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,20 +46,20 @@ class CallTap extends StatelessWidget {
           ),
           subtitle: Row(
             children: [
-              Icon(item['call'], color: Colors.grey),
+              Icon(item['call'], color: Theme.of(context).hintColor),
               Text(
                 item['callType'],
-                style: const TextStyle(
-                  color: Colors.grey,
+                style:  TextStyle(
+                  color: Theme.of(context).hintColor,
                 ),
               ),
             ],
           ),
           leading: const CircleAvatar(
             radius: 30,
-            backgroundImage: AssetImage('assets/images/profile.png'),
+            backgroundImage: AssetImage(kProfile),
           ),
-          trailing: Container(
+          trailing: SizedBox(
             width: 90, // Adjust the width as needed
             child: Row(
               // mainAxisSize: MainAxisSize.min, // Use minimal space

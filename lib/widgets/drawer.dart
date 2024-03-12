@@ -1,11 +1,15 @@
+import 'package:dram/constants.dart';
+import 'package:dram/models/theme.dart';
 import 'package:dram/widgets/drawer_row.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DrawerContent extends StatelessWidget {
   const DrawerContent({super.key});
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = context.watch<ThemeProvider>().isDark;
     return Column(
       children: [
         Padding(
@@ -18,30 +22,30 @@ class DrawerContent extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            subtitle: const Text(
+            subtitle:  Text(
               '+20 102 234 5678',
               style: TextStyle(
-                color: Colors.grey,
+                color: Theme.of(context).hintColor,
               ),
             ),
             trailing: CircleAvatar(
               radius: 30,
-              backgroundImage: const AssetImage('assets/images/profile.png'),
+              backgroundImage: const AssetImage(kProfile),
               child: Container(
-                decoration: const ShapeDecoration(
-                  shape: CircleBorder(eccentricity: 1),
-                ),
                 child: MaterialButton(
                   onPressed: () {},
                 ),
               ),
             ),
             leading: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                context.read<ThemeProvider>().toggleDarkMode();
+              },
               icon: Transform.rotate(
                 angle: 3.1415926535 / 4,
-                child: const Icon(
-                  Icons.mode_night,
+                child: Icon(
+                  isDark ? Icons.sunny : Icons.mode_night,
+                  // Icons.mode_night,
                   size: 30,
                 ),
               ),

@@ -1,4 +1,7 @@
+import 'package:dram/constants.dart';
 import 'package:dram/generated/l10n.dart';
+import 'package:dram/pages/chats_page.dart';
+import 'package:dram/widgets/navigate.dart';
 import 'package:dram/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -41,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
             height: 25,
           ),
           Image.asset(
-            'assets/images/logo.png',
+            kLogo,
             height: 190,
             width: 220,
           ),
@@ -88,9 +91,9 @@ class _LoginPageState extends State<LoginPage> {
                     dropdownColor: const Color(0xff322653),
                     hint: Text(
                       S.of(context).countryHint,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
-                        color: Colors.grey,
+                        color: Theme.of(context).hintColor,
                       ),
                     ),
                     value: selectedOption,
@@ -101,14 +104,14 @@ class _LoginPageState extends State<LoginPage> {
                       child: const Icon(Icons.arrow_back_ios),
                     ),
                     iconSize: 26,
-                    iconEnabledColor: Colors.grey,
+                    iconEnabledColor: Theme.of(context).hintColor,
                     elevation: 2,
                     borderRadius: BorderRadius.circular(14),
                     focusColor: const Color(0xff322653),
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.grey,
+                          color: Theme.of(context).hintColor,
                         ),
                       ),
                     ),
@@ -123,9 +126,9 @@ class _LoginPageState extends State<LoginPage> {
                         value: value,
                         child: Text(
                           value,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            color: Colors.grey,
+                            color: Theme.of(context).hintColor,
                             fontSize: 18,
                           ),
                         ),
@@ -145,7 +148,7 @@ class _LoginPageState extends State<LoginPage> {
                 //         // decoration: const BoxDecoration(
                 //         //   border: Border(
                 //         //     bottom: BorderSide(
-                //         //       color: Colors.grey,
+                //         //       color: Theme.of(context).hintColor,
                 //         //     ),
                 //         //   ),
                 //         // ),
@@ -154,23 +157,23 @@ class _LoginPageState extends State<LoginPage> {
                 //           decoration: InputDecoration(
                 //             border: const UnderlineInputBorder(
                 //               borderSide: BorderSide(
-                //                 color: Colors.grey,
+                //                 color: Theme.of(context).hintColor,
                 //               ),
                 //             ),
                 //             enabledBorder: const UnderlineInputBorder(
                 //               borderSide: BorderSide(
-                //                 color: Colors.grey,
+                //                 color: Theme.of(context).hintColor,
                 //               ),
                 //             ),
                 //             focusedBorder: const UnderlineInputBorder(
                 //               borderSide: BorderSide(
-                //                 color: Colors.grey,
+                //                 color: Theme.of(context).hintColor,
                 //               ),
                 //             ),
                 //             // hintText: 'Code',
                 //             hintText: S.of(context).codeHint,
                 //             hintStyle: const TextStyle(
-                //               color: Colors.grey,
+                //               color: Theme.of(context).hintColor,
                 //               fontSize: 16,
                 //             ),
                 //           ),
@@ -187,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                 //         // height: 55,
                 //         // decoration: const BoxDecoration(
                 //         //   border: Border(
-                //         //     bottom: BorderSide(color: Colors.grey),
+                //         //     bottom: BorderSide(color: Theme.of(context).hintColor),
                 //         //   ),
                 //         // ),
                 //         child: TextFormField(
@@ -207,23 +210,23 @@ class _LoginPageState extends State<LoginPage> {
                 //             ),
                 //             border: const UnderlineInputBorder(
                 //               borderSide: BorderSide(
-                //                 color: Colors.grey,
+                //                 color: Theme.of(context).hintColor,
                 //               ),
                 //             ),
                 //             enabledBorder: const UnderlineInputBorder(
                 //               borderSide: BorderSide(
-                //                 color: Colors.grey,
+                //                 color: Theme.of(context).hintColor,
                 //               ),
                 //             ),
                 //             focusedBorder: const UnderlineInputBorder(
                 //               borderSide: BorderSide(
-                //                 color: Colors.grey,
+                //                 color: Theme.of(context).hintColor,
                 //               ),
                 //             ),
                 //             // hintText: 'Phone number',
                 //             hintText: S.of(context).phoneHint,
                 //             hintStyle: const TextStyle(
-                //               color: Colors.grey,
+                //               color: Theme.of(context).hintColor,
                 //               fontSize: 18,
                 //             ),
                 //           ),
@@ -249,32 +252,32 @@ class _LoginPageState extends State<LoginPage> {
                               // decoration: const BoxDecoration(
                               //   border: Border(
                               //     bottom: BorderSide(
-                              //       color: Colors.grey,
+                              //       color: Theme.of(context).hintColor,
                               //     ),
                               //   ),
                               // ),
                               child: TextField(
                                 // controller: controller,
                                 decoration: InputDecoration(
-                                  border: const UnderlineInputBorder(
+                                  border: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  enabledBorder: const UnderlineInputBorder(
+                                  enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  focusedBorder: const UnderlineInputBorder(
+                                  focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
                                   // hintText: 'Code',
                                   hintText: S.of(context).codeHint,
-                                  hintStyle: const TextStyle(
-                                    color: Colors.grey,
+                                  hintStyle: TextStyle(
+                                    color: Theme.of(context).hintColor,
                                     fontSize: 16,
                                   ),
                                 ),
@@ -291,7 +294,7 @@ class _LoginPageState extends State<LoginPage> {
                               // height: 55,
                               // decoration: const BoxDecoration(
                               //   border: Border(
-                              //     bottom: BorderSide(color: Colors.grey),
+                              //     bottom: BorderSide(color: Theme.of(context).hintColor),
                               //   ),
                               // ),
                               child: TextFormField(
@@ -310,30 +313,30 @@ class _LoginPageState extends State<LoginPage> {
                                   errorStyle: const TextStyle(
                                     color: Colors.red,
                                   ),
-                                  border: const UnderlineInputBorder(
+                                  border: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  enabledBorder: const UnderlineInputBorder(
+                                  enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  focusedBorder: const UnderlineInputBorder(
+                                  focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
                                   // hintText: 'Phone number',
                                   hintText: S.of(context).phoneHint,
-                                  hintStyle: const TextStyle(
-                                    color: Colors.grey,
+                                  hintStyle: TextStyle(
+                                    color: Theme.of(context).hintColor,
                                     fontSize: 18,
                                   ),
                                 ),
                                 style: const TextStyle(
-                                  color: Colors.black,
+                                  // color: Colors.black,
                                   fontSize: 20,
                                 ),
                               ),
@@ -349,39 +352,39 @@ class _LoginPageState extends State<LoginPage> {
                               // decoration: const BoxDecoration(
                               //   border: Border(
                               //     bottom: BorderSide(
-                              //       color: Colors.grey,
+                              //       color: Theme.of(context).hintColor,
                               //     ),
                               //   ),
                               // ),
                               child: TextField(
                                 // controller: controller,
                                 decoration: InputDecoration(
-                                  border: const UnderlineInputBorder(
+                                  border: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  enabledBorder: const UnderlineInputBorder(
+                                  enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  focusedBorder: const UnderlineInputBorder(
+                                  focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
                                   // hintText: 'Code',
                                   hintText: S.of(context).codeHint,
-                                  hintStyle: const TextStyle(
-                                    color: Colors.grey,
+                                  hintStyle: TextStyle(
+                                    color: Theme.of(context).hintColor,
                                     fontSize: 16,
                                   ),
                                 ),
                                 controller:
                                     TextEditingController(text: codeHintText),
                                 style: const TextStyle(
-                                  color: Colors.black,
+                                  // color: Colors.black,
                                   fontSize: 20,
                                 ),
                               ),
@@ -391,7 +394,7 @@ class _LoginPageState extends State<LoginPage> {
                               // height: 55,
                               // decoration: const BoxDecoration(
                               //   border: Border(
-                              //     bottom: BorderSide(color: Colors.grey),
+                              //     bottom: BorderSide(color: Theme.of(context).hintColor),
                               //   ),
                               // ),
                               child: TextFormField(
@@ -410,30 +413,29 @@ class _LoginPageState extends State<LoginPage> {
                                   errorStyle: const TextStyle(
                                     color: Colors.red,
                                   ),
-                                  border: const UnderlineInputBorder(
+                                  border: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  enabledBorder: const UnderlineInputBorder(
+                                  enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  focusedBorder: const UnderlineInputBorder(
+                                  focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
                                   // hintText: 'Phone number',
                                   hintText: S.of(context).phoneHint,
-                                  hintStyle: const TextStyle(
-                                    color: Colors.grey,
+                                  hintStyle: TextStyle(
+                                    color: Theme.of(context).hintColor,
                                     fontSize: 18,
                                   ),
                                 ),
                                 style: const TextStyle(
-                                  color: Colors.black,
                                   fontSize: 20,
                                 ),
                               ),
@@ -472,9 +474,17 @@ class _LoginPageState extends State<LoginPage> {
                       //   // width: 400,
                       //   child:
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            CustomPageRoute(
+                              page: const ChatsPage(),
+                            ),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xff322653),
+                          backgroundColor: Theme.of(context).primaryColor,
+                          // backgroundColor: Theme.of(context).primaryColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -499,7 +509,7 @@ class _LoginPageState extends State<LoginPage> {
                           // 'forgot password ?',
                           S.of(context).forgotPassword,
                           style: const TextStyle(
-                            color: Color(0xff322653),
+                            // color: Theme.of(context).primaryColor,
                             // color: Colors.white,
                             fontSize: 18,
                           ),

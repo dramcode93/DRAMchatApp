@@ -1,12 +1,14 @@
 import 'package:dram/generated/l10n.dart';
 import 'package:dram/models/select_language.dart';
+import 'package:dram/models/theme.dart';
 import 'package:dram/pages/code_page.dart';
 import 'package:dram/pages/login_page.dart';
 import 'package:dram/pages/number_page.dart';
 import 'package:dram/pages/profile_page.dart';
 import 'package:dram/pages/splash_page.dart';
+import 'package:dram/theme/themeData/theme_data_dark.dart';
+import 'package:dram/theme/themeData/theme_data_light.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 // import 'dart:ui' as ui;
 import 'package:provider/provider.dart';
@@ -23,50 +25,28 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // late Locale _currentLocale;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   // _currentLocale = ui.window.locale;
-  //   // initializeApp();
-  // }
   @override
   Widget build(BuildContext context) {
     LanguageProvider languageProvider = LanguageProvider();
     languageProvider.loadSavedLang();
-    // SystemChrome.setSystemUIOverlayStyle(
-    //   const SystemUiOverlayStyle(
-    //       statusBarColor: Color(0xff322653),
-    //       statusBarIconBrightness: Brightness.light,
-    //       statusBarBrightness: Brightness.light,
-    //       systemNavigationBarDividerColor: Color(0xff322653),
-    //       systemNavigationBarColor: Color(0xff322653),
-    //       systemNavigationBarIconBrightness: Brightness.light),
-    // );
-    return ChangeNotifierProvider<LanguageProvider>.value(
-      value: languageProvider,
-      // create: (context) => LanguageProvider(),
+
+    ThemeProvider themeProvider = ThemeProvider();
+    themeProvider.loadSavedDarkMode(); // Load dark mode
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<LanguageProvider>.value(
+          value: languageProvider,
+        ),
+        ChangeNotifierProvider<ThemeProvider>.value(
+          value: themeProvider,
+        ),
+      ],
       child: Builder(
         builder: (context) {
-          // Locale currentLocale =
-          //     Provider.of<LanguageProvider>(context).currentLocale;
           return MaterialApp(
-            
-            theme: ThemeData(
-              appBarTheme: const AppBarTheme(
-                systemOverlayStyle: SystemUiOverlayStyle(
-                    statusBarColor: Color(0xff322653),
-                    statusBarIconBrightness: Brightness.light,
-                    statusBarBrightness: Brightness.light,
-                    systemNavigationBarDividerColor: Color(0xff322653),
-                    systemNavigationBarColor: Color(0xff322653),
-                    systemNavigationBarIconBrightness: Brightness.light),
-              ),
-            ),
-            // locale: const Locale('ar'),
-            // locale: ui.window.locale,
-            // locale: currentLocale,
+            theme: context.watch<ThemeProvider>().isDark
+                ? getThemeDark()
+                : getThemeLight(),
             locale: context.watch<LanguageProvider>().currentLocale,
             localizationsDelegates: const [
               S.delegate,
@@ -83,17 +63,7 @@ class _MyAppState extends State<MyApp> {
               LoginPage.id: (context) => const LoginPage(),
             },
             debugShowCheckedModeBanner: false,
-            // builder: (context, child) {
-            //   return Directionality(
-            //     textDirection: TextDirection.ltr,
-            //     child: Builder(builder: (context) {
-            //       return MediaQuery(
-            //         data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-            //         child: child!,
-            //       );
-            //     }),
-            //   );
-            // },
+            // themeMode: ThemeMode.system,
             home: const Splash(),
             // initialRoute: Splash.id,
           );

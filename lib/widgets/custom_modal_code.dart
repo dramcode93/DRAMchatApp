@@ -14,10 +14,10 @@ class CustomModalCode extends StatelessWidget {
       child: Center(
         child: Column(
           children: [
-            const Icon(
+             Icon(
               Icons.remove,
               size: 32,
-              color: Colors.grey,
+              color: Theme.of(context).hintColor,
             ),
             Text(
               // 'Request a new code',
@@ -35,7 +35,7 @@ class CustomModalCode extends StatelessWidget {
                     // btnText: 'Send the message again',
                     btnText: S.of(context).sendAgain,
                     txtColor: Colors.white,
-                    btnColor: const Color(0xff322653),
+                    btnColor: Theme.of(context).primaryColor,
                     onTap: () {},
                   ),
                   const SizedBox(
@@ -44,7 +44,7 @@ class CustomModalCode extends StatelessWidget {
                   CustomBtn(
                     // btnText: '               Call me               ',
                     btnText: S.of(context).callMe,
-                    txtColor: const Color(0xff322653),
+                    txtColor: Theme.of(context).primaryColor,
                     btnColor: const Color.fromARGB(255, 249, 244, 244),
                     onTap: () {},
                   ),

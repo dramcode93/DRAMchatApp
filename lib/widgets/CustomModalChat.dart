@@ -5,18 +5,18 @@ class CustomModalChat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 300,
       child: Center(
         child: Column(
           children: [
-            Icon(
+            const Icon(
               Icons.remove,
               size: 32,
-              color: Colors.grey,
+              // color: Theme.of(context).hintColor,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -25,7 +25,7 @@ class CustomModalChat extends StatelessWidget {
                     icon: Icon(
                       Icons.push_pin,
                       size: 32,
-                      color: Color(0xff322653),
+                      color: Theme.of(context).primaryColor,
                     ),
                     degree: 3.1415926535 / 4,
                   ),
@@ -34,7 +34,7 @@ class CustomModalChat extends StatelessWidget {
                     icon: Icon(
                       Icons.mark_unread_chat_alt_outlined,
                       size: 32,
-                      color: Color(0xff322653),
+                      color: Theme.of(context).primaryColor,
                     ),
                     degree: 0,
                   ),
@@ -43,11 +43,11 @@ class CustomModalChat extends StatelessWidget {
                     icon: Icon(
                       Icons.notifications_off,
                       size: 32,
-                      color: Color(0xff322653),
+                      color: Theme.of(context).primaryColor,
                     ),
                     degree: 0,
                   ),
-                  ModalRow(
+                  const ModalRow(
                     title: 'Delete',
                     icon: Icon(
                       Icons.delete,
@@ -57,7 +57,7 @@ class CustomModalChat extends StatelessWidget {
                     degree: 0,
                     color: Colors.red,
                   ),
-                  ModalRow(
+                  const ModalRow(
                     title: 'Block',
                     icon: Icon(
                       Icons.block,
@@ -83,7 +83,7 @@ class ModalRow extends StatelessWidget {
     required this.title,
     required this.icon,
     required this.degree,
-    this.color = const Color(0xff322653),
+    this.color =const Color(0xff322653),
   });
 
   final String? title;
