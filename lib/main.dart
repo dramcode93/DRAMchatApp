@@ -46,13 +46,13 @@ class _MyAppState extends State<MyApp> {
     // );
     return ChangeNotifierProvider<LanguageProvider>.value(
       value: languageProvider,
+
       // create: (context) => LanguageProvider(),
       child: Builder(
         builder: (context) {
           // Locale currentLocale =
           //     Provider.of<LanguageProvider>(context).currentLocale;
           return MaterialApp(
-            
             theme: ThemeData(
               appBarTheme: const AppBarTheme(
                 systemOverlayStyle: SystemUiOverlayStyle(
