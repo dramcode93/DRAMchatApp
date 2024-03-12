@@ -1,3 +1,4 @@
+import 'package:dram/constants.dart';
 import 'package:dram/widgets/person.dart';
 import 'package:flutter/material.dart';
 
@@ -17,15 +18,15 @@ class ChatsTab extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          subtitle: const Text(
+          subtitle:  Text(
             'Lorem ipsum',
             style: TextStyle(
-              color: Colors.grey,
+              color: Theme.of(context).hintColor,
             ),
           ),
           leading: CircleAvatar(
             radius: 30,
-            backgroundImage: const AssetImage('assets/images/profile.png'),
+            backgroundImage: const AssetImage(kProfile),
             child: Container(
               decoration: const ShapeDecoration(
                 shape: CircleBorder(eccentricity: 1),
@@ -38,19 +39,19 @@ class ChatsTab extends StatelessWidget {
           trailing: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Text(
+               Text(
                 '12:30 pm',
                 style: TextStyle(
-                  color: Colors.grey,
+                  color: Theme.of(context).hintColor,
                   fontSize: 12,
                 ),
               ),
               Transform.rotate(
                 angle: 3.1415926535 / 4,
-                child: const Icon(
+                child:  Icon(
                   Icons.push_pin,
                   size: 20,
-                  color: Colors.grey,
+                  color: Theme.of(context).hintColor,
                 ),
               ),
             ],

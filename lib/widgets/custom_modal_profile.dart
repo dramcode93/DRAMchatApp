@@ -22,8 +22,6 @@ class CustomModalProfile extends StatefulWidget {
 }
 
 class _CustomModalProfileState extends State<CustomModalProfile> {
-
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -31,10 +29,10 @@ class _CustomModalProfileState extends State<CustomModalProfile> {
       child: Center(
         child: Column(
           children: [
-            const Icon(
+             Icon(
               Icons.remove,
               size: 32,
-              color: Colors.grey,
+              color: Theme.of(context).hintColor,
             ),
             Padding(
               padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
@@ -48,19 +46,15 @@ class _CustomModalProfileState extends State<CustomModalProfile> {
                       ),
                       GestureDetector(
                         onTap: () async {
-
                           if (await Permission.camera.isGranted) {
-
                             widget.selectCamera!();
                           } else {
-
                             PermissionStatus status =
                                 await Permission.camera.request();
 
                             if (status == PermissionStatus.granted) {
                               widget.selectCamera!();
                             } else {
-
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text(

@@ -280,20 +280,20 @@ class S {
     );
   }
 
-  /// `           Login         `
+  /// `  Login `
   String get Login {
     return Intl.message(
-      '           Login         ',
+      '  Login ',
       name: 'Login',
       desc: '',
       args: [],
     );
   }
 
-  /// `        SignUp        `
+  /// `SignUp`
   String get SignUp {
     return Intl.message(
-      '        SignUp        ',
+      'SignUp',
       name: 'SignUp',
       desc: '',
       args: [],
@@ -335,6 +335,16 @@ class S {
     return Intl.message(
       'English',
       name: 'English',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `(device language)`
+  String get deviceLang {
+    return Intl.message(
+      '(device language)',
+      name: 'deviceLang',
       desc: '',
       args: [],
     );

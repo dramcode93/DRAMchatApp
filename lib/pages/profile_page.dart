@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:dram/constants.dart';
 import 'package:dram/generated/l10n.dart';
 import 'package:dram/pages/chats_page.dart';
 import 'package:dram/widgets/custom_button.dart';
@@ -147,8 +148,7 @@ class _ProfileState extends State<Profile> {
                           )
                         : const CircleAvatar(
                             radius: 65,
-                            backgroundImage:
-                                AssetImage("assets/images/profile.png"),
+                            backgroundImage: AssetImage(kProfile),
                           ),
                     Positioned(
                       bottom: 0,
@@ -157,7 +157,7 @@ class _ProfileState extends State<Profile> {
                         width: 40,
                         height: 40,
                         decoration: BoxDecoration(
-                          color: const Color(0xff322653),
+                          color: Theme.of(context).primaryColor,
                           borderRadius: BorderRadius.circular(25),
                         ),
                         //height: 3,
@@ -212,15 +212,17 @@ class _ProfileState extends State<Profile> {
                       decoration: InputDecoration(
                         // hintText: 'Name',
                         hintText: S.of(context).profileHint,
-                        hintStyle: const TextStyle(
-                          color: Colors.grey,
+                        hintStyle:  TextStyle(
+                          color: Theme.of(context).hintColor,
                           fontSize: 18,
                         ),
-                        focusedBorder: const UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
+                        focusedBorder:  UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Theme.of(context).hintColor),
                         ),
-                        enabledBorder: const UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
+                        enabledBorder:  UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Theme.of(context).hintColor),
                         ),
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -230,10 +232,10 @@ class _ProfileState extends State<Profile> {
                             // onPressed: (){
                             //   // toggleEmojiPicker();},
                           },
-                          icon: const Icon(
+                          icon:  Icon(
                             Icons.emoji_emotions_outlined, //emoji_emotions
                             size: 28,
-                            color: Colors.grey,
+                            color: Theme.of(context).hintColor,
                           ),
                         ),
                       ),
@@ -278,7 +280,7 @@ class _ProfileState extends State<Profile> {
                 CustomBtn(
                   // btnText: 'Finish',
                   btnText: S.of(context).ProfileFinish,
-                  btnColor: const Color(0xff322653),
+                  btnColor: Theme.of(context).primaryColor,
                   txtColor: Colors.white,
                   onTap: () {
                     Navigator.push(

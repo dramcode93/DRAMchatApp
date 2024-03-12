@@ -33,6 +33,7 @@
     "SelectLanguage" :"اختر اللغة",
     "Arabic":"العربية",
     "English":"الانجليزية",
+    "deviceLang":"(لغة الجهاز)",
 
     "codeTitle": "تفعيل حسابك",
     "codeAsk": "أدخل الكود المرسل إلى رقمك:\n",

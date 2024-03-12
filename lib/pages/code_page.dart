@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:dram/generated/l10n.dart';
+import 'package:dram/models/theme.dart';
 import 'package:dram/pages/password_page.dart';
 import 'package:dram/widgets/custom_button.dart';
 import 'package:dram/widgets/custom_modal_code.dart';
@@ -7,6 +8,7 @@ import 'package:dram/widgets/custom_underline_button.dart';
 import 'package:dram/widgets/navigate.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+import 'package:provider/provider.dart';
 
 class CodePage extends StatefulWidget {
   const CodePage({super.key});
@@ -83,7 +85,7 @@ class _CodePageState extends State<CodePage> {
                     // 'Enter the code sent to your number:\n$phoneNumber',
                     '${S.of(context).codeAsk}$phoneNumber',
                     style: const TextStyle(
-                      color: Colors.black,
+                      // color: Colors.black,
                       fontSize: 18,
                       // fontWeight: FontWeight.bold,
                     ),
@@ -126,9 +128,9 @@ class _CodePageState extends State<CodePage> {
                         textStyle: const TextStyle(fontSize: 20),
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: const Color(
-                              0xFF000000,
-                            ),
+                            color: context.watch<ThemeProvider>().isDark
+                                ? Theme.of(context).hintColor
+                                : Theme.of(context).primaryColor,
                             width: 1.6,
                           ),
                           borderRadius: BorderRadius.zero,
@@ -170,7 +172,7 @@ class _CodePageState extends State<CodePage> {
                     // '${S.of(context).requestTime} $formattedTime',
                     '${S.of(context).requestTime} 1:00',
                     style: const TextStyle(
-                      color: Colors.black,
+                      // color: Colors.black,
                       fontSize: 18,
                       // fontWeight: FontWeight.bold,
                     ),
@@ -198,7 +200,7 @@ class _CodePageState extends State<CodePage> {
                       ),
                     );
                   },
-                  btnColor: const Color(0xff322653),
+                  btnColor: Theme.of(context).primaryColor,
                   txtColor: Colors.white,
                 ),
                 // const Spacer(

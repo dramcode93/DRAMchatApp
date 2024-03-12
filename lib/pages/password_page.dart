@@ -151,7 +151,8 @@ class PasswordPage extends StatelessWidget {
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color(0xff322653),
+                                  backgroundColor:
+                                      Theme.of(context).primaryColor,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),

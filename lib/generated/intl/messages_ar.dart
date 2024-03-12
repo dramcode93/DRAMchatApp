@@ -52,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "codeTitle": MessageLookupByLibrary.simpleMessage("تفعيل حسابك"),
         "confirm": MessageLookupByLibrary.simpleMessage("موافق"),
         "countryHint": MessageLookupByLibrary.simpleMessage("الدولة"),
+        "deviceLang": MessageLookupByLibrary.simpleMessage("(لغة الجهاز)"),
         "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
         "editNumber": MessageLookupByLibrary.simpleMessage("تعديل الرقم"),
         "forgotPassword":

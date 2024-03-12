@@ -14,7 +14,6 @@ class DrawerRow extends StatelessWidget {
           Text(
             title!,
             style: const TextStyle(
-              color: Color(0xff322653),
               fontSize: 14,
             ),
           ),
@@ -24,7 +23,7 @@ class DrawerRow extends StatelessWidget {
             width: 40,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
-              color: const Color.fromARGB(255, 229, 228, 228),
+              color: const Color.fromARGB(255, 221, 209, 241),
             ),
             child: icon,
           ),

@@ -1,3 +1,4 @@
+import 'package:dram/constants.dart';
 import 'package:dram/widgets/CustomModalChat.dart';
 import 'package:flutter/material.dart';
 
@@ -45,19 +46,16 @@ class Person extends StatelessWidget {
             ),
             Text(
               lastMsg!,
-              style: const TextStyle(
-                color: Colors.grey,
+              style:  TextStyle(
+                color: Theme.of(context).hintColor,
               ),
             ),
           ],
         ),
         leading: CircleAvatar(
           radius: 30,
-          backgroundImage: const AssetImage('assets/images/profile.png'),
+          backgroundImage: const AssetImage(kProfile),
           child: Container(
-            decoration: const ShapeDecoration(
-              shape: CircleBorder(eccentricity: 1),
-            ),
             child: MaterialButton(
               onPressed: () {},
             ),
@@ -68,8 +66,8 @@ class Person extends StatelessWidget {
           children: [
             Text(
               lastTime!,
-              style: const TextStyle(
-                color: Colors.grey,
+              style:  TextStyle(
+                color: Theme.of(context).hintColor,
                 fontSize: 12,
               ),
             ),
@@ -78,7 +76,7 @@ class Person extends StatelessWidget {
             //   child: Icon(
             //     Icons.push_pin,
             //     size: 20,
-            //     color: Colors.grey,
+            //     color: Theme.of(context).hintColor,
             //   ),
             // ),
           ],
