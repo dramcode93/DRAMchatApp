@@ -1,4 +1,7 @@
+import 'package:dram/constants.dart';
+import 'package:dram/models/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CustomModalChat extends StatelessWidget {
   const CustomModalChat({super.key});
@@ -25,7 +28,9 @@ class CustomModalChat extends StatelessWidget {
                     icon: Icon(
                       Icons.push_pin,
                       size: 32,
-                      color: Theme.of(context).primaryColor,
+                      color: context.watch<ThemeProvider>().isDark
+                          ? Theme.of(context).hintColor
+                          : Theme.of(context).primaryColor,
                     ),
                     degree: 3.1415926535 / 4,
                   ),
@@ -34,7 +39,9 @@ class CustomModalChat extends StatelessWidget {
                     icon: Icon(
                       Icons.mark_unread_chat_alt_outlined,
                       size: 32,
-                      color: Theme.of(context).primaryColor,
+                      color: context.watch<ThemeProvider>().isDark
+                          ? Theme.of(context).hintColor
+                          : Theme.of(context).primaryColor,
                     ),
                     degree: 0,
                   ),
@@ -43,7 +50,9 @@ class CustomModalChat extends StatelessWidget {
                     icon: Icon(
                       Icons.notifications_off,
                       size: 32,
-                      color: Theme.of(context).primaryColor,
+                      color: context.watch<ThemeProvider>().isDark
+                          ? Theme.of(context).hintColor
+                          : Theme.of(context).primaryColor,
                     ),
                     degree: 0,
                   ),
@@ -83,7 +92,7 @@ class ModalRow extends StatelessWidget {
     required this.title,
     required this.icon,
     required this.degree,
-    this.color =const Color(0xff322653),
+    this.color,
   });
 
   final String? title;
@@ -92,6 +101,9 @@ class ModalRow extends StatelessWidget {
   final Color? color;
   @override
   Widget build(BuildContext context) {
+    final isDark = context.watch<ThemeProvider>().isDark;
+    final fallbackColor =
+        isDark ? AppColorsLight.backgroundColor : AppColorsDark.primaryColor;
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: Row(
@@ -106,7 +118,7 @@ class ModalRow extends StatelessWidget {
           Text(
             title!,
             style: TextStyle(
-              color: color,
+              color: color ?? fallbackColor,
               fontSize: 16,
             ),
           )

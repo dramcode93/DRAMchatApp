@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:dram/generated/l10n.dart';
 import 'package:dram/models/theme.dart';
+import 'package:dram/pages/number_page.dart';
 import 'package:dram/pages/password_page.dart';
 import 'package:dram/widgets/custom_button.dart';
 import 'package:dram/widgets/custom_modal_code.dart';
@@ -22,24 +23,33 @@ class _CodePageState extends State<CodePage> {
   late int remainingSeconds;
   late Timer timer;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   // Set the initial time (1:00 in seconds)
-  //   remainingSeconds = 60;
+  @override
+  void initState() {
+    super.initState();
+    // Set the initial time (1:00 in seconds)
+    remainingSeconds = 60 * 3;
 
-  //   // Start a timer that updates the UI every second
-  //   timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
-  //     setState(() {
-  //       if (remainingSeconds > 0) {
-  //         remainingSeconds--;
-  //       } else {
-  //         // Stop the timer when time reaches 0
-  //         timer.cancel();
-  //       }
-  //     });
-  //   });
-  // }
+    // Start a timer that updates the UI every second
+    timer = Timer.periodic(const Duration(seconds: 1), _updateTimer);
+  }
+
+  void _updateTimer(Timer t) {
+    setState(() {
+      if (remainingSeconds > 0) {
+        remainingSeconds--;
+      } else {
+        // Stop the timer when time reaches 0
+        timer.cancel();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    // Cancel the timer to avoid calling setState after dispose
+    timer.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +63,8 @@ class _CodePageState extends State<CodePage> {
         appBar.preferredSize.height -
         MediaQuery.of(context).padding.top;
 
-    // String formattedTime =
-    //     '${(remainingSeconds ~/ 60).toString().padLeft(2, '0')}:${(remainingSeconds % 60).toString().padLeft(2, '0')}';
+    String formattedTime =
+        '${(remainingSeconds ~/ 60).toString().padLeft(2, '0')}:${(remainingSeconds % 60).toString().padLeft(2, '0')}';
 
     var phoneNumber = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
@@ -95,13 +105,19 @@ class _CodePageState extends State<CodePage> {
 
                 UnderLineBtn(
                   // btnText: 'Edit number',
+                  remainingSeconds: remainingSeconds,
                   btnText: S.of(context).editNumber,
                   onTap: () {
                     // Navigator.pushNamed(
                     //   context,
                     //   NumberPage.id,
                     // );
-                    Navigator.of(context).pop();
+                    if (remainingSeconds <= 0) {
+                      Navigator.of(context).pop();
+                      // Navigator.of(context).pop();
+                      // Navigator.popUntil(
+                      //     context, ModalRoute.withName(NumberPage.id));
+                    }
                   },
                 ),
                 Padding(
@@ -140,6 +156,7 @@ class _CodePageState extends State<CodePage> {
                   ),
                 ),
                 UnderLineBtn(
+                  remainingSeconds: remainingSeconds,
                   // btnText: 'Request a new code',
                   btnText: S.of(context).requestNew,
                   onTap: () {
@@ -149,18 +166,21 @@ class _CodePageState extends State<CodePage> {
                     //     return CustomPageRoute(page: CustomModalCode());
                     //   },
                     // );
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return const CustomModalCode();
-                      },
-                      transitionAnimationController: AnimationController(
-                        vsync: Navigator.of(context),
-                        duration: const Duration(
-                          milliseconds: 500,
+
+                    if (remainingSeconds <= 0) {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const CustomModalCode();
+                        },
+                        transitionAnimationController: AnimationController(
+                          vsync: Navigator.of(context),
+                          duration: const Duration(
+                            milliseconds: 500,
+                          ),
                         ),
-                      ),
-                    );
+                      );
+                    }
                   },
                 ),
                 Padding(
@@ -169,8 +189,8 @@ class _CodePageState extends State<CodePage> {
                   ),
                   child: Text(
                     // 'You can request a new code within $formattedTime',
-                    // '${S.of(context).requestTime} $formattedTime',
-                    '${S.of(context).requestTime} 1:00',
+                    '${S.of(context).requestTime} $formattedTime',
+                    // '${S.of(context).requestTime} 1:00',
                     style: const TextStyle(
                       // color: Colors.black,
                       fontSize: 18,
