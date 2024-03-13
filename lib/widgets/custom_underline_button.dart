@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 
 class UnderLineBtn extends StatelessWidget {
-  const UnderLineBtn({super.key, required this.btnText, required this.onTap});
+  const UnderLineBtn({
+    super.key,
+    required this.btnText,
+    required this.onTap,
+    required this.remainingSeconds,
+  });
   final String btnText;
   final VoidCallback? onTap;
+  final int? remainingSeconds;
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: Colors.blue,
+            color: remainingSeconds! <= 0 ? Colors.blue : Colors.grey,
           ),
         ),
       ),
@@ -18,8 +24,8 @@ class UnderLineBtn extends StatelessWidget {
         onTap: onTap,
         child: Text(
           btnText,
-          style: const TextStyle(
-            color: Colors.blue,
+          style: TextStyle(
+            color: remainingSeconds! <= 0 ? Colors.blue : Colors.grey,
           ),
         ),
       ),

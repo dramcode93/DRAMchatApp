@@ -98,7 +98,7 @@ class _NumberPageState extends State<NumberPage> {
                       dropdownColor: Theme.of(context).primaryColor,
                       hint: Text(
                         S.of(context).countryHint,
-                        style:  TextStyle(
+                        style: TextStyle(
                           fontSize: 16,
                           color: Theme.of(context).hintColor,
                         ),
@@ -116,7 +116,7 @@ class _NumberPageState extends State<NumberPage> {
                       elevation: 2,
                       borderRadius: BorderRadius.circular(14),
                       // focusColor: Theme.of(context).primaryColor,
-                      decoration:  InputDecoration(
+                      decoration: InputDecoration(
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Theme.of(context).hintColor,
@@ -134,7 +134,7 @@ class _NumberPageState extends State<NumberPage> {
                           value: value,
                           child: Text(
                             value,
-                            style:  TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Theme.of(context).hintColor,
                               fontSize: 18,
@@ -164,24 +164,24 @@ class _NumberPageState extends State<NumberPage> {
                                 child: TextField(
                                   // controller: controller,
                                   decoration: InputDecoration(
-                                    border:  UnderlineInputBorder(
+                                    border: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    enabledBorder:  UnderlineInputBorder(
+                                    enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    focusedBorder:  UnderlineInputBorder(
+                                    focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Theme.of(context).hintColor,
                                       ),
                                     ),
                                     // hintText: 'Code',
                                     hintText: S.of(context).codeHint,
-                                    hintStyle:  TextStyle(
+                                    hintStyle: TextStyle(
                                       color: Theme.of(context).hintColor,
                                       fontSize: 16,
                                     ),
@@ -218,24 +218,24 @@ class _NumberPageState extends State<NumberPage> {
                                     errorStyle: const TextStyle(
                                       color: Colors.red,
                                     ),
-                                    border:  UnderlineInputBorder(
+                                    border: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    enabledBorder:  UnderlineInputBorder(
+                                    enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    focusedBorder:  UnderlineInputBorder(
+                                    focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Theme.of(context).hintColor,
                                       ),
                                     ),
                                     // hintText: 'Phone number',
                                     hintText: S.of(context).phoneHint,
-                                    hintStyle:  TextStyle(
+                                    hintStyle: TextStyle(
                                       color: Theme.of(context).hintColor,
                                       fontSize: 18,
                                     ),
@@ -264,24 +264,24 @@ class _NumberPageState extends State<NumberPage> {
                                 child: TextField(
                                   // controller: controller,
                                   decoration: InputDecoration(
-                                    border:  UnderlineInputBorder(
+                                    border: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    enabledBorder:  UnderlineInputBorder(
+                                    enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    focusedBorder:  UnderlineInputBorder(
+                                    focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Theme.of(context).hintColor,
                                       ),
                                     ),
                                     // hintText: 'Code',
                                     hintText: S.of(context).codeHint,
-                                    hintStyle:  TextStyle(
+                                    hintStyle: TextStyle(
                                       color: Theme.of(context).hintColor,
                                       fontSize: 16,
                                     ),
@@ -318,24 +318,24 @@ class _NumberPageState extends State<NumberPage> {
                                     errorStyle: const TextStyle(
                                       color: Colors.red,
                                     ),
-                                    border:  UnderlineInputBorder(
+                                    border: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    enabledBorder:  UnderlineInputBorder(
+                                    enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    focusedBorder:  UnderlineInputBorder(
+                                    focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Theme.of(context).hintColor,
                                       ),
                                     ),
                                     // hintText: 'Phone number',
                                     hintText: S.of(context).phoneHint,
-                                    hintStyle:  TextStyle(
+                                    hintStyle: TextStyle(
                                       color: Theme.of(context).hintColor,
                                       fontSize: 18,
                                     ),
@@ -385,6 +385,7 @@ class _NumberPageState extends State<NumberPage> {
                               //   CodePage.id,
                               //   arguments: formattedNumber,
                               // );
+                              Navigator.pop(context);
                               Navigator.push(
                                 context,
                                 CustomPageRoute(
