@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:dram/constants.dart';
+import 'package:dram/models/theme.dart';
 import 'package:dram/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -16,7 +18,7 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     Timer(
-      const Duration(seconds: 1),
+      const Duration(seconds: 3),
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -46,7 +48,9 @@ class _SplashState extends State<Splash> {
             end: Alignment.bottomLeft,
             colors: [
               Colors.black,
-              Theme.of(context).primaryColor,
+               context.watch<ThemeProvider>().isDark
+                  ? Color.fromARGB(255, 27, 20, 49)
+                  : Theme.of(context).primaryColor,
             ],
             stops: const [0.2, 0.8],
           ),

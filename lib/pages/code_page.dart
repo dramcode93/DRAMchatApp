@@ -105,19 +105,19 @@ class _CodePageState extends State<CodePage> {
 
                 UnderLineBtn(
                   // btnText: 'Edit number',
-                  remainingSeconds: remainingSeconds,
+                  remainingSeconds: 0,
                   btnText: S.of(context).editNumber,
                   onTap: () {
                     // Navigator.pushNamed(
                     //   context,
                     //   NumberPage.id,
                     // );
-                    if (remainingSeconds <= 0) {
-                      Navigator.of(context).pop();
-                      // Navigator.of(context).pop();
-                      // Navigator.popUntil(
-                      //     context, ModalRoute.withName(NumberPage.id));
-                    }
+                    // if (remainingSeconds <= 0) {
+                    Navigator.of(context).pop();
+                    // Navigator.of(context).pop();
+                    // Navigator.popUntil(
+                    //     context, ModalRoute.withName(NumberPage.id));
+                    // }
                   },
                 ),
                 Padding(

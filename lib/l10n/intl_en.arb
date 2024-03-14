@@ -44,5 +44,9 @@
 
     "matchTitle":"Passwords do not match.",
     "matchDescription":"Please make sure the passwords match.",
-    "Edit":"Edit"
+    "Edit":"Edit",
+
+    "Canada":"Canada",
+    "Palestine":"Palestine",
+    "England":"England"
 }

@@ -15,7 +15,7 @@ class _ChatsPageState extends State<ChatsPage> {
   int selectedIndex = 0;
   final PageController _pageController = PageController();
   List<Widget> tabs = [
-    const ChatsTab(),
+    ChatsTab(),
     const Center(child: Text('story', style: TextStyle(fontSize: 25))),
     CallTap(),
   ];
@@ -43,9 +43,9 @@ class _ChatsPageState extends State<ChatsPage> {
               _pageController.jumpToPage(value);
             });
           },
-          backgroundColor:Theme.of(context).primaryColor,
-          selectedItemColor: Colors.blue,
-          unselectedItemColor: Colors.white,
+          backgroundColor: Theme.of(context).primaryColor,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.blueGrey,
           selectedFontSize: 16,
           unselectedFontSize: 16,
           iconSize: 26,
@@ -72,8 +72,8 @@ class _ChatsPageState extends State<ChatsPage> {
         ),
       ),
       appBar: AppBar(
-        toolbarHeight: 80,
-        backgroundColor:Theme.of(context).primaryColor,
+        toolbarHeight: 65,
+        backgroundColor: Theme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         actions: [
           Expanded(
@@ -95,12 +95,12 @@ class _ChatsPageState extends State<ChatsPage> {
                     child: TextField(
                       decoration: InputDecoration(
                           hintText: '',
-                          hintStyle:  TextStyle(
-                            color:Theme.of(context).primaryColor,
+                          hintStyle: TextStyle(
+                            color: Theme.of(context).primaryColor,
                           ),
-                          prefixIcon:  Icon(
+                          prefixIcon: Icon(
                             Icons.search,
-                            color:Theme.of(context).primaryColor,
+                            color: Theme.of(context).primaryColor,
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(
@@ -130,6 +130,7 @@ class _ChatsPageState extends State<ChatsPage> {
         ],
       ),
       body: PageView(
+        physics: NeverScrollableScrollPhysics(),
         controller: _pageController,
         onPageChanged: (index) {
           setState(() {

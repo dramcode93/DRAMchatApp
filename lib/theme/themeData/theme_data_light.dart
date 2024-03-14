@@ -27,5 +27,5 @@ ThemeData getThemeLight() => ThemeData(
       dialogBackgroundColor: AppColorsLight.dialogBackgroundColor,
       hintColor: AppColorsLight.hintColor,
       backgroundColor: AppColorsLight.backgroundColor,
-      
+      scaffoldBackgroundColor: AppColorsLight.backgroundColor,
     );

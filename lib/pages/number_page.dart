@@ -82,7 +82,7 @@ class _NumberPageState extends State<NumberPage> {
                       child: Text(
                         S.of(context).numberDescription,
                         style: const TextStyle(
-                          color: Colors.black,
+                          // color: Colors.black,
                           fontSize: 15,
                         ),
                         textAlign: TextAlign.center,
@@ -118,43 +118,19 @@ class _NumberPageState extends State<NumberPage> {
                           errorStyle: const TextStyle(
                             color: Colors.red,
                           ),
-                          focusedBorder: const UnderlineInputBorder(
+                          disabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: Colors.grey,
+                              color: Theme.of(context).hintColor,
                             ),
-                          ),
-                          enabledBorder: const UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.grey,
-                            ),
-                          ),
-                          border: const UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.grey,
-                            ),
-                            // border: UnderlineInputBorder(
-                            //   borderSide: BorderSide(
-                            //     color: Colors.grey.shade900,
-                            //   ),
-                            // ),
-                            // enabledBorder: UnderlineInputBorder(
-                            //   borderSide: BorderSide(
-                            //     color: Colors.grey.shade900,
-                            //   ),
-                            // ),
-                            // focusedBorder: UnderlineInputBorder(
-                            //   borderSide: BorderSide(
-                            //     color: Colors.grey.shade900,
-                            //   ),
                           ),
                           hintText: hintName,
-                          hintStyle: const TextStyle(
-                            color: Colors.grey,
+                          hintStyle: TextStyle(
+                            color: Theme.of(context).hintColor,
                             fontSize: 18,
                           ),
                         ),
                         style: const TextStyle(
-                          color: Colors.black,
+                          // color: Colors.black,
                           fontSize: 20,
                         ),
                       ),
@@ -175,24 +151,24 @@ class _NumberPageState extends State<NumberPage> {
                                       const TextInputType.numberWithOptions(),
                                   // controller: controller,
                                   decoration: InputDecoration(
-                                    border: const UnderlineInputBorder(
+                                    border: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.grey,
+                                        color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    enabledBorder: const UnderlineInputBorder(
+                                    enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.grey,
+                                        color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    focusedBorder: const UnderlineInputBorder(
+                                    focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.grey,
+                                        color: Theme.of(context).hintColor,
                                       ),
                                     ),
                                     hintText: S.of(context).codeHint,
-                                    hintStyle: const TextStyle(
-                                      color: Colors.grey,
+                                    hintStyle: TextStyle(
+                                      color: Theme.of(context).hintColor,
                                       fontSize: 16,
                                     ),
                                   ),
@@ -200,7 +176,7 @@ class _NumberPageState extends State<NumberPage> {
                                       TextEditingController(text: codeHintText),
 
                                   style: const TextStyle(
-                                    color: Colors.black,
+                                    // color: Colors.black,
                                     fontSize: 20,
                                   ),
                                   onChanged: (value) {
@@ -234,29 +210,29 @@ class _NumberPageState extends State<NumberPage> {
                                     errorStyle: const TextStyle(
                                       color: Colors.red,
                                     ),
-                                    border: const UnderlineInputBorder(
+                                    border: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.grey,
+                                        color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    enabledBorder: const UnderlineInputBorder(
+                                    enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.grey,
+                                        color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    focusedBorder: const UnderlineInputBorder(
+                                    focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.grey,
+                                        color: Theme.of(context).hintColor,
                                       ),
                                     ),
                                     hintText: S.of(context).phoneHint,
-                                    hintStyle: const TextStyle(
-                                      color: Colors.grey,
+                                    hintStyle: TextStyle(
+                                      color: Theme.of(context).hintColor,
                                       fontSize: 18,
                                     ),
                                   ),
                                   style: const TextStyle(
-                                    color: Colors.black,
+                                    // color: Colors.black,
                                     fontSize: 20,
                                   ),
                                 ),
@@ -272,19 +248,19 @@ class _NumberPageState extends State<NumberPage> {
                                   keyboardType:
                                       const TextInputType.numberWithOptions(),
                                   decoration: InputDecoration(
-                                    focusedBorder: const UnderlineInputBorder(
+                                    focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.grey,
+                                        color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    enabledBorder: const UnderlineInputBorder(
+                                    enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.grey,
+                                        color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    border: const UnderlineInputBorder(
+                                    border: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.grey,
+                                        color: Theme.of(context).hintColor,
                                       ),
                                       // border: const UnderlineInputBorder(
                                       //   borderSide: BorderSide(
@@ -303,15 +279,15 @@ class _NumberPageState extends State<NumberPage> {
                                     ),
                                     // hintText: 'Code',
                                     hintText: S.of(context).codeHint,
-                                    hintStyle: const TextStyle(
-                                      color: Colors.grey,
+                                    hintStyle: TextStyle(
+                                      color: Theme.of(context).hintColor,
                                       fontSize: 16,
                                     ),
                                   ),
                                   controller:
                                       TextEditingController(text: codeHintText),
                                   style: const TextStyle(
-                                    color: Colors.black,
+                                    // color: Colors.black,
                                     fontSize: 20,
                                   ),
                                   onChanged: (value) {
@@ -345,30 +321,30 @@ class _NumberPageState extends State<NumberPage> {
                                     errorStyle: const TextStyle(
                                       color: Colors.red,
                                     ),
-                                    border: const UnderlineInputBorder(
+                                    border: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.grey,
+                                        color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    enabledBorder: const UnderlineInputBorder(
+                                    enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.grey,
+                                        color: Theme.of(context).hintColor,
                                       ),
                                     ),
-                                    focusedBorder: const UnderlineInputBorder(
+                                    focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.grey,
+                                        color: Theme.of(context).hintColor,
                                       ),
                                     ),
                                     // hintText: 'Phone number',
                                     hintText: S.of(context).phoneHint,
-                                    hintStyle: const TextStyle(
-                                      color: Colors.grey,
+                                    hintStyle: TextStyle(
+                                      color: Theme.of(context).hintColor,
                                       fontSize: 18,
                                     ),
                                   ),
                                   style: const TextStyle(
-                                    color: Colors.black,
+                                    // color: Colors.black,
                                     fontSize: 20,
                                   ),
                                 ),
@@ -458,12 +434,6 @@ class _NumberPageState extends State<NumberPage> {
                       }
                     },
                   ),
-                  // const Spacer(
-                  //   flex: 1,
-                  // ),
-                  // SizedBox(
-                  //   height: bodyHeight * 0.69,
-                  // ),
                 ],
               ),
             ),
@@ -472,12 +442,6 @@ class _NumberPageState extends State<NumberPage> {
       ),
     );
   }
-
-// @override
-// void dispose() {
-//   codeController.dispose();
-//   super.dispose();
-// }
 }
 
 bool isArabic() {

@@ -24,15 +24,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "Camera": MessageLookupByLibrary.simpleMessage("Camera"),
+        "Canada": MessageLookupByLibrary.simpleMessage("Canada"),
         "ConfirmPasswordHint":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "DeleteImage": MessageLookupByLibrary.simpleMessage("Delete image"),
         "Edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "Egypt": MessageLookupByLibrary.simpleMessage("Egypt"),
+        "England": MessageLookupByLibrary.simpleMessage("England"),
         "English": MessageLookupByLibrary.simpleMessage("English"),
         "Gallary": MessageLookupByLibrary.simpleMessage("Gallary"),
         "Login": MessageLookupByLibrary.simpleMessage("  Login "),
         "LoginBtn": MessageLookupByLibrary.simpleMessage("Login"),
+        "Palestine": MessageLookupByLibrary.simpleMessage("Palestine"),
         "PasswordHint": MessageLookupByLibrary.simpleMessage("Password"),
         "PasswordTitle":
             MessageLookupByLibrary.simpleMessage("Create Your Password"),
