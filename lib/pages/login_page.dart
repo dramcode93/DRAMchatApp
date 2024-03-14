@@ -1,7 +1,5 @@
-import 'package:dram/constants.dart';
 import 'package:dram/generated/l10n.dart';
-import 'package:dram/pages/chats_page.dart';
-import 'package:dram/widgets/navigate.dart';
+import 'package:dram/widgets/custom_model_country.dart';
 import 'package:dram/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -15,14 +13,29 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController codeController = TextEditingController();
+
   String? selectedOption;
   late List<String> country;
-  // List<String> country = ['Egypt', 'philistine', 'England', 'Canada'];
   String? phoneNumber;
-  // String formattedNumber = '';
-  // TextEditingController controller = TextEditingController(text: '+20');
   String codeHintText = '';
   String phone = 'Phone number';
+  String hintName = isArabic() ? 'الدولة' : 'Country ';
+  onCountrySelected(String country) {
+    setState(() {
+      hintName = country;
+      if (country == 'Egypt') {
+        codeHintText = '+20';
+      } else if (country == 'Philistine') {
+        codeHintText = '+970';
+      } else if (country == 'England') {
+        codeHintText = '+44';
+      } else if (country == 'Canada') {
+        codeHintText = '+1';
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final orientationDevice = MediaQuery.of(context).orientation;
@@ -44,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
             height: 25,
           ),
           Image.asset(
-            kLogo,
+            'assets/images/logo.png',
             height: 190,
             width: 220,
           ),
@@ -68,177 +81,61 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // SizedBox(
-                //   height: 280,
-                // ),
-
-                // CustomTextField(
-                //   // hintText: 'Phone Number',
-                //   hintText: S.of(context).phoneHint,
-                //   onChanged: (String) {},
-                // ),
                 SizedBox(
-                  // height: 170,
-                  // width: 332,
                   width: screenWidth * 0.73,
-                  child: DropdownButtonFormField<String>(
-                    // validator: (value) {
-                    //   if (value != null ) {
-                    //   }
-                    // },
-
-                    isExpanded: false,
-                    dropdownColor: const Color(0xff322653),
-                    hint: Text(
-                      S.of(context).countryHint,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Theme.of(context).hintColor,
-                      ),
-                    ),
-                    value: selectedOption,
-                    icon: Transform.rotate(
-                      angle: isArabic()
-                          ? 5 * 3.1415926535 / 2
-                          : 3 * 3.1415926535 / 2,
-                      child: const Icon(Icons.arrow_back_ios),
-                    ),
-                    iconSize: 26,
-                    iconEnabledColor: Theme.of(context).hintColor,
-                    elevation: 2,
-                    borderRadius: BorderRadius.circular(14),
-                    focusColor: const Color(0xff322653),
-                    decoration: InputDecoration(
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Theme.of(context).hintColor,
-                        ),
-                      ),
-                    ),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedOption = newValue;
-                        codeHintText = '+20';
-                      });
+                  child: GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return CustomModelCountry(
+                              onCountrySelected: onCountrySelected,
+                            );
+                          },
+                          transitionAnimationController: AnimationController(
+                            vsync: Navigator.of(context),
+                            duration: const Duration(
+                              milliseconds: 400,
+                            ),
+                          ));
                     },
-                    items: country.map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(
-                          value,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            color: Theme.of(context).hintColor,
-                            fontSize: 18,
+                    child: TextFormField(
+                      controller: codeController,
+                      enabled: false,
+                      decoration: InputDecoration(
+                        errorStyle: const TextStyle(
+                          color: Colors.red,
+                        ),
+                        border: const UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey,
                           ),
                         ),
-                      );
-                    }).toList(),
+                        enabledBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        focusedBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        hintText: hintName,
+                        hintStyle: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 18,
+                        ),
+                      ),
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
                 ),
-                // SizedBox(
-                //   width: screenWidth * 0.73,
-                //   height: 80,
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       SizedBox(
-                //         // width: 85,
-                //         width: screenWidth * 0.15,
-                //         // decoration: const BoxDecoration(
-                //         //   border: Border(
-                //         //     bottom: BorderSide(
-                //         //       color: Theme.of(context).hintColor,
-                //         //     ),
-                //         //   ),
-                //         // ),
-                //         child: TextField(
-                //           // controller: controller,
-                //           decoration: InputDecoration(
-                //             border: const UnderlineInputBorder(
-                //               borderSide: BorderSide(
-                //                 color: Theme.of(context).hintColor,
-                //               ),
-                //             ),
-                //             enabledBorder: const UnderlineInputBorder(
-                //               borderSide: BorderSide(
-                //                 color: Theme.of(context).hintColor,
-                //               ),
-                //             ),
-                //             focusedBorder: const UnderlineInputBorder(
-                //               borderSide: BorderSide(
-                //                 color: Theme.of(context).hintColor,
-                //               ),
-                //             ),
-                //             // hintText: 'Code',
-                //             hintText: S.of(context).codeHint,
-                //             hintStyle: const TextStyle(
-                //               color: Theme.of(context).hintColor,
-                //               fontSize: 16,
-                //             ),
-                //           ),
-                //           controller: TextEditingController(text: codeHintText),
-                //           style: const TextStyle(
-                //             color: Colors.black,
-                //             fontSize: 20,
-                //           ),
-                //         ),
-                //       ),
-                //       SizedBox(
-                //         // width: 220,
-                //         width: screenWidth * 0.52,
-                //         // height: 55,
-                //         // decoration: const BoxDecoration(
-                //         //   border: Border(
-                //         //     bottom: BorderSide(color: Theme.of(context).hintColor),
-                //         //   ),
-                //         // ),
-                //         child: TextFormField(
-                //           validator: (data) {
-                //             if (data!.isEmpty) {
-                //               return S.of(context).requiredHint;
-                //             }
-                //             return null;
-                //           },
-                //           onChanged: (data) {
-                //             phoneNumber = data;
-                //           },
-                //           keyboardType: const TextInputType.numberWithOptions(),
-                //           decoration: InputDecoration(
-                //             errorStyle: const TextStyle(
-                //               color: Colors.red,
-                //             ),
-                //             border: const UnderlineInputBorder(
-                //               borderSide: BorderSide(
-                //                 color: Theme.of(context).hintColor,
-                //               ),
-                //             ),
-                //             enabledBorder: const UnderlineInputBorder(
-                //               borderSide: BorderSide(
-                //                 color: Theme.of(context).hintColor,
-                //               ),
-                //             ),
-                //             focusedBorder: const UnderlineInputBorder(
-                //               borderSide: BorderSide(
-                //                 color: Theme.of(context).hintColor,
-                //               ),
-                //             ),
-                //             // hintText: 'Phone number',
-                //             hintText: S.of(context).phoneHint,
-                //             hintStyle: const TextStyle(
-                //               color: Theme.of(context).hintColor,
-                //               fontSize: 18,
-                //             ),
-                //           ),
-                //           style: const TextStyle(
-                //             color: Colors.black,
-                //             fontSize: 20,
-                //           ),
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
+
                 SizedBox(
                   width: screenWidth * 0.73,
                   height: 80,
@@ -252,41 +149,53 @@ class _LoginPageState extends State<LoginPage> {
                               // decoration: const BoxDecoration(
                               //   border: Border(
                               //     bottom: BorderSide(
-                              //       color: Theme.of(context).hintColor,
+                              //       color: Colors.grey,
                               //     ),
                               //   ),
                               // ),
                               child: TextField(
                                 // controller: controller,
                                 decoration: InputDecoration(
-                                  border: UnderlineInputBorder(
+                                  border: const UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Theme.of(context).hintColor,
+                                      color: Colors.grey,
                                     ),
                                   ),
-                                  enabledBorder: UnderlineInputBorder(
+                                  enabledBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Theme.of(context).hintColor,
+                                      color: Colors.grey,
                                     ),
                                   ),
-                                  focusedBorder: UnderlineInputBorder(
+                                  focusedBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Theme.of(context).hintColor,
+                                      color: Colors.grey,
                                     ),
                                   ),
                                   // hintText: 'Code',
                                   hintText: S.of(context).codeHint,
-                                  hintStyle: TextStyle(
-                                    color: Theme.of(context).hintColor,
+                                  hintStyle: const TextStyle(
+                                    color: Colors.grey,
                                     fontSize: 16,
                                   ),
                                 ),
                                 controller:
                                     TextEditingController(text: codeHintText),
+
                                 style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 20,
                                 ),
+                                onChanged: (value) {
+                                  if (value == '+20') {
+                                    onCountrySelected('Egypt');
+                                  } else if (value == '+970') {
+                                    onCountrySelected('Philistine');
+                                  } else if (value == '+44') {
+                                    onCountrySelected('England');
+                                  } else if (value == '+1') {
+                                    onCountrySelected('Canada');
+                                  }
+                                },
                               ),
                             ),
                             SizedBox(
@@ -294,7 +203,7 @@ class _LoginPageState extends State<LoginPage> {
                               // height: 55,
                               // decoration: const BoxDecoration(
                               //   border: Border(
-                              //     bottom: BorderSide(color: Theme.of(context).hintColor),
+                              //     bottom: BorderSide(color: Colors.grey),
                               //   ),
                               // ),
                               child: TextFormField(
@@ -313,30 +222,30 @@ class _LoginPageState extends State<LoginPage> {
                                   errorStyle: const TextStyle(
                                     color: Colors.red,
                                   ),
-                                  border: UnderlineInputBorder(
+                                  border: const UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Theme.of(context).hintColor,
+                                      color: Colors.grey,
                                     ),
                                   ),
-                                  enabledBorder: UnderlineInputBorder(
+                                  enabledBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Theme.of(context).hintColor,
+                                      color: Colors.grey,
                                     ),
                                   ),
-                                  focusedBorder: UnderlineInputBorder(
+                                  focusedBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Theme.of(context).hintColor,
+                                      color: Colors.grey,
                                     ),
                                   ),
                                   // hintText: 'Phone number',
                                   hintText: S.of(context).phoneHint,
-                                  hintStyle: TextStyle(
-                                    color: Theme.of(context).hintColor,
+                                  hintStyle: const TextStyle(
+                                    color: Colors.grey,
                                     fontSize: 18,
                                   ),
                                 ),
                                 style: const TextStyle(
-                                  // color: Colors.black,
+                                  color: Colors.black,
                                   fontSize: 20,
                                 ),
                               ),
@@ -349,54 +258,53 @@ class _LoginPageState extends State<LoginPage> {
                           children: [
                             SizedBox(
                               width: screenWidth * 0.15,
-                              // decoration: const BoxDecoration(
-                              //   border: Border(
-                              //     bottom: BorderSide(
-                              //       color: Theme.of(context).hintColor,
-                              //     ),
-                              //   ),
-                              // ),
                               child: TextField(
                                 // controller: controller,
                                 decoration: InputDecoration(
-                                  border: UnderlineInputBorder(
+                                  border: const UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Theme.of(context).hintColor,
+                                      color: Colors.grey,
                                     ),
                                   ),
-                                  enabledBorder: UnderlineInputBorder(
+                                  enabledBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Theme.of(context).hintColor,
+                                      color: Colors.grey,
                                     ),
                                   ),
-                                  focusedBorder: UnderlineInputBorder(
+                                  focusedBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Theme.of(context).hintColor,
+                                      color: Colors.grey,
                                     ),
                                   ),
                                   // hintText: 'Code',
                                   hintText: S.of(context).codeHint,
-                                  hintStyle: TextStyle(
-                                    color: Theme.of(context).hintColor,
+                                  hintStyle: const TextStyle(
+                                    color: Colors.grey,
                                     fontSize: 16,
                                   ),
                                 ),
                                 controller:
                                     TextEditingController(text: codeHintText),
+
                                 style: const TextStyle(
-                                  // color: Colors.black,
+                                  color: Colors.black,
                                   fontSize: 20,
                                 ),
+                                onChanged: (value) {
+                                  if (value == '+20') {
+                                    onCountrySelected('Egypt');
+                                  } else if (value == '+970') {
+                                    onCountrySelected('Philistine');
+                                  } else if (value == '+44') {
+                                    onCountrySelected('England');
+                                  } else if (value == '+1') {
+                                    onCountrySelected('Canada');
+                                  }
+                                },
                               ),
                             ),
                             SizedBox(
                               width: screenWidth * 0.52,
-                              // height: 55,
-                              // decoration: const BoxDecoration(
-                              //   border: Border(
-                              //     bottom: BorderSide(color: Theme.of(context).hintColor),
-                              //   ),
-                              // ),
                               child: TextFormField(
                                 validator: (data) {
                                   if (data!.isEmpty) {
@@ -413,29 +321,30 @@ class _LoginPageState extends State<LoginPage> {
                                   errorStyle: const TextStyle(
                                     color: Colors.red,
                                   ),
-                                  border: UnderlineInputBorder(
+                                  border: const UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Theme.of(context).hintColor,
+                                      color: Colors.grey,
                                     ),
                                   ),
-                                  enabledBorder: UnderlineInputBorder(
+                                  enabledBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Theme.of(context).hintColor,
+                                      color: Colors.grey,
                                     ),
                                   ),
-                                  focusedBorder: UnderlineInputBorder(
+                                  focusedBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Theme.of(context).hintColor,
+                                      color: Colors.grey,
                                     ),
                                   ),
                                   // hintText: 'Phone number',
                                   hintText: S.of(context).phoneHint,
-                                  hintStyle: TextStyle(
-                                    color: Theme.of(context).hintColor,
+                                  hintStyle: const TextStyle(
+                                    color: Colors.grey,
                                     fontSize: 18,
                                   ),
                                 ),
                                 style: const TextStyle(
+                                  color: Colors.black,
                                   fontSize: 20,
                                 ),
                               ),
@@ -474,17 +383,9 @@ class _LoginPageState extends State<LoginPage> {
                       //   // width: 400,
                       //   child:
                       ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            CustomPageRoute(
-                              page: const ChatsPage(),
-                            ),
-                          );
-                        },
+                        onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(context).primaryColor,
-                          // backgroundColor: Theme.of(context).primaryColor,
+                          backgroundColor: const Color(0xff322653),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -509,7 +410,7 @@ class _LoginPageState extends State<LoginPage> {
                           // 'forgot password ?',
                           S.of(context).forgotPassword,
                           style: const TextStyle(
-                            // color: Theme.of(context).primaryColor,
+                            color: Color(0xff322653),
                             // color: Colors.white,
                             fontSize: 18,
                           ),
