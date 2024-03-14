@@ -20,6 +20,25 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  //bool isShowSticker=false;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   isShowSticker = false;
+  // }
+
+  // Future<bool> onBackPress() {
+  //   if (isShowSticker) {
+  //     setState(() {
+  //       isShowSticker = false;
+  //     });
+  //   } else {
+  //     Navigator.pop(context);
+  //   }
+
+  //   return Future.value(false);
+  // }
   // final _controller = TextEditingController();
   // final _scrollController = ScrollController();
   // bool _emojiShowing = false;
@@ -212,15 +231,15 @@ class _ProfileState extends State<Profile> {
                       decoration: InputDecoration(
                         // hintText: 'Name',
                         hintText: S.of(context).profileHint,
-                        hintStyle:  TextStyle(
+                        hintStyle: TextStyle(
                           color: Theme.of(context).hintColor,
                           fontSize: 18,
                         ),
-                        focusedBorder:  UnderlineInputBorder(
+                        focusedBorder: UnderlineInputBorder(
                           borderSide:
                               BorderSide(color: Theme.of(context).hintColor),
                         ),
-                        enabledBorder:  UnderlineInputBorder(
+                        enabledBorder: UnderlineInputBorder(
                           borderSide:
                               BorderSide(color: Theme.of(context).hintColor),
                         ),
@@ -232,7 +251,7 @@ class _ProfileState extends State<Profile> {
                             // onPressed: (){
                             //   // toggleEmojiPicker();},
                           },
-                          icon:  Icon(
+                          icon: Icon(
                             Icons.emoji_emotions_outlined, //emoji_emotions
                             size: 28,
                             color: Theme.of(context).hintColor,
