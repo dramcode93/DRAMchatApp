@@ -10,10 +10,28 @@ class CustomModelCountry extends StatefulWidget {
 }
 
 class _CustomModelCountryState extends State<CustomModelCountry> {
-  String? country = '';
+  String? country;
 
   @override
   Widget build(BuildContext context) {
+    List<Map<String, String>> countryOptions = [
+      {
+        'value': 'Egypt',
+        'text': S.of(context).Egypt,
+      },
+      {
+        'value': 'Canada',
+        'text': S.of(context).Canada,
+      },
+      {
+        'value': 'Palestine',
+        'text': S.of(context).Palestine,
+      },
+      {
+        'value': 'England',
+        'text': S.of(context).England,
+      },
+    ];
     return SizedBox(
       height: 300,
       child: Center(
@@ -32,51 +50,28 @@ class _CustomModelCountryState extends State<CustomModelCountry> {
               ),
             ),
             const Divider(),
-            RadioListTile(
-                title: Text(S.of(context).Egypt),
-                value: 'Egypt',
-                groupValue: country,
-                onChanged: (value) {
-                  setState(() {
-                    Navigator.pop(context);
-                    country = value;
-                    widget.onCountrySelected(country!);
-                  });
-                }),
-            RadioListTile(
-                title: Text(S.of(context).Egypt),
-                value: 'Canada',
-                groupValue: country,
-                onChanged: (value) {
-                  setState(() {
-                    Navigator.pop(context);
-                    country = value;
-                    widget.onCountrySelected(country!);
-                  });
-                }),
-            RadioListTile(
-                title: Text(S.of(context).Egypt),
-                value: 'Philistine',
-                groupValue: country,
-                onChanged: (value) {
-                  setState(() {
-                    Navigator.pop(context);
-                    country = value;
-                    widget.onCountrySelected(country!);
-                  });
-                }),
-            RadioListTile(
-                title: Text(S.of(context).Egypt),
-                value: 'England',
-                groupValue: country,
-                onChanged: (value) {
-                  setState(() {
-                    Navigator.pop(context);
-
-                    country = value;
-                    widget.onCountrySelected(country!);
-                  });
-                })
+            Expanded(
+              child: ListView.builder(
+                itemCount: countryOptions.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final item = countryOptions[index];
+                  return RadioListTile(
+                    title: Text(
+                      '${item['text']}',
+                    ),
+                    value: item['value'],
+                    groupValue: country,
+                    onChanged: (value) {
+                      setState(() {
+                        Navigator.pop(context);
+                        country = value;
+                        widget.onCountrySelected(country!);
+                      });
+                    },
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),

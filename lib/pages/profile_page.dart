@@ -310,12 +310,6 @@ class _ProfileState extends State<Profile> {
                     );
                   },
                 ),
-                // const Spacer(
-                //   flex: 1,
-                // ),
-                //  SizedBox(
-                //   height:  bodyHeight*0.4,
-                // ),
               ],
             ),
           ),
@@ -323,8 +317,4 @@ class _ProfileState extends State<Profile> {
       ),
     );
   }
-  // void dispose() {
-  //   _controller.dispose();
-  //   super.dispose();
-  // }
 }

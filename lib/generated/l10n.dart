@@ -449,6 +449,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Canada`
+  String get Canada {
+    return Intl.message(
+      'Canada',
+      name: 'Canada',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Palestine`
+  String get Palestine {
+    return Intl.message(
+      'Palestine',
+      name: 'Palestine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `England`
+  String get England {
+    return Intl.message(
+      'England',
+      name: 'England',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

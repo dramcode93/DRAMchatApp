@@ -1,8 +1,13 @@
+import 'package:dram/constants.dart';
 import 'package:dram/generated/l10n.dart';
+import 'package:dram/models/theme.dart';
+import 'package:dram/pages/chats_page.dart';
 import 'package:dram/widgets/custom_model_country.dart';
+import 'package:dram/widgets/navigate.dart';
 import 'package:dram/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -57,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
             height: 25,
           ),
           Image.asset(
-            'assets/images/logo.png',
+            kLogo,
             height: 190,
             width: 220,
           ),
@@ -70,13 +75,6 @@ class _LoginPageState extends State<LoginPage> {
             height: orientationDevice == Orientation.portrait
                 ? bodyHeight * 0.7
                 : bodyHeight,
-            decoration: const BoxDecoration(
-                // color: Colors.blueGrey,
-                // borderRadius: BorderRadius.only(
-                //   topLeft: Radius.circular(32),
-                //   topRight: Radius.circular(32),
-                // ),
-                ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -107,82 +105,60 @@ class _LoginPageState extends State<LoginPage> {
                         errorStyle: const TextStyle(
                           color: Colors.red,
                         ),
-                        border: const UnderlineInputBorder(
+                        disabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.grey,
-                          ),
-                        ),
-                        enabledBorder: const UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.grey,
-                          ),
-                        ),
-                        focusedBorder: const UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.grey,
+                            color: Theme.of(context).hintColor,
                           ),
                         ),
                         hintText: hintName,
-                        hintStyle: const TextStyle(
-                          color: Colors.grey,
+                        hintStyle: TextStyle(
+                          color: Theme.of(context).hintColor,
                           fontSize: 18,
                         ),
                       ),
                       style: const TextStyle(
-                        color: Colors.black,
                         fontSize: 20,
                       ),
                     ),
                   ),
                 ),
-
                 SizedBox(
                   width: screenWidth * 0.73,
                   height: 80,
                   child: isArabic()
                       ? Row(
-                          // textDirection: TextDirection.ltr,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SizedBox(
                               width: screenWidth * 0.15,
-                              // decoration: const BoxDecoration(
-                              //   border: Border(
-                              //     bottom: BorderSide(
-                              //       color: Colors.grey,
-                              //     ),
-                              //   ),
-                              // ),
                               child: TextField(
                                 // controller: controller,
                                 decoration: InputDecoration(
-                                  border: const UnderlineInputBorder(
+                                  border: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  enabledBorder: const UnderlineInputBorder(
+                                  enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  focusedBorder: const UnderlineInputBorder(
+                                  focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
                                   // hintText: 'Code',
                                   hintText: S.of(context).codeHint,
-                                  hintStyle: const TextStyle(
-                                    color: Colors.grey,
+                                  hintStyle: TextStyle(
+                                    color: Theme.of(context).hintColor,
                                     fontSize: 16,
                                   ),
                                 ),
                                 controller:
                                     TextEditingController(text: codeHintText),
-
                                 style: const TextStyle(
-                                  color: Colors.black,
                                   fontSize: 20,
                                 ),
                                 onChanged: (value) {
@@ -200,12 +176,6 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             SizedBox(
                               width: screenWidth * 0.52,
-                              // height: 55,
-                              // decoration: const BoxDecoration(
-                              //   border: Border(
-                              //     bottom: BorderSide(color: Colors.grey),
-                              //   ),
-                              // ),
                               child: TextFormField(
                                 validator: (data) {
                                   if (data!.isEmpty) {
@@ -219,33 +189,32 @@ class _LoginPageState extends State<LoginPage> {
                                 keyboardType:
                                     const TextInputType.numberWithOptions(),
                                 decoration: InputDecoration(
-                                  errorStyle: const TextStyle(
+                                  errorStyle: TextStyle(
                                     color: Colors.red,
                                   ),
-                                  border: const UnderlineInputBorder(
+                                  border: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  enabledBorder: const UnderlineInputBorder(
+                                  enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  focusedBorder: const UnderlineInputBorder(
+                                  focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
                                   // hintText: 'Phone number',
                                   hintText: S.of(context).phoneHint,
-                                  hintStyle: const TextStyle(
-                                    color: Colors.grey,
+                                  hintStyle: TextStyle(
+                                    color: Theme.of(context).hintColor,
                                     fontSize: 18,
                                   ),
                                 ),
                                 style: const TextStyle(
-                                  color: Colors.black,
                                   fontSize: 20,
                                 ),
                               ),
@@ -261,25 +230,25 @@ class _LoginPageState extends State<LoginPage> {
                               child: TextField(
                                 // controller: controller,
                                 decoration: InputDecoration(
-                                  border: const UnderlineInputBorder(
+                                  border: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  enabledBorder: const UnderlineInputBorder(
+                                  enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  focusedBorder: const UnderlineInputBorder(
+                                  focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
                                   // hintText: 'Code',
                                   hintText: S.of(context).codeHint,
-                                  hintStyle: const TextStyle(
-                                    color: Colors.grey,
+                                  hintStyle: TextStyle(
+                                    color: Theme.of(context).hintColor,
                                     fontSize: 16,
                                   ),
                                 ),
@@ -287,7 +256,6 @@ class _LoginPageState extends State<LoginPage> {
                                     TextEditingController(text: codeHintText),
 
                                 style: const TextStyle(
-                                  color: Colors.black,
                                   fontSize: 20,
                                 ),
                                 onChanged: (value) {
@@ -321,30 +289,29 @@ class _LoginPageState extends State<LoginPage> {
                                   errorStyle: const TextStyle(
                                     color: Colors.red,
                                   ),
-                                  border: const UnderlineInputBorder(
+                                  border: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  enabledBorder: const UnderlineInputBorder(
+                                  enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
-                                  focusedBorder: const UnderlineInputBorder(
+                                  focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.grey,
+                                      color: Theme.of(context).hintColor,
                                     ),
                                   ),
                                   // hintText: 'Phone number',
                                   hintText: S.of(context).phoneHint,
-                                  hintStyle: const TextStyle(
-                                    color: Colors.grey,
+                                  hintStyle: TextStyle(
+                                    color: Theme.of(context).hintColor,
                                     fontSize: 18,
                                   ),
                                 ),
                                 style: const TextStyle(
-                                  color: Colors.black,
                                   fontSize: 20,
                                 ),
                               ),
@@ -352,9 +319,6 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         ),
                 ),
-                // const Spacer(
-                //   flex: 4,
-                // ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -367,23 +331,20 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 30,
                 ),
-                // CustomBtn(
-                //   btnText: 'Login',
-                //   onTap: () {},
-                //   btnColor: Color(0xff322653),
-                //   txtColor: Colors.white,
-                // ),
                 SizedBox(
                   width: screenWidth * 0.73,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // SizedBox(
-                      //   height: 40,
-                      //   // width: 400,
-                      //   child:
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            CustomPageRoute(
+                              page: const ChatsPage(),
+                            ),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xff322653),
                           shape: RoundedRectangleBorder(
@@ -398,20 +359,13 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       // ),
-                      // UnderLineBtn(btnText: S.of(context).forgotPassword, onTap: () {  },),
                       GestureDetector(
-                        // onTap:(){  Navigator.push(
-                        //   context,
-                        //   CustomPageRoute(
-                        //     page: const NumberPage(),
-                        //   ),
-                        // )} ,
                         child: Text(
-                          // 'forgot password ?',
                           S.of(context).forgotPassword,
-                          style: const TextStyle(
-                            color: Color(0xff322653),
-                            // color: Colors.white,
+                          style: TextStyle(
+                            color: context.watch<ThemeProvider>().isDark
+                                ? Theme.of(context).hintColor
+                                : Theme.of(context).primaryColor,
                             fontSize: 18,
                           ),
                         ),

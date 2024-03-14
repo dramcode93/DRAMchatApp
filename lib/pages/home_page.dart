@@ -1,11 +1,14 @@
 import 'package:dram/constants.dart';
 import 'package:dram/generated/l10n.dart';
+import 'package:dram/models/theme.dart';
 import 'package:dram/pages/login_page.dart';
 import 'package:dram/pages/number_page.dart';
 import 'package:dram/widgets/CustomModalLang.dart';
 import 'package:dram/widgets/custom_button.dart';
 import 'package:dram/widgets/navigate.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -36,7 +39,9 @@ class _HomeState extends State<Home> {
             end: Alignment.bottomLeft,
             colors: [
               Colors.black,
-              Theme.of(context).primaryColor,
+              context.watch<ThemeProvider>().isDark
+                  ? Color.fromARGB(255, 27, 20, 49)
+                  : Theme.of(context).primaryColor,
             ],
             stops: const [0.2, 0.8],
           ),
@@ -93,7 +98,6 @@ class _HomeState extends State<Home> {
                         //   context,
                         //   LoginPage.id,
                         // );
-
                         Navigator.push(
                           context,
                           CustomPageRoute(
@@ -126,8 +130,8 @@ class _HomeState extends State<Home> {
                   //     _switchLanguage(newValue);
                   //   },
                   // )
-                  MaterialButton(
-                    onPressed: () {
+                  GestureDetector(
+                    onTap: () {
                       showModalBottomSheet(
                         isScrollControlled: true,
                         context: context,
@@ -137,7 +141,7 @@ class _HomeState extends State<Home> {
                         transitionAnimationController: AnimationController(
                           vsync: Navigator.of(context),
                           duration: const Duration(
-                            milliseconds: 400,
+                            milliseconds: 500,
                           ),
                         ),
                       );

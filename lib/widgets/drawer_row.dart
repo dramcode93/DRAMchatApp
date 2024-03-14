@@ -19,11 +19,11 @@ class DrawerRow extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.only(left: 16),
-            height: 40,
+            height: 44,
             width: 40,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
-              color: const Color.fromARGB(255, 221, 209, 241),
+              color: Color.fromARGB(255, 226, 219, 239),
             ),
             child: icon,
           ),

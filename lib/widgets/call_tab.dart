@@ -1,5 +1,8 @@
 import 'package:dram/constants.dart';
+import 'package:dram/models/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
 
 class CallTap extends StatelessWidget {
   final List<Map<String, dynamic>> callData = [
@@ -31,10 +34,14 @@ class CallTap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: Theme.of(context).backgroundColor,
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: AppColorsDark.primaryColor,
-        child: const Icon(Icons.add_call),
+        backgroundColor: Theme.of(context).primaryColor,
+        child: const Icon(
+          Icons.add_call,
+          color: Colors.white,
+        ),
       ),
       body: ListView.builder(
         physics: const BouncingScrollPhysics(),
