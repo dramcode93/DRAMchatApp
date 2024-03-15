@@ -1,4 +1,5 @@
 import 'package:dram/generated/l10n.dart';
+import 'package:dram/pages/login_page.dart';
 import 'package:dram/pages/profile_page.dart';
 import 'package:dram/widgets/navigate.dart';
 import 'package:dram/widgets/text_field.dart';
@@ -14,6 +15,10 @@ class PasswordPage extends StatelessWidget {
   TextEditingController confirmPasswordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)?.settings.arguments;
+
+    final String? id =
+        args != null ? (args as Map<String, dynamic>)['id'] as String? : null;
     // final orientationDevice = MediaQuery.of(context).orientation;
 // orientationDevice == Orientation.portrait ? :
     final screenHeight = MediaQuery.of(context).size.height;
@@ -103,12 +108,19 @@ class PasswordPage extends StatelessWidget {
                                     String confirmPassword =
                                         confirmPasswordController.text;
                                     if (password == confirmPassword) {
-                                      Navigator.push(
-                                        context,
-                                        CustomPageRoute(
-                                          page: const Profile(),
-                                        ),
-                                      );
+                                      id == '1'
+                                          ? Navigator.push(
+                                              context,
+                                              CustomPageRoute(
+                                                page: const LoginPage(),
+                                              ),
+                                            )
+                                          : Navigator.push(
+                                              context,
+                                              CustomPageRoute(
+                                                page: const Profile(),
+                                              ),
+                                            );
                                     } else {
                                       showDialog(
                                         context: context,

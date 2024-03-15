@@ -66,7 +66,13 @@ class _CodePageState extends State<CodePage> {
     String formattedTime =
         '${(remainingSeconds ~/ 60).toString().padLeft(2, '0')}:${(remainingSeconds % 60).toString().padLeft(2, '0')}';
 
-    var phoneNumber = ModalRoute.of(context)!.settings.arguments;
+    final args = ModalRoute.of(context)?.settings.arguments;
+    var phoneNumber = args != null
+        ? (args as Map<String, dynamic>)['number'] as String?
+        : null;
+
+    final String? id =
+        args != null ? (args as Map<String, dynamic>)['id'] as String? : null;
     return Scaffold(
       body: ListView(
         physics: const BouncingScrollPhysics(),
@@ -80,20 +86,22 @@ class _CodePageState extends State<CodePage> {
                 //  const Spacer(
                 //   flex: 1,
                 // ),
-                Text(
-                  // 'Activate your Account',
-                  S.of(context).codeTitle,
-                  style: const TextStyle(
-                    fontSize: 30,
-                    // fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+                id == '1'
+                    ? const Text('')
+                    : Text(
+                        // 'Activate your Account',
+                        S.of(context).codeTitle,
+                        style: const TextStyle(
+                          fontSize: 30,
+                          // fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                 Padding(
                   padding: const EdgeInsets.only(top: 32, bottom: 10),
                   child: Text(
                     // 'Enter the code sent to your number:\n$phoneNumber',
-                    '${S.of(context).codeAsk}$phoneNumber',
+                    '${S.of(context).codeAsk}\n$phoneNumber',
                     style: const TextStyle(
                       // color: Colors.black,
                       fontSize: 18,
@@ -213,12 +221,19 @@ class _CodePageState extends State<CodePage> {
                     //   context,
                     //   Profile.id,
                     // );
-                    Navigator.push(
-                      context,
-                      CustomPageRoute(
-                        page: PasswordPage(),
-                      ),
-                    );
+                    if (id == '1') {
+                      Navigator.push(
+                        context,
+                        CustomPageRoute(
+                            page: PasswordPage(), arguments: {'id': '1'}),
+                      );
+                    } else {
+                      Navigator.push(
+                        context,
+                        CustomPageRoute(
+                            page: PasswordPage(), arguments: {'id': '2'}),
+                      );
+                    }
                   },
                   btnColor: Theme.of(context).primaryColor,
                   txtColor: Colors.white,

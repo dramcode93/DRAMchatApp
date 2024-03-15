@@ -2,6 +2,7 @@ import 'package:dram/constants.dart';
 import 'package:dram/generated/l10n.dart';
 import 'package:dram/models/theme.dart';
 import 'package:dram/pages/chats_page.dart';
+import 'package:dram/pages/number_page.dart';
 import 'package:dram/widgets/custom_model_country.dart';
 import 'package:dram/widgets/navigate.dart';
 import 'package:dram/widgets/text_field.dart';
@@ -369,6 +370,14 @@ class _LoginPageState extends State<LoginPage> {
                             fontSize: 18,
                           ),
                         ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            CustomPageRoute(
+                                page: const NumberPage(),
+                                arguments: {'id': '1'}),
+                          );
+                        },
                       ),
                     ],
                   ),
