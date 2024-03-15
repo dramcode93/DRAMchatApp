@@ -1,5 +1,6 @@
 import 'package:dram/generated/l10n.dart';
 import 'package:dram/pages/code_page.dart';
+import 'package:dram/pages/password_page.dart';
 import 'package:dram/widgets/custom_model_country.dart';
 import 'package:dram/widgets/custom_button.dart';
 import 'package:dram/widgets/formated_number.dart';
@@ -48,8 +49,17 @@ class _NumberPageState extends State<NumberPage> {
     final bodyHeight = screenHeight -
         appBar.preferredSize.height -
         MediaQuery.of(context).padding.top;
-
     country = [S.of(context).Egypt];
+
+    final args = ModalRoute.of(context)?.settings.arguments;
+    final String? id =
+        args != null ? (args as Map<String, dynamic>)['id'] as String? : null;
+
+    // if (id != null) {
+    //   // Use the id
+    // } else {
+    //   // Handle the case where id is null
+    // }
 
     return Scaffold(
       body: ListView(
@@ -385,19 +395,41 @@ class _NumberPageState extends State<NumberPage> {
                               //   CodePage.id,
                               //   arguments: formattedNumber,
                               // );
-                              Navigator.push(
-                                context,
-                                CustomPageRoute(
-                                  page: const CodePage(),
-                                  // arguments: formattedNumber,
-                                  arguments: isArabic()
-                                      ? formattedNumber
-                                          .split('')
-                                          .reversed
-                                          .join('')
-                                      : formattedNumber,
-                                ),
-                              );
+                              if (id == '1') {
+                                Navigator.push(
+                                  context,
+                                  CustomPageRoute(
+                                    page: const CodePage(),
+                                    //  arguments: formattedNumber,
+                                    arguments: {
+                                      'number': isArabic()
+                                          ? formattedNumber
+                                              .split('')
+                                              .reversed
+                                              .join('')
+                                          : formattedNumber,
+                                      'id': '1',
+                                    },
+                                  ),
+                                );
+                              } else {
+                                Navigator.push(
+                                  context,
+                                  CustomPageRoute(
+                                    page: const CodePage(),
+                                    // arguments: formattedNumber,
+                                    arguments: {
+                                      'number': isArabic()
+                                          ? formattedNumber
+                                              .split('')
+                                              .reversed
+                                              .join('')
+                                          : formattedNumber,
+                                      'id': '2',
+                                    },
+                                  ),
+                                );
+                              }
                             },
                           );
                           AlertDialog alert = AlertDialog(
