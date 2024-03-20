@@ -8,8 +8,9 @@ import 'package:dram/widgets/navigate.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
-
 import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -110,6 +111,97 @@ class _ProfileState extends State<Profile> {
     }
   }
 
+  // Future<void> createImage(XFile img) async {
+  //   try {
+  //     File imageFile = File(img.path);
+  //     // String base64Image = base64Encode(await imageFile.readAsBytes());
+  //     List<int> imageBytes = await imageFile.readAsBytes();
+  //     String base64Image = base64Encode(imageBytes);
+  //     http.Response response = await http.put(
+  //       Uri.parse('https://dramchatapi.giize.com/api/user/userImage'),
+  //       headers: <String, String>{
+  //         'Content-Type': 'application/json',
+  //         'Authorization':
+  //             'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWZhMTdkMGNkNjhiOWIzMDgyZDE0YmYiLCJwaG9uZSI6IjIwMTAyMzE0MDI2NSIsImlhdCI6MTcxMDg4ODkxMiwiZXhwIjoxNzEyMTg0OTEyfQ.XqHBFBwnYIGHbwTnPNmmhuwXcD9bGCp8eNv1bABUlq4',
+  //       },
+  //       body: jsonEncode(<String, File>{
+  //         "image": base64Image,
+  //       }),
+  //     );
+  //     if (response.statusCode == 200) {
+  //       var data = jsonDecode(response.body.toString());
+  //       print('token: ${data['token']}');
+  //       print('account created successfully');
+  //     } else {
+  //       print('failed');
+  //     }
+  //   } catch (e) {
+  //     print(e.toString());
+  //   }
+  // }
+  String? imageUrl;
+  @override
+  void initState() {
+    super.initState();
+    getPic();
+  }
+
+  Future<void> getPic() async {
+    try {
+      final response = await http.get(
+        Uri.parse('https://dramchatapi.giize.com/api/user/getUser'),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+          'Authorization':
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWZhMTdkMGNkNjhiOWIzMDgyZDE0YmYiLCJwaG9uZSI6IjIwMTAyMzE0MDI2NSIsImlhdCI6MTcxMDg4ODkxMiwiZXhwIjoxNzEyMTg0OTEyfQ.XqHBFBwnYIGHbwTnPNmmhuwXcD9bGCp8eNv1bABUlq4',
+        },
+      );
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        final String? fetchedImageUrl = data['img'];
+        setState(() {
+          imageUrl = fetchedImageUrl;
+        });
+        print(data);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    } on Exception catch (e) {
+      print("data: ${e}");
+    }
+  }
+
+  void profileName(String name) async {
+    try {
+      // final Map<String, dynamic> mine = {
+      //   "phone": phone,
+      // };
+      http.Response response = await http.put(
+        Uri.parse('https://dramchatapi.giize.com/api/user/userData'),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+          'Authorization':
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWZhMTdkMGNkNjhiOWIzMDgyZDE0YmYiLCJwaG9uZSI6IjIwMTAyMzE0MDI2NSIsImlhdCI6MTcxMDg4ODkxMiwiZXhwIjoxNzEyMTg0OTEyfQ.XqHBFBwnYIGHbwTnPNmmhuwXcD9bGCp8eNv1bABUlq4',
+        },
+        // body: {
+        //   "phone": phone,
+        // },
+        body: jsonEncode(<String, String>{
+          "name": name,
+        }),
+      );
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body.toString());
+        print('token: ${data['token']}');
+        print('account created successfully');
+      } else {
+        print('failed');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // final orientationDevice = MediaQuery.of(context).orientation;
@@ -165,9 +257,9 @@ class _ProfileState extends State<Profile> {
                               File(_pickedImage!.path),
                             ),
                           )
-                        : const CircleAvatar(
+                        : CircleAvatar(
                             radius: 65,
-                            backgroundImage: AssetImage(kProfile),
+                            backgroundImage: NetworkImage(imageUrl.toString()),
                           ),
                     Positioned(
                       bottom: 0,
@@ -302,6 +394,8 @@ class _ProfileState extends State<Profile> {
                   btnColor: Theme.of(context).primaryColor,
                   txtColor: Colors.white,
                   onTap: () {
+                    getPic();
+                    profileName("mahmoud");
                     Navigator.push(
                       context,
                       CustomPageRoute(

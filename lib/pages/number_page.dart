@@ -6,7 +6,10 @@ import 'package:dram/widgets/custom_button.dart';
 import 'package:dram/widgets/formated_number.dart';
 import 'package:dram/widgets/navigate.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class NumberPage extends StatefulWidget {
   const NumberPage({super.key});
@@ -26,19 +29,52 @@ class _NumberPageState extends State<NumberPage> {
   String codeHintText = '';
   String phone = 'Phone number';
   String hintName = isArabic() ? 'الدولة' : 'Country ';
-  onCountrySelected(String country) {
-    setState(() {
-      hintName = country;
-      if (country == 'Egypt') {
-        codeHintText = '+20';
-      } else if (country == 'Philistine') {
-        codeHintText = '+970';
-      } else if (country == 'England') {
-        codeHintText = '+44';
-      } else if (country == 'Canada') {
-        codeHintText = '+1';
+  onCountrySelected(String country, String countryCode) {
+    setState(
+      () {
+        hintName = country;
+        // if (country == 'Egypt') {
+        //   codeHintText = '+20';
+        // } else if (country == 'Philistine') {
+        //   codeHintText = '+970';
+        // } else if (country == 'England') {
+        //   codeHintText = '+44';
+        // } else if (country == 'Canada') {
+        //   codeHintText = '+1';
+        // }
+        codeHintText = countryCode;
+      },
+    );
+  }
+
+  TextEditingController phoneController = TextEditingController();
+  void signUp(String phone) async {
+    try {
+      // final Map<String, dynamic> mine = {
+      //   "phone": phone,
+      // };
+      http.Response response = await http.post(
+        Uri.parse('https://dramchatapi.giize.com/api/auth/signUp'),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+        },
+        // body: {
+        //   "phone": phone,
+        // },
+        body: jsonEncode(<String, String>{
+          'phone': phone,
+        }),
+      );
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body.toString());
+        print('token: ${data['token']}');
+        print('account created successfully');
+      } else {
+        print('failed');
       }
-    });
+    } catch (e) {
+      print(e.toString());
+    }
   }
 
   @override
@@ -60,7 +96,6 @@ class _NumberPageState extends State<NumberPage> {
     // } else {
     //   // Handle the case where id is null
     // }
-
     return Scaffold(
       body: ListView(
         physics: const BouncingScrollPhysics(),
@@ -190,21 +225,22 @@ class _NumberPageState extends State<NumberPage> {
                                     fontSize: 20,
                                   ),
                                   onChanged: (value) {
-                                    if (value == '+20') {
-                                      onCountrySelected('Egypt');
-                                    } else if (value == '+970') {
-                                      onCountrySelected('Philistine');
-                                    } else if (value == '+44') {
-                                      onCountrySelected('England');
-                                    } else if (value == '+1') {
-                                      onCountrySelected('Canada');
-                                    }
+                                    // if (value == '+20') {
+                                    //   onCountrySelected('Egypt');
+                                    // } else if (value == '+970') {
+                                    //   onCountrySelected('Philistine');
+                                    // } else if (value == '+44') {
+                                    //   onCountrySelected('England');
+                                    // } else if (value == '+1') {
+                                    //   onCountrySelected('Canada');
+                                    // }
                                   },
                                 ),
                               ),
                               SizedBox(
                                 width: screenWidth * 0.52,
                                 child: TextFormField(
+                                  controller: phoneController,
                                   validator: (data) {
                                     if (data!.isEmpty) {
                                       return S.of(context).requiredHint;
@@ -301,21 +337,22 @@ class _NumberPageState extends State<NumberPage> {
                                     fontSize: 20,
                                   ),
                                   onChanged: (value) {
-                                    if (value == '+20') {
-                                      onCountrySelected('Egypt');
-                                    } else if (value == '+970') {
-                                      onCountrySelected('Philistine');
-                                    } else if (value == '+44') {
-                                      onCountrySelected('England');
-                                    } else if (value == '+1') {
-                                      onCountrySelected('Canada');
-                                    }
+                                    // if (value == '+20') {
+                                    //   onCountrySelected('Egypt');
+                                    // } else if (value == '+970') {
+                                    //   onCountrySelected('Philistine');
+                                    // } else if (value == '+44') {
+                                    //   onCountrySelected('England');
+                                    // } else if (value == '+1') {
+                                    //   onCountrySelected('Canada');
+                                    // }
                                   },
                                 ),
                               ),
                               SizedBox(
                                 width: screenWidth * 0.52,
                                 child: TextFormField(
+                                  controller: phoneController,
                                   validator: (data) {
                                     if (data!.isEmpty) {
                                       return S.of(context).requiredHint;
@@ -368,7 +405,7 @@ class _NumberPageState extends State<NumberPage> {
                   CustomBtn(
                     // btnText: 'Next',
                     btnText: S.of(context).next,
-                    btnColor: const Color(0xff322653),
+                    btnColor: Theme.of(context).primaryColor,
                     txtColor: Colors.white,
                     onTap: () {
                       if (formKey.currentState!.validate()) {
@@ -395,6 +432,7 @@ class _NumberPageState extends State<NumberPage> {
                               //   CodePage.id,
                               //   arguments: formattedNumber,
                               // );
+                              signUp("201023140265");
                               if (id == '1') {
                                 Navigator.push(
                                   context,

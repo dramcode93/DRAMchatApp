@@ -42,15 +42,16 @@ class _SplashState extends State<Splash> {
     print(bodyHeight);
     return Scaffold(
       body: Container(
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
               Colors.black,
-               context.watch<ThemeProvider>().isDark
-                  ? Color.fromARGB(255, 27, 20, 49)
-                  : Theme.of(context).primaryColor,
+              //  context.watch<ThemeProvider>().isDark
+              //     ? Color.fromARGB(255, 27, 20, 49)
+              //     : Theme.of(context).primaryColor,
+              Theme.of(context).primaryColor,
             ],
             stops: const [0.2, 0.8],
           ),

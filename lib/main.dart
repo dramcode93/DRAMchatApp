@@ -1,6 +1,8 @@
 import 'package:dram/generated/l10n.dart';
+import 'package:dram/models/country.dart';
 import 'package:dram/models/select_language.dart';
 import 'package:dram/models/theme.dart';
+import 'package:dram/pages/chats_page.dart';
 import 'package:dram/pages/code_page.dart';
 import 'package:dram/pages/login_page.dart';
 import 'package:dram/pages/number_page.dart';
@@ -31,7 +33,9 @@ class _MyAppState extends State<MyApp> {
     languageProvider.loadSavedLang();
 
     ThemeProvider themeProvider = ThemeProvider();
-    themeProvider.loadSavedDarkMode(); // Load dark mode
+    themeProvider.loadSavedDarkMode();
+
+    CountryProvider countryProvider = CountryProvider();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<LanguageProvider>.value(
@@ -39,6 +43,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider<ThemeProvider>.value(
           value: themeProvider,
+        ),
+        ChangeNotifierProvider<CountryProvider>.value(
+          value: countryProvider,
         ),
       ],
       child: Builder(
