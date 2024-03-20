@@ -5,6 +5,8 @@ import 'package:dram/widgets/navigate.dart';
 import 'package:dram/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class PasswordPage extends StatelessWidget {
   PasswordPage({super.key});
@@ -14,6 +16,38 @@ class PasswordPage extends StatelessWidget {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   @override
+  void createPassword(String password, String confirmPassword) async {
+    try {
+      // final Map<String, dynamic> mine = {
+      //   "phone": phone,
+      // };
+      http.Response response = await http.post(
+        Uri.parse('https://dramchatapi.giize.com/api/user/createPassword'),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+          'Authorization':
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWZhMTdkMGNkNjhiOWIzMDgyZDE0YmYiLCJwaG9uZSI6IjIwMTAyMzE0MDI2NSIsImlhdCI6MTcxMDg4ODkxMiwiZXhwIjoxNzEyMTg0OTEyfQ.XqHBFBwnYIGHbwTnPNmmhuwXcD9bGCp8eNv1bABUlq4',
+        },
+        // body: {
+        //   "phone": phone,
+        // },
+        body: jsonEncode(<String, String>{
+          "password": password,
+          "confirmPassword": confirmPassword,
+        }),
+      );
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body.toString());
+        print('token: ${data['token']}');
+        print('account created successfully');
+      } else {
+        print('failed');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)?.settings.arguments;
 
@@ -103,6 +137,7 @@ class PasswordPage extends StatelessWidget {
                               //   child:
                               ElevatedButton(
                                 onPressed: () {
+                                  createPassword("0123456789", "0123456789");
                                   if (formKey.currentState!.validate()) {
                                     String password = passwordController.text;
                                     String confirmPassword =

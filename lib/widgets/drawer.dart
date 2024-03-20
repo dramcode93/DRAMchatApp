@@ -22,7 +22,7 @@ class DrawerContent extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            subtitle:  Text(
+            subtitle: Text(
               '+20 102 234 5678',
               style: TextStyle(
                 color: Theme.of(context).hintColor,
@@ -55,46 +55,52 @@ class DrawerContent extends StatelessWidget {
         const Divider(
           color: Colors.black54,
         ),
-        const DrawerRow(
+        DrawerRow(
           title: 'My Accounts',
           icon: Icon(
             Icons.person_outlined,
             size: 28,
+            color: Theme.of(context).primaryColor,
           ),
         ),
-        const DrawerRow(
+        DrawerRow(
           title: 'New Group',
           icon: Icon(
             Icons.groups_2_outlined,
             size: 28,
+            color: Theme.of(context).primaryColor,
           ),
         ),
-        const DrawerRow(
+        DrawerRow(
           title: 'Favourite Messages',
           icon: Icon(
             Icons.star_border,
             size: 28,
+            color: Theme.of(context).primaryColor,
           ),
         ),
-        const DrawerRow(
+        DrawerRow(
           title: 'Notes',
           icon: Icon(
             Icons.note_alt_outlined,
             size: 28,
+            color: Theme.of(context).primaryColor,
           ),
         ),
-        const DrawerRow(
+        DrawerRow(
           title: 'Devices',
           icon: Icon(
             Icons.devices_sharp,
             size: 28,
+            color: Theme.of(context).primaryColor,
           ),
         ),
-        const DrawerRow(
+        DrawerRow(
           title: 'Setting',
           icon: Icon(
             Icons.settings,
             size: 28,
+            color: Theme.of(context).primaryColor,
           ),
         ),
       ],

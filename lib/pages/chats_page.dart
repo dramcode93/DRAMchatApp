@@ -45,7 +45,7 @@ class _ChatsPageState extends State<ChatsPage> {
           },
           backgroundColor: Theme.of(context).primaryColor,
           selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.blueGrey,
+          unselectedItemColor: const Color.fromARGB(123, 255, 255, 255),
           selectedFontSize: 16,
           unselectedFontSize: 16,
           iconSize: 26,
@@ -86,27 +86,35 @@ class _ChatsPageState extends State<ChatsPage> {
                     kLogo,
                   ),
                   Container(
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 16,
+                    ),
                     width: 220,
-                    height: 40,
+                    // height: 40,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: TextField(
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                      ),
                       decoration: InputDecoration(
-                          hintText: '',
-                          hintStyle: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          prefixIcon: Icon(
-                            Icons.search,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(
-                              50,
-                            ),
-                          )),
+                        hintText: '',
+                        border: InputBorder.none,
+                        hintStyle: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        // border: OutlineInputBorder(
+                        //   borderRadius: BorderRadius.circular(
+                        //     50,
+                        //   ),
+                        // ),
+                      ),
                     ),
                   ),
                   Transform.rotate(

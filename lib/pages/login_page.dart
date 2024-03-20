@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:dram/constants.dart';
 import 'package:dram/generated/l10n.dart';
+import 'package:dram/models/country.dart';
 import 'package:dram/models/theme.dart';
 import 'package:dram/pages/chats_page.dart';
 import 'package:dram/pages/number_page.dart';
@@ -7,8 +10,14 @@ import 'package:dram/widgets/custom_model_country.dart';
 import 'package:dram/widgets/navigate.dart';
 import 'package:dram/widgets/text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:dio/dio.dart';
+// import 'package:dio/dio.dart' as dio;
+
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -27,19 +36,92 @@ class _LoginPageState extends State<LoginPage> {
   String codeHintText = '';
   String phone = 'Phone number';
   String hintName = isArabic() ? 'الدولة' : 'Country ';
-  onCountrySelected(String country) {
-    setState(() {
-      hintName = country;
-      if (country == 'Egypt') {
-        codeHintText = '+20';
-      } else if (country == 'Philistine') {
-        codeHintText = '+970';
-      } else if (country == 'England') {
-        codeHintText = '+44';
-      } else if (country == 'Canada') {
-        codeHintText = '+1';
+  onCountrySelected(String country, String countryCode) {
+    setState(
+      () {
+        hintName = country;
+        // if (country == 'Egypt') {
+        //   codeHintText = '+20';
+        // } else if (country == 'Philistine') {
+        //   codeHintText = '+970';
+        // } else if (country == 'England') {
+        //   codeHintText = '+44';
+        // } else if (country == 'Canada') {
+        //   codeHintText = '+1';
+        // }
+        codeHintText = countryCode;
+      },
+    );
+  }
+
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  // void login(String email, String password) async {
+  //   try {
+  //     dio.Dio dioClient = dio.Dio();
+  //     dio.Response response =
+  //         await dioClient.post('https://reqres.in/api/login', data: {
+  //       "email": email,
+  //       "password": password,
+  //     });
+  //     if (response.statusCode == 200) {
+  //       var data = response.data;
+  //       print('token: ${data['token']}');
+  //       print('account created successfully');
+  //     } else {
+  //       print('failed');
+  //     }
+  //   } catch (e) {
+  //     print(e.toString());
+  //   }
+  // }
+
+  // void login(String phone, password) async {
+  //   try {
+  //     http.Response response =
+  //         await post(Uri.parse('https://reqres.in/api/login'), body: {
+  //       "email": phone,
+  //       "password": password,
+  //     });
+  //     if (response.statusCode == 200) {
+  //       var data = jsonDecode(response.body.toString());
+  //       print('token: ${data['token']}');
+  //       print('account created successfully');
+  //     } else {
+  //       print('failed');
+  //     }
+  //   } catch (e) {
+  //     print(e.toString());
+  //   }
+  // }
+  void login(String phone, password) async {
+    try {
+      // final Map<String, dynamic> mine = {
+      //   "phone": phone,
+      // };
+      http.Response response = await http.post(
+        Uri.parse('https://dramchatapi.giize.com/api/auth/login'),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+        },
+        // body: {
+        //   "phone": phone,
+        // },
+        body: jsonEncode(<String, String>{
+          'phone': phone,
+          "password": password,
+        }),
+      );
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body.toString());
+        print('token: ${data['token']}');
+        print('account created successfully');
+      } else {
+        print('failed');
       }
-    });
+    } catch (e) {
+      print(e.toString());
+    }
   }
 
   @override
@@ -100,6 +182,7 @@ class _LoginPageState extends State<LoginPage> {
                           ));
                     },
                     child: TextFormField(
+                      // initialValue: hintName,
                       controller: codeController,
                       enabled: false,
                       decoration: InputDecoration(
@@ -114,6 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                         hintText: hintName,
                         hintStyle: TextStyle(
                           color: Theme.of(context).hintColor,
+                          // color: Colors.pink,
                           fontSize: 18,
                         ),
                       ),
@@ -163,21 +247,22 @@ class _LoginPageState extends State<LoginPage> {
                                   fontSize: 20,
                                 ),
                                 onChanged: (value) {
-                                  if (value == '+20') {
-                                    onCountrySelected('Egypt');
-                                  } else if (value == '+970') {
-                                    onCountrySelected('Philistine');
-                                  } else if (value == '+44') {
-                                    onCountrySelected('England');
-                                  } else if (value == '+1') {
-                                    onCountrySelected('Canada');
-                                  }
+                                  // if (value == '+20') {
+                                  //   onCountrySelected('Egypt');
+                                  // } else if (value == '+970') {
+                                  //   onCountrySelected('Philistine');
+                                  // } else if (value == '+44') {
+                                  //   onCountrySelected('England');
+                                  // } else if (value == '+1') {
+                                  //   onCountrySelected('Canada');
+                                  // }
                                 },
                               ),
                             ),
                             SizedBox(
                               width: screenWidth * 0.52,
                               child: TextFormField(
+                                controller: phoneController,
                                 validator: (data) {
                                   if (data!.isEmpty) {
                                     return S.of(context).requiredHint;
@@ -260,21 +345,22 @@ class _LoginPageState extends State<LoginPage> {
                                   fontSize: 20,
                                 ),
                                 onChanged: (value) {
-                                  if (value == '+20') {
-                                    onCountrySelected('Egypt');
-                                  } else if (value == '+970') {
-                                    onCountrySelected('Philistine');
-                                  } else if (value == '+44') {
-                                    onCountrySelected('England');
-                                  } else if (value == '+1') {
-                                    onCountrySelected('Canada');
-                                  }
+                                  // if (value == '+20') {
+                                  //   onCountrySelected('Egypt');
+                                  // } else if (value == '+970') {
+                                  //   onCountrySelected('Philistine');
+                                  // } else if (value == '+44') {
+                                  //   onCountrySelected('England');
+                                  // } else if (value == '+1') {
+                                  //   onCountrySelected('Canada');
+                                  // }
                                 },
                               ),
                             ),
                             SizedBox(
                               width: screenWidth * 0.52,
                               child: TextFormField(
+                                controller: phoneController,
                                 validator: (data) {
                                   if (data!.isEmpty) {
                                     return S.of(context).requiredHint;
@@ -324,6 +410,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 CustomTextField(
+                  textController: passwordController,
                   obscureText: true,
                   // hintText: 'Password',
                   hintText: S.of(context).PasswordHint,
@@ -345,9 +432,13 @@ class _LoginPageState extends State<LoginPage> {
                               page: const ChatsPage(),
                             ),
                           );
+                          login(
+                            '201023140265',
+                            "0123456789",
+                          );
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xff322653),
+                          backgroundColor: Theme.of(context).primaryColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),

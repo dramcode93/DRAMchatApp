@@ -1,9 +1,41 @@
-import 'package:dram/constants.dart';
 import 'package:dram/widgets/person.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class ChatsTab extends StatelessWidget {
+class User {
+  final int id;
+  final String email;
+  final String firstName;
+  final String lastName;
+  final String avatar;
+
+  User(
+      {required this.id,
+      required this.email,
+      required this.firstName,
+      required this.lastName,
+      required this.avatar});
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'],
+      email: json['email'],
+      firstName: json['first_name'],
+      lastName: json['last_name'],
+      avatar: json['avatar'],
+    );
+  }
+}
+
+class ChatsTab extends StatefulWidget {
   ChatsTab({super.key});
+
+  @override
+  State<ChatsTab> createState() => _ChatsTabState();
+}
+
+class _ChatsTabState extends State<ChatsTab> {
   List<Map<String, String>> persons = [
     {
       'name': 'Mahmoud Taha',
@@ -31,6 +63,29 @@ class ChatsTab extends StatelessWidget {
       'lastTime': '9:30 am',
     },
   ];
+
+  List<User> users = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    final response =
+        await http.get(Uri.parse('https://reqres.in/api/users?page=2'));
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      final List<dynamic> userList = data['data'];
+      setState(() {
+        users = userList.map((json) => User.fromJson(json)).toList();
+      });
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return
@@ -86,16 +141,21 @@ class ChatsTab extends StatelessWidget {
         // ),
         ListView.builder(
       physics: const BouncingScrollPhysics(),
-      itemCount: persons.length,
+      // itemCount: persons.length,
+      itemCount: users.length,
       itemBuilder: (BuildContext context, int index) {
-        final item = persons[index];
+        // final item = persons[index];
         return Person(
-          name: item['name'],
-          lastMsg: item['lastMsg'],
-          lastTime: item['lastTime'],
+          // name: item['name'],
+          // lastMsg: item['lastMsg'],
+          // lastTime: item['lastTime'],
+          name: '${users[index].firstName} ${users[index].lastName}',
+          lastMsg: '${users[index].email}',
+          lastTime: '12:00',
+          image: '${users[index].avatar}',
         );
       },
-    );
+    ); 
     //   ],
     // );
   }

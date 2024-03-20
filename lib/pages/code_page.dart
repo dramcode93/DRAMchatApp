@@ -10,6 +10,8 @@ import 'package:dram/widgets/navigate.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class CodePage extends StatefulWidget {
   const CodePage({super.key});
@@ -49,6 +51,39 @@ class _CodePageState extends State<CodePage> {
     // Cancel the timer to avoid calling setState after dispose
     timer.cancel();
     super.dispose();
+  }
+
+  // TextEditingController phoneController = TextEditingController();
+
+  void activationCode(String code) async {
+    try {
+      // final Map<String, dynamic> mine = {
+      //   "phone": phone,
+      // };
+      http.Response response = await http.post(
+        Uri.parse('https://dramchatapi.giize.com/api/auth/activation'),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+          'Authorization':
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWZhMTdkMGNkNjhiOWIzMDgyZDE0YmYiLCJwaG9uZSI6IjIwMTAyMzE0MDI2NSIsImlhdCI6MTcxMDg4ODkxMiwiZXhwIjoxNzEyMTg0OTEyfQ.XqHBFBwnYIGHbwTnPNmmhuwXcD9bGCp8eNv1bABUlq4',
+        },
+        // body: {
+        //   "phone": phone,
+        // },
+        body: jsonEncode(<String, String>{
+          'activationCode': code,
+        }),
+      );
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body.toString());
+        print('token: ${data['token']}');
+        print('account created successfully');
+      } else {
+        print('failed');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
   }
 
   @override
@@ -221,6 +256,7 @@ class _CodePageState extends State<CodePage> {
                     //   context,
                     //   Profile.id,
                     // );
+                    activationCode("415827");
                     if (id == '1') {
                       Navigator.push(
                         context,
