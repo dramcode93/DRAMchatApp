@@ -252,7 +252,7 @@ class _CodePageState extends State<CodePage> {
                   // btnText: 'Next',
                   btnText: S.of(context).next,
                   onTap: () {
-                    // Navigator.pushNamed(
+                    // Naviga tor.pushNamed(
                     //   context,
                     //   Profile.id,
                     // );
